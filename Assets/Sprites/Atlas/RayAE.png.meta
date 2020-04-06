@@ -1,0 +1,1541 @@
+fileFormatVersion: 2
+guid: 9ef4559d1bbaad64597962c9535cc8db
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1081042096130293562
+    second: RayAE_0
+  - first:
+      213: 3024372505757746753
+    second: RayAE_1
+  - first:
+      213: 7629084223510618183
+    second: RayAE_2
+  - first:
+      213: -9148437229157630917
+    second: RayAE_3
+  - first:
+      213: 7159051257039484533
+    second: RayAE_4
+  - first:
+      213: -4122334210153285682
+    second: RayAE_5
+  - first:
+      213: -3930732790593914875
+    second: RayAE_6
+  - first:
+      213: 3637433015552926901
+    second: RayAE_7
+  - first:
+      213: 8440482648844112040
+    second: RayAE_8
+  - first:
+      213: 360475911019705696
+    second: RayAE_9
+  - first:
+      213: 8065415349720766901
+    second: RayAE_10
+  - first:
+      213: 6392579921290644444
+    second: RayAE_11
+  - first:
+      213: 2568240651919939966
+    second: RayAE_12
+  - first:
+      213: 1723441918385929684
+    second: RayAE_13
+  - first:
+      213: -6551726534650813145
+    second: RayAE_14
+  - first:
+      213: -513746103506087056
+    second: RayAE_15
+  - first:
+      213: 3234733645569147094
+    second: RayAE_16
+  - first:
+      213: -8194137959486844956
+    second: RayAE_17
+  - first:
+      213: -3260230995147666002
+    second: RayAE_18
+  - first:
+      213: -41346045056701881
+    second: RayAE_19
+  - first:
+      213: 88361466067655753
+    second: RayAE_20
+  - first:
+      213: 283362141572648007
+    second: RayAE_21
+  - first:
+      213: -386069799931289319
+    second: RayAE_22
+  - first:
+      213: -2098389336631648605
+    second: RayAE_23
+  - first:
+      213: -3695861460703755888
+    second: RayAE_24
+  - first:
+      213: 9072056376977628823
+    second: RayAE_25
+  - first:
+      213: -7574869847846624109
+    second: RayAE_26
+  - first:
+      213: 6651562934514927663
+    second: RayAE_27
+  - first:
+      213: -1986208860176318038
+    second: RayAE_28
+  - first:
+      213: 3552744124752125502
+    second: RayAE_29
+  - first:
+      213: -7850847893220747345
+    second: RayAE_30
+  - first:
+      213: 1256575481181664592
+    second: RayAE_31
+  - first:
+      213: -8168754407534989936
+    second: RayAE_32
+  - first:
+      213: -954931363489261165
+    second: RayAE_33
+  - first:
+      213: 7062010586227354308
+    second: RayAE_34
+  - first:
+      213: -2007149982303569447
+    second: RayAE_35
+  - first:
+      213: -515462474343697985
+    second: RayAE_36
+  - first:
+      213: 970031806620285625
+    second: RayAE_37
+  - first:
+      213: 7501695767836811809
+    second: RayAE_38
+  - first:
+      213: -5777705562576036646
+    second: RayAE_39
+  - first:
+      213: 3834378239004674770
+    second: RayAE_40
+  - first:
+      213: 1104602212750708665
+    second: RayAE_41
+  - first:
+      213: 3697445268444937845
+    second: RayAE_42
+  - first:
+      213: -7444528360563221539
+    second: RayAE_43
+  - first:
+      213: -8612822122608078082
+    second: RayAE_44
+  - first:
+      213: 3069044847965092936
+    second: RayAE_45
+  - first:
+      213: -957530648162154549
+    second: RayAE_46
+  - first:
+      213: -7484683687877036765
+    second: RayAE_47
+  - first:
+      213: -3455618576855311339
+    second: RayAE_48
+  - first:
+      213: -7502576334352640851
+    second: RayAE_49
+  - first:
+      213: -2116149181807922237
+    second: RayAE_50
+  - first:
+      213: 4335226609502583441
+    second: RayAE_51
+  - first:
+      213: 4403978673387849332
+    second: RayAE_52
+  - first:
+      213: -527727190349695261
+    second: RayAE_53
+  - first:
+      213: 7614088023519124548
+    second: RayAE_54
+  - first:
+      213: -7086172124211455021
+    second: RayAE_55
+  - first:
+      213: 3518554017162409031
+    second: RayAE_56
+  - first:
+      213: 5387144730437959475
+    second: RayAE_57
+  - first:
+      213: 8599553691737005479
+    second: RayAE_58
+  - first:
+      213: -5229780200473386404
+    second: RayAE_59
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RayAE_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428c833190056f841adc7a9584a6c4dd
+      internalID: -1081042096130293562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_1
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b26b7ea4f29b840b502eef9a62667a
+      internalID: 3024372505757746753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_2
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b5c869b579d8f4bb7b562acd60a9cf
+      internalID: 7629084223510618183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_3
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2626c36c9b4fdb48bc2694e3954fab0
+      internalID: -9148437229157630917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_4
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0231d66091f6cc942829c1475ac79521
+      internalID: 7159051257039484533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_5
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919f181bdca69fd4bb073f1676161380
+      internalID: -4122334210153285682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_6
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b5d2297008c51f46bb47c9ff2dcb844
+      internalID: -3930732790593914875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_7
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4117d77053cd35843a002df6f0be65db
+      internalID: 3637433015552926901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_8
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5cb83ab6b4ecb418643d799fb4b44b
+      internalID: 8440482648844112040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_9
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 5400
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b903319c8df4bba4fa3ad1869293939f
+      internalID: 360475911019705696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150498d90c949224c9463a66bcd992f8
+      internalID: 8065415349720766901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_11
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0cb546eb2966446a1856c6b389f3c3
+      internalID: 6392579921290644444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_12
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a465c2b0b03e6b3469add0e6d8113f90
+      internalID: 2568240651919939966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_13
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a96e1ad73900b3438fb369585464191
+      internalID: 1723441918385929684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_14
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e1be54e7541a34dbea2abee3ed1f14
+      internalID: -6551726534650813145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_15
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b9c5dcb902b0848933868e038c64cc
+      internalID: -513746103506087056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_16
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b13414b60403b479edeeb20d5d961b
+      internalID: 3234733645569147094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_17
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a723a0c96121dcf4bb159f0a5b8641e6
+      internalID: -8194137959486844956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_18
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d4a9bbe76e77d41ae08516f6e1ed85
+      internalID: -3260230995147666002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_19
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 4320
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d892f0ee1787d4fad3b0bbf01a0099
+      internalID: -41346045056701881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70e87b5bcae40d4cbffa98ea634ac35
+      internalID: 88361466067655753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_21
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a446b25534252d746820d4de50a24520
+      internalID: 283362141572648007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_22
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3becb8230c131e4d9426ce2f241c081
+      internalID: -386069799931289319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f209365eb2474bf4a8d85d259ad9f931
+      internalID: -2098389336631648605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_24
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa21ce75f2129ea409e399853820f8c7
+      internalID: -3695861460703755888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_25
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7244275720cc5d442a1fbdf497deedf6
+      internalID: 9072056376977628823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_26
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b4c71dbb5d94e44bf11bcc5b59e427
+      internalID: -7574869847846624109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_27
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e548d2f630ade44a11bf4ef8b3f9b7
+      internalID: 6651562934514927663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_28
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69af13af867e0ce4bb47d759b00edeca
+      internalID: -1986208860176318038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_29
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 3240
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54d0571f57b033428e03bbb14cb1764
+      internalID: 3552744124752125502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f150ab4d2e321b438b4c6b5f5953286
+      internalID: -7850847893220747345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_31
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0203d1be4e834fc4186febed7dd2de82
+      internalID: 1256575481181664592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_32
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5f066775cb4894dad33feed8c58973
+      internalID: -8168754407534989936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_33
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979eacb33acef16438705c14cf9dbb9d
+      internalID: -954931363489261165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_34
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6d59406b36ca043aa6b44086a48e23
+      internalID: 7062010586227354308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_35
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e75e75b10b94dc4d9aa84dfd70d8097
+      internalID: -2007149982303569447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_36
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c4704e7ad673043bd7cf62d8411371
+      internalID: -515462474343697985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_37
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7101328421eedf47a964abb83d786a8
+      internalID: 970031806620285625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_38
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b35ac1edf361b4c923e009cb42bb3e
+      internalID: 7501695767836811809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_39
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 2160
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916d5ac5cd25e944f899bf01240dba80
+      internalID: -5777705562576036646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70057dbfd7579c74ab8cc06e39e2ecb2
+      internalID: 3834378239004674770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_41
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ca65c1661a63e4cbf9d39c5fa2b88f
+      internalID: 1104602212750708665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_42
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd36b71194834b34f90fc93e6b0e96b8
+      internalID: 3697445268444937845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_43
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dac776b3f9809249b47f9b579f793eb
+      internalID: -7444528360563221539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_44
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a1d82ada472e4488ffc557182abcc0
+      internalID: -8612822122608078082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_45
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91e08feaaacf3b4b8079f3b9314625f
+      internalID: 3069044847965092936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_46
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fbd6788e918e346927ceacda333e5c
+      internalID: -957530648162154549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_47
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052813a471cfbf642bd53e8ac2321ea7
+      internalID: -7484683687877036765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_48
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8c81e53e7490242aba8bc2ffb04b67
+      internalID: -3455618576855311339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_49
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 1080
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7be5d181631784f98d9291cedac0ef
+      internalID: -7502576334352640851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da9151e438523c4c96b1ba5ae2bbd6a
+      internalID: -2116149181807922237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_51
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2733a7b29824147a6ddf022cbd7615
+      internalID: 4335226609502583441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_52
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3954bba3c70ef5045a44022d3a89072e
+      internalID: 4403978673387849332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_53
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6c39aa37fad61479e951071bcfed83
+      internalID: -527727190349695261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_54
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16139ec43dd752a4d894cdf883179fb6
+      internalID: 7614088023519124548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_55
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0bb8b9c0071b474fbbf1b7206ac6bb8
+      internalID: -7086172124211455021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_56
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c03a0297205064eb44eee0828822ea
+      internalID: 3518554017162409031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_57
+      rect:
+        serializedVersion: 2
+        x: 4900
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd3720d4a4d91b40a714b2b923f034c
+      internalID: 5387144730437959475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_58
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35de9e5dd52783740a8d7e1eb35feb3e
+      internalID: 8599553691737005479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RayAE_59
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 700
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb57d755cdcc3542a4c06d7c54f841a
+      internalID: -5229780200473386404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 70b1f769642464b4f8f1776da9cf550e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

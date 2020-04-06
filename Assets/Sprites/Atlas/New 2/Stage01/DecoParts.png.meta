@@ -1,0 +1,461 @@
+fileFormatVersion: 2
+guid: 2d262a2924aad854abca1260a355236d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6693892191490987727
+    second: DecoParts_0
+  - first:
+      213: -2991523930062135646
+    second: DecoParts_1
+  - first:
+      213: -731598444560200164
+    second: DecoParts_2
+  - first:
+      213: -6970021724292887104
+    second: DecoParts_3
+  - first:
+      213: -4905107273250640875
+    second: DecoParts_4
+  - first:
+      213: 5943843026127935013
+    second: DecoParts_5
+  - first:
+      213: 4493191109298108624
+    second: DecoParts_6
+  - first:
+      213: 7331950226703560647
+    second: DecoParts_7
+  - first:
+      213: 5929547036931561257
+    second: DecoParts_8
+  - first:
+      213: 7898217962391709120
+    second: DecoParts_9
+  - first:
+      213: -3474858822031851856
+    second: DecoParts_10
+  - first:
+      213: 8157260473064810372
+    second: DecoParts_11
+  - first:
+      213: -1057462061962439810
+    second: DecoParts_12
+  - first:
+      213: 3955258006927111678
+    second: DecoParts_13
+  - first:
+      213: -1546825384225218519
+    second: DecoParts_14
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DecoParts_0
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1393
+        width: 335
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a26a4bc1a926f94d86d72930490b6ee
+      internalID: 6693892191490987727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_1
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 1343
+        width: 550
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0362203e96c99849bef16573f6a8bc3
+      internalID: -2991523930062135646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_2
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 1382
+        width: 626
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f5ac3a28f7e5648895629cf8906424
+      internalID: -731598444560200164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_3
+      rect:
+        serializedVersion: 2
+        x: 2257
+        y: 1314
+        width: 386
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2b7fadbd0e9514eafc4ed6c99368c5
+      internalID: -6970021724292887104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_4
+      rect:
+        serializedVersion: 2
+        x: 2885
+        y: 1365
+        width: 529
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a2d4e3a7f7801468690c3932f2e098
+      internalID: -4905107273250640875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_5
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 716
+        width: 681
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0eaab276263e94c946ef6455a2c621
+      internalID: 5943843026127935013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_6
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 754
+        width: 328
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c63bc7b7d155343805edb4031877c1
+      internalID: 4493191109298108624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_7
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 614
+        width: 603
+        height: 602
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174358f21b253e04b8535392b72912af
+      internalID: 7331950226703560647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_8
+      rect:
+        serializedVersion: 2
+        x: 2260
+        y: 690
+        width: 379
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721f99291628bda4c818bb8b37b563dd
+      internalID: 5929547036931561257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_9
+      rect:
+        serializedVersion: 2
+        x: 2798
+        y: 614
+        width: 671
+        height: 608
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f8b5fe9950d0a4aacc17641c7ab178
+      internalID: 7898217962391709120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_10
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 197
+        width: 471
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be27f05f278fe5e4c86676d59e09c54b
+      internalID: -3474858822031851856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 269
+        width: 299
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0cf1c00bd0ccf4ca80e316026dd78e
+      internalID: 8157260473064810372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_12
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 179
+        width: 663
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1497810593493a4589100e3455f8911
+      internalID: -1057462061962439810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_13
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 147
+        width: 540
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa5efea7c753e24fbf1d4ff5c64aae7
+      internalID: 3955258006927111678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DecoParts_14
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 173
+        width: 596
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85065da6611f29d41ae80610047fb2de
+      internalID: -1546825384225218519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fc7901c6793fb534a87e994bdd61949a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

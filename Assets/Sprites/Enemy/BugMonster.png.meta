@@ -1,0 +1,509 @@
+fileFormatVersion: 2
+guid: 4a722ecf6fc598c40bfe31ebead5caed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8963988414522722890
+    second: BugMonster_0
+  - first:
+      213: -896846442522468130
+    second: BugMonster_1
+  - first:
+      213: -6554678335339547075
+    second: BugMonster_2
+  - first:
+      213: 5736966349825418885
+    second: BugMonster_3
+  - first:
+      213: 7378785490157724294
+    second: BugMonster_4
+  - first:
+      213: -2487983028546358916
+    second: BugMonster_5
+  - first:
+      213: 1531386082564154136
+    second: BugMonster_6
+  - first:
+      213: -3255983859252934281
+    second: BugMonster_7
+  - first:
+      213: 1328894223299933687
+    second: BugMonster_8
+  - first:
+      213: -4982364526294916902
+    second: BugMonster_9
+  - first:
+      213: -6696841802128562789
+    second: BugMonster_10
+  - first:
+      213: 8349602596677279719
+    second: BugMonster_11
+  - first:
+      213: -7718335295153382979
+    second: BugMonster_12
+  - first:
+      213: -8155054151257313191
+    second: BugMonster_13
+  - first:
+      213: 5568560564550917487
+    second: BugMonster_14
+  - first:
+      213: 8001796796158740141
+    second: BugMonster_15
+  - first:
+      213: 3276801615636868525
+    second: BugMonster_16
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BugMonster_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b45e220c322be41bde6a9abedf249c
+      internalID: -8963988414522722890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 600
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee5c23f43373c54ea1200c0d1902deb
+      internalID: -896846442522468130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_2
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 600
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501e3adffb13a3a479101500e51bfc39
+      internalID: -6554678335339547075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_3
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 600
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc840d00aaded2f49b0645b17791b10d
+      internalID: 5736966349825418885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_4
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 600
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27be8a640fcc5264fbf66d9a50cfed38
+      internalID: 7378785490157724294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0df72174e99fce40a12e3793abcaf9a
+      internalID: -2487983028546358916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_6
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 400
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc9bcb3c962d03408ac9655f44e41f8
+      internalID: 1531386082564154136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_7
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 400
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.42, y: 0.43}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a77c5a098477a40972480a5b794911
+      internalID: -3255983859252934281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_8
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 400
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8513a20a168af4148b36a34fdc5b463b
+      internalID: 1328894223299933687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_9
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 400
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72247f8a2ec0a6149b5ded850453cd0a
+      internalID: -4982364526294916902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2edb1c4036b14bc4fb2f6224558d3644
+      internalID: -6696841802128562789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_11
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 200
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef737519aa96a95449e53310c4412eb5
+      internalID: 8349602596677279719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_12
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 200
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4896fa9fcaa9d745bbcd77ed07a931d
+      internalID: -7718335295153382979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_13
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 200
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8b5271e5a24804d9eb29a62fbd134d
+      internalID: -8155054151257313191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_14
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 200
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a934fa94d6e494aaebae539142f17e
+      internalID: 5568560564550917487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.42, y: 0.43}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ea0227bd077d34bb8805c17cd755e4
+      internalID: 8001796796158740141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BugMonster_16
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 0
+        width: 230
+        height: 200
+      alignment: 9
+      pivot: {x: 0.46, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a8a6491f6556a45a9d1fe30f781993
+      internalID: 3276801615636868525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 93a8c846be5a12d4fa9cb28ecca860a4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
