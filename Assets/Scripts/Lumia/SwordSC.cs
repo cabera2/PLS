@@ -99,6 +99,10 @@ public class SwordSC : MonoBehaviour
         {
             transform.parent = null;
         }
+        if (StageManagerSC._LumiaInst.transform.parent == transform)
+        {
+            StageManagerSC._LSC._CancelHanging();
+        }
         _RemoveFromList();
         if (_MakeParticle == true)
         {

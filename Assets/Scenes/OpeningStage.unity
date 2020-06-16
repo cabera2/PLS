@@ -11819,9 +11819,8 @@ MonoBehaviour:
   _FadeObj: {fileID: 1865089607}
   _ImageBoard: {fileID: 815678413}
   _EventCG:
-  - {fileID: 21300000, guid: 16818690253298c4d80d37a2454a46d1, type: 3}
-  - {fileID: 21300000, guid: 6436058db5d96754ea3033e3fe0ffb09, type: 3}
-  - {fileID: 21300000, guid: d7285484ebf5562478fbe624be2ff608, type: 3}
+  - {fileID: 21300000, guid: c5cf83d859e5e234f81e10980d6748d0, type: 3}
+  - {fileID: 21300000, guid: 089b9f4296a9df941b025f187b6cc146, type: 3}
   _GuideObj: {fileID: 1485199585}
   _SFX:
   - {fileID: 8300000, guid: 1cbbd2e3a6ff43045a7b8b922e0be865, type: 3}
@@ -51153,6 +51152,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1370647953489635116, guid: 0cd28360b10215f4b900429bf5d9506a,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1370647953489635104, guid: 0cd28360b10215f4b900429bf5d9506a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51257,11 +51261,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370647953489635116, guid: 0cd28360b10215f4b900429bf5d9506a,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cd28360b10215f4b900429bf5d9506a, type: 3}

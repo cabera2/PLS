@@ -39,7 +39,7 @@ public class Lumia_SC : MonoBehaviour
     private AudioSource _AS;
     private AudioSource _BGMPlayer;
     public StageManagerSC _SMSC;
-    private ParticleSystem _PS;
+    public ParticleSystem _PS;
     private const string SHADER_COLOR_NAME = "_Color";
     private Material material;
     public float _SR_Bright;
@@ -52,6 +52,8 @@ public class Lumia_SC : MonoBehaviour
     public float _JumpForce;
     [HideInInspector] public float _MoveInput;
     [HideInInspector] public float _UpDownInput;
+    public float _CoyoteTime;
+    private float _CoyoteTimer;
 
     public bool _IsGrounded;
     public LayerMask _GroundLayer;
@@ -163,9 +165,6 @@ public class Lumia_SC : MonoBehaviour
         _DefaultGravity = _RB.gravityScale;
         _SMSC = _MyCamera.GetComponent<StageManagerSC>();
         StartCoroutine(StartC());
-
-        _PS = GetComponent<ParticleSystem>();
-        _PS.Play(false);
     }
     IEnumerator StartC()
     {
@@ -461,6 +460,7 @@ public class Lumia_SC : MonoBehaviour
                         _ReloadParticle.Play();
                     }
                 }
+
                 if ((_WarpChargeMove == true || _WarpChargeSet == true) && (Input.GetButton("Warp") || Input.GetKey(SysSaveSC._Keys[13])) && _KnockbackCounter == 0 && _IsGrounded == true)
                 {
                     _WarpTimer += Time.deltaTime;
@@ -472,7 +472,10 @@ public class Lumia_SC : MonoBehaviour
                     _WarpChargeSet = false;
                     _ANI.SetBool("_WarpMove", false);
                     _ANI.SetBool("_WarpSet", false);
-                    _ReloadParticle.Stop();
+                    if (_IsReloading == false)
+                    {
+                        _ReloadParticle.Stop();
+                    }
                 }
                 if (_WarpChargeSet == true && _WarpTimer >= 1.4f)
                 {
@@ -597,6 +600,7 @@ public class Lumia_SC : MonoBehaviour
                 {
                     if (_JumpTimeCounter > 0 && _JumpCountCounter > 0)
                     {
+                        _CoyoteTimer = _CoyoteTime;
                         _RB.velocity = Vector2.up * _JumpForce;
                         _JumpTimeCounter -= Time.deltaTime;
                     }
@@ -614,6 +618,7 @@ public class Lumia_SC : MonoBehaviour
                 //GroundPass
                 if ((Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5])))
                 {
+                    _CoyoteTimer = _CoyoteTime;
                     if (_IsGrounded == true && _UpDownInput <= -0.5f)
                     {
                         PlatformEffector2D _PassGround = FindObjectOfType<PlatformEffector2D>();
@@ -821,12 +826,19 @@ public class Lumia_SC : MonoBehaviour
         if (_Ground != null && _RB.velocity.y <= 0.01 && ((_Ground.gameObject.GetComponent<PlatformEffector2D>() == null) || (_Ground.gameObject.GetComponent<PlatformEffector2D>() != null && _Ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
         {
             _IsGrounded = true;
+            _CoyoteTimer = 0;
         }
         else
         {
-            _IsGrounded = false;
+            if (_CoyoteTimer < _CoyoteTime)
+            {
+                _CoyoteTimer += Time.deltaTime;
+            }
+            else
+            {
+                _IsGrounded = false;
+            }
         }
-
     }
     IEnumerator _ResetPass()
     {
