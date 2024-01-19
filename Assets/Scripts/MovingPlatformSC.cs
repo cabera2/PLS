@@ -10,8 +10,8 @@ public class MovingPlatformSC : MonoBehaviour
     public Vector2[] TargetPos = null;
     private int _next = 0;
     private float _eTime = 0.0f;
-    public float _loopTime = 1.0f;
-    public float _waitTime = 0.5f;
+    [SerializeField] private float _loopTime = 1.0f;
+    [SerializeField] private  float _waitTime = 0.5f;
 
     void Start()
     {
@@ -21,7 +21,10 @@ public class MovingPlatformSC : MonoBehaviour
         }
         if (_On == true)
         {
-            _GemSR.sprite = _OnGem;
+            if (_GemSR != null)
+            {
+                _GemSR.sprite = _OnGem;
+            }
             StartCoroutine(Move());
         }
     }
@@ -47,7 +50,7 @@ public class MovingPlatformSC : MonoBehaviour
 
     IEnumerator Move()
     {
-        _loopTime -= TargetPos.Length * _waitTime;
+        //_loopTime -= TargetPos.Length * _waitTime;
 
         Vector3 sPos = Vector3.zero;
         Vector3 ePos = Vector3.zero;

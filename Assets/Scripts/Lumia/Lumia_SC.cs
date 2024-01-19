@@ -264,8 +264,10 @@ public class Lumia_SC : MonoBehaviour
         }
         else if (_IsGrounded == true)
         {
-            _em.rateOverDistanceMultiplier = 5;
+            _em.rateOverDistanceMultiplier = 3;
         }
+
+        //Debug.Log("파티클 발생량: " + _em.rateOverDistanceMultiplier);
         if (_CanControl == true)
         {
             _ANI.SetFloat("_XInput", Mathf.Abs(_MoveInput));
