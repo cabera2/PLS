@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: a72847e5fd273ef42a5f40cc49031d2d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DebugRoom.unity
     guid: 1f93af12bbf7de84fbee14c479bddc9c
   - enabled: 1
     path: Assets/Scenes/OpeningStage.unity
     guid: c3812730d45dc26429998144925f5871
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ParellexTest.unity
     guid: 0c07bf9ab2bbf634891f16ac99103a93
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene 2.unity
     guid: e4c179656aceac0428b0877df605ee94
   - enabled: 0
