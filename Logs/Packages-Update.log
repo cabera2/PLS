@@ -60,3 +60,11 @@ The following packages were updated:
 The following packages were removed:
   com.unity.multiplayer-hlapi@1.0.2
   com.unity.package-manager-ui@2.1.2
+
+=== Mon Jan 29 17:04:04 2024
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ide.rider from version 3.0.26 to 3.0.27
