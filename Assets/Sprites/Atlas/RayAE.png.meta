@@ -183,7 +183,7 @@ TextureImporter:
       213: -5229780200473386404
     second: RayAE_59
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -200,9 +200,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -211,9 +214,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -234,11 +237,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -248,8 +257,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -259,7 +270,35 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1533,9 +1572,69 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      RayAE_0: -1081042096130293562
+      RayAE_1: 3024372505757746753
+      RayAE_10: 8065415349720766901
+      RayAE_11: 6392579921290644444
+      RayAE_12: 2568240651919939966
+      RayAE_13: 1723441918385929684
+      RayAE_14: -6551726534650813145
+      RayAE_15: -513746103506087056
+      RayAE_16: 3234733645569147094
+      RayAE_17: -8194137959486844956
+      RayAE_18: -3260230995147666002
+      RayAE_19: -41346045056701881
+      RayAE_2: 7629084223510618183
+      RayAE_20: 88361466067655753
+      RayAE_21: 283362141572648007
+      RayAE_22: -386069799931289319
+      RayAE_23: -2098389336631648605
+      RayAE_24: -3695861460703755888
+      RayAE_25: 9072056376977628823
+      RayAE_26: -7574869847846624109
+      RayAE_27: 6651562934514927663
+      RayAE_28: -1986208860176318038
+      RayAE_29: 3552744124752125502
+      RayAE_3: -9148437229157630917
+      RayAE_30: -7850847893220747345
+      RayAE_31: 1256575481181664592
+      RayAE_32: -8168754407534989936
+      RayAE_33: -954931363489261165
+      RayAE_34: 7062010586227354308
+      RayAE_35: -2007149982303569447
+      RayAE_36: -515462474343697985
+      RayAE_37: 970031806620285625
+      RayAE_38: 7501695767836811809
+      RayAE_39: -5777705562576036646
+      RayAE_4: 7159051257039484533
+      RayAE_40: 3834378239004674770
+      RayAE_41: 1104602212750708665
+      RayAE_42: 3697445268444937845
+      RayAE_43: -7444528360563221539
+      RayAE_44: -8612822122608078082
+      RayAE_45: 3069044847965092936
+      RayAE_46: -957530648162154549
+      RayAE_47: -7484683687877036765
+      RayAE_48: -3455618576855311339
+      RayAE_49: -7502576334352640851
+      RayAE_5: -4122334210153285682
+      RayAE_50: -2116149181807922237
+      RayAE_51: 4335226609502583441
+      RayAE_52: 4403978673387849332
+      RayAE_53: -527727190349695261
+      RayAE_54: 7614088023519124548
+      RayAE_55: -7086172124211455021
+      RayAE_56: 3518554017162409031
+      RayAE_57: 5387144730437959475
+      RayAE_58: 8599553691737005479
+      RayAE_59: -5229780200473386404
+      RayAE_6: -3930732790593914875
+      RayAE_7: 3637433015552926901
+      RayAE_8: 8440482648844112040
+      RayAE_9: 360475911019705696
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
