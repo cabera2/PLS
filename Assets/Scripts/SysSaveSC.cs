@@ -137,7 +137,7 @@ public class SysSaveSC : MonoBehaviour
     }
     public static void _CharSave()
     {
-        Lumia_SC _LSC = StageManagerSC._LumiaInst.GetComponent<Lumia_SC>();
+        LumiaSC _LSC = StageManagerSC._LumiaInst.GetComponent<LumiaSC>();
         BinaryFormatter _BF = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/CharSave" + _LSC._FileNumber + ".dat");
         CharSaveCon data = new CharSaveCon();

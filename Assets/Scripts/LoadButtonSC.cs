@@ -62,7 +62,7 @@ public class LoadButtonSC : MonoBehaviour
             {
                 GameObject Slime = GameObject.Find("Slime");
                 Slime.GetComponent<LumiaSlimeSC>()._OpEvent();
-                StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._FileNumber = _FileNumber;
+                StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._FileNumber = _FileNumber;
             }
             else
             {

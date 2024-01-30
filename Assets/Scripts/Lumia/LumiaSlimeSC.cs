@@ -203,8 +203,8 @@ public class LumiaSlimeSC : MonoBehaviour
         _CamSC._CoolDownLock = false;
         _Lumia.SetActive(true);
         _NewCanvas.SetActive(true);
-        _Lumia.GetComponent<Lumia_SC>()._MyCamera = _MyCamera;
-        StageManagerSC._LSC = _Lumia.GetComponent<Lumia_SC>();
+        _Lumia.GetComponent<LumiaSC>()._MyCamera = _MyCamera;
+        StageManagerSC._LSC = _Lumia.GetComponent<LumiaSC>();
         GetComponent<MapSaverSC>()._SaveStatus();
         _CamSC.enabled = false;
         StageManagerSC._CamSC = _Lumia.GetComponent<LumiaCamSC>();

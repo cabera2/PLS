@@ -62,7 +62,7 @@ public class FragileWallSC : MonoBehaviour
                 {
                     if (StageManagerSC._LumiaInst.transform.parent = _Swords[i].transform)
                     {
-                        StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._CancelHanging();
+                        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CancelHanging();
                     }
                     _Swords[i].GetComponent<SwordSC>()._DestroySword(true);
                 }

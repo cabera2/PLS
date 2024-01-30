@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-public class Lumia_SC : MonoBehaviour
+public partial class LumiaSC : MonoBehaviour
 {
     [Header("Stats")]
     public int _FileNumber;
@@ -421,21 +421,16 @@ public class Lumia_SC : MonoBehaviour
                     _ReloadTimer += Time.deltaTime;
                     if (_ReloadTimer >= _StartReloadTime && _IsReloading == true)
                     {
-                        if(_reloadEffectPlaying == false)
+                        if (_reloadEffectPlaying == false)
                         {
-                            _ANI.SetBool("_IsReloadingAni", _IsReloading);
-                            _reloadEffectPlaying = true;
-                            _ReloadParticle.Play();
-                            Debug.Log("Play");
+                            ReloadingEffect(true);
                         }
                         if (_ReloadTimer >= _ReloadTime)
                         {
                             if (_reloadEffectPlaying == true)
                             {
-                                _ANI.SetBool("_IsReloadingAni", false);
+                                ReloadingEffect(false);
                                 _IsReloading = false;
-                                _ReloadParticle.Stop();
-                                Debug.Log("Stop");
                             }
 
                             _SwordHanger.GetComponent<AudioSource>().Stop();
@@ -583,11 +578,8 @@ public class Lumia_SC : MonoBehaviour
                 }
                 if (_reloadEffectPlaying)
                 {
-                    _SwordHanger.GetComponent<AudioSource>().Stop();
-                    _ANI.SetBool("_IsReloadingAni", false);
+                    ReloadingEffect(false);
                     _reloadEffectPlaying = false;
-                    Debug.Log("Stop");
-                    _ReloadParticle.Stop();
                 }
                 _IsReloading = false;
                 _ReloadTimer = 0;

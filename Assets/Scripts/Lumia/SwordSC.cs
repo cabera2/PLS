@@ -7,7 +7,7 @@ public class SwordSC : MonoBehaviour
     private AudioSource _AS;
     public AudioClip _SFX;
     public GameObject _Lumia;
-    private Lumia_SC _LSC;
+    private LumiaSC _LSC;
     private PlayerDetectorSC _PDSC;
     private StageManagerSC _SMSC;
     private Animator _Ani;
@@ -23,7 +23,7 @@ public class SwordSC : MonoBehaviour
     void Start()
     {
         _RB = GetComponent<Rigidbody2D>();
-        _LSC = _Lumia.GetComponent<Lumia_SC>();
+        _LSC = _Lumia.GetComponent<LumiaSC>();
         _AS = GetComponent<AudioSource>();
         _PDSC = transform.GetChild(0).GetComponent<PlayerDetectorSC>();
         _SMSC = StageManagerSC._WorkingCam.GetComponent<StageManagerSC>();
@@ -57,7 +57,7 @@ public class SwordSC : MonoBehaviour
             {
                 if (StageManagerSC._LumiaInst.transform.parent == gameObject.transform)
                 {
-                    StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._CancelHanging();
+                    StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CancelHanging();
                 }
                 _DestroySword(true);
             }

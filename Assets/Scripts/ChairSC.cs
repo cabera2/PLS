@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ChairSC : MonoBehaviour
 {
     [HideInInspector] public bool _CanStand;
-    private Lumia_SC _LSC;
+    private LumiaSC _LSC;
     public KeyCode[] _Keys;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class ChairSC : MonoBehaviour
         {
             yield return null;
         }
-        _LSC = StageManagerSC._LumiaInst.GetComponent<Lumia_SC>();
+        _LSC = StageManagerSC._LumiaInst.GetComponent<LumiaSC>();
     }
 
     // Update is called once per frame
@@ -58,7 +58,7 @@ public class ChairSC : MonoBehaviour
         _LSC._Canvas.GetComponent<PauseSC>()._UpdateCurrentHp();
         _LSC._SavedScene = SceneManager.GetActiveScene().name;
         SysSaveSC._CharSave();
-        StartCoroutine(StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._WhiteFlash());
+        StartCoroutine(StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._WhiteFlash());
         StageManagerSC._LumiaInst.GetComponent<SpriteRenderer>().flipX = false;
         StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool("_Sitting", true);
         StageManagerSC._LSC._TemporaryFlag.Clear();

@@ -9,7 +9,7 @@ public class StageManagerSC : MonoBehaviour
     public static GameObject _LumiaInst;
     public static GameObject _WorkingCam;
     public static GameObject _CanvasInst;
-    public static Lumia_SC _LSC;
+    public static LumiaSC _LSC;
     public static LumiaCamSC _CamSC;
     public GameObject _TargetMarkPrefab;
     public GameObject _CanvasPrefab;
@@ -33,16 +33,12 @@ public class StageManagerSC : MonoBehaviour
     [HideInInspector] public List<GameObject> _HitFX2Pool = new List<GameObject>();
     [HideInInspector] public List<GameObject> _SlashPool = new List<GameObject>();
     [HideInInspector] public List<GameObject> _JumpDustPool = new List<GameObject>();
-
-
-
     [HideInInspector] public List<GameObject> _CoinPool = new List<GameObject>();
     [HideInInspector] public List<GameObject> _CoinFXPool = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-
         _MapOffsetNow = _MapOffset;
         _WorkingCam = gameObject;
         if (_GenerateAtStart == true && _LumiaInst == null)
@@ -50,7 +46,7 @@ public class StageManagerSC : MonoBehaviour
             Debug.Log("루미아 생성");
             //필수 Instantiate 생성
             _LumiaInst = Instantiate(_LumiaPrefab);
-            _LSC = _LumiaInst.GetComponent<Lumia_SC>();
+            _LSC = _LumiaInst.GetComponent<LumiaSC>();
             GameObject _TargetMark = Instantiate(_TargetMarkPrefab);
             _CanvasInst = Instantiate(_CanvasPrefab);
 
@@ -102,7 +98,7 @@ public class StageManagerSC : MonoBehaviour
         {
             if (_LSC == null)
             {
-                _LSC = _LumiaInst.GetComponent<Lumia_SC>();
+                _LSC = _LumiaInst.GetComponent<LumiaSC>();
             }
             _LSC._MyCamera = gameObject;
             _CamSC = _LumiaInst.GetComponent<LumiaCamSC>();
@@ -116,7 +112,7 @@ public class StageManagerSC : MonoBehaviour
     {
         _LumiaInst.transform.position = _Chair.transform.position;
         _LumiaInst.GetComponent<Animator>().SetBool("_Sitting", true);
-        _LumiaInst.GetComponent<Lumia_SC>()._CanControl = false;
+        _LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
         _Chair.GetComponent<ChairSC>()._CanStand = true;
         StageManagerSC._LSC._TemporaryFlag.Clear();
     }

@@ -25,7 +25,7 @@ public class SlashSC : MonoBehaviour
         {
             if (col.gameObject.name != "Bubble(Clone)")
             {
-                transform.parent.GetComponent<Lumia_SC>()._KnockbackCounter = 0.1f;
+                transform.parent.GetComponent<LumiaSC>()._KnockbackCounter = 0.1f;
             }
 
             if (transform.rotation == Quaternion.Euler(0, 0, 90))

@@ -17,7 +17,7 @@ public class SealSwordSC : MonoBehaviour
     {
         if (StageManagerSC._LSC != null && Mathf.Abs(StageManagerSC._LSC._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
         {
-            StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._CanControl = false;
+            StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
             float _TargetPos = 0;
             StartCoroutine(_MoveToPos(_TargetPos));
         }
@@ -31,12 +31,12 @@ public class SealSwordSC : MonoBehaviour
         }
         float _Dir1 = (transform.position.x + _TargetPos2) - StageManagerSC._LumiaInst.transform.position.x;
         int _Dir2 = _Dir1 > 0 ? 1 : _Dir1 < 0 ? -1 : 0;
-        StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._AutoWalk = _Dir2;
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._AutoWalk = _Dir2;
         while (0 < ((transform.position.x + _TargetPos2) - StageManagerSC._LumiaInst.transform.position.x) * _Dir2)
         {
             yield return null;
         }
-        StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._AutoWalk = 0;
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._AutoWalk = 0;
 
         GetComponent<Animator>().SetTrigger("_GoFast");
         yield return new WaitForSeconds(3f);

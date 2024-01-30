@@ -100,10 +100,10 @@
     <Compile Include="Assets\Scripts\Enemy\ShieldEnmSC.cs" />
     <Compile Include="Assets\Scripts\Lifespand_SC.cs" />
     <Compile Include="Assets\Scripts\ReadTxtSC.cs" />
-    <Compile Include="Assets\Scripts\Lumia\Lumia_SC.cs" />
     <Compile Include="Assets\Scripts\ChairSC.cs" />
     <Compile Include="Assets\Scripts\WorldTextSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\JumpingEnemySC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.cs" />
     <Compile Include="Assets\Scripts\KeySettingSC.cs" />
     <Compile Include="Assets\Scripts\RotationSC.cs" />
     <Compile Include="Assets\Scripts\ParticlePoolingSC.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="Assets\Scripts\NPC_SC.cs" />
     <Compile Include="Assets\Scripts\UIFaderSC.cs" />
     <Compile Include="Assets\Scripts\DebugEventSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.Effects.cs" />
     <Compile Include="Assets\Scripts\NewSkillGuideSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaHitboxSC.cs" />
     <Compile Include="Assets\Scripts\PressEventSC.cs" />

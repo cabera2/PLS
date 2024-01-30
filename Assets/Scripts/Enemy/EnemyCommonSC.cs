@@ -16,7 +16,7 @@ public class EnemyCommonSC : MonoBehaviour
     public AudioClip[] _SFX;
     private GameObject _Lumia;
     public GameObject _BleedFX;
-    private Lumia_SC _Lumia_SC2;
+    private LumiaSC _Lumia_SC2;
     public int _HP;
     public GameObject _CoinPrefab;
     private float WhiteAlpha;
@@ -52,7 +52,7 @@ public class EnemyCommonSC : MonoBehaviour
         }
         if (_Lumia_SC2 == null)
         {
-            _Lumia_SC2 = _Lumia.GetComponent<Lumia_SC>();
+            _Lumia_SC2 = _Lumia.GetComponent<LumiaSC>();
         }
     }
 

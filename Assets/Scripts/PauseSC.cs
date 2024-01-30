@@ -20,7 +20,7 @@ public class PauseSC : MonoBehaviour
     private Animator _MapPinAni;
     [Header("Status")]
     public GameObject _StatusWin;
-    private Lumia_SC _LSC;
+    private LumiaSC _LSC;
     private LumiaHitboxSC _HBSC;
     public float _HeartGap;
     private int _Hp;
@@ -55,8 +55,8 @@ public class PauseSC : MonoBehaviour
         {
             yield return null;
         }
-        _LSC = StageManagerSC._LumiaInst.GetComponent<Lumia_SC>();
-        _HBSC = StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._Hitbox.GetComponent<LumiaHitboxSC>();
+        _LSC = StageManagerSC._LumiaInst.GetComponent<LumiaSC>();
+        _HBSC = StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._Hitbox.GetComponent<LumiaHitboxSC>();
         _UpdateMaxHp();
         _UpdateSwordMax();
     }

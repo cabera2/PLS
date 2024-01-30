@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DeBugSC : MonoBehaviour
 {
-    private Lumia_SC _LSC;
+    private LumiaSC _LSC;
     private LumiaHitboxSC _LHBSC;
     private PauseSC _UISC;
     public Text[] _DebugText;

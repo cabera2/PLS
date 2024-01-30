@@ -19,7 +19,7 @@ public class LumiaHitboxSC : MonoBehaviour
     public GameObject _FadeObj;
     public GameObject _DeathImpact;
     public GameObject _Canvas;
-    private Lumia_SC _LumiaSC;
+    private LumiaSC _LumiaSC;
     public float _HitStopTime;
     public float _HitStopTimer;
     private bool _DeathAniPlayed;
@@ -33,7 +33,7 @@ public class LumiaHitboxSC : MonoBehaviour
         _RB = _Lumia.GetComponent<Rigidbody2D>();
         _ANI = _Lumia.GetComponent<Animator>();
         _AS = _Lumia.GetComponent<AudioSource>();
-        _LumiaSC = transform.parent.GetComponent<Lumia_SC>();
+        _LumiaSC = transform.parent.GetComponent<LumiaSC>();
     }
 
     // Update is called once per frame
@@ -45,15 +45,15 @@ public class LumiaHitboxSC : MonoBehaviour
     {
         if (_NoHit == false)
         {
-            if (transform.parent.GetComponent<Lumia_SC>()._InvincibleTimer <= 0 && (col.gameObject.layer == 12 || col.gameObject.tag == "Lazor"))
+            if (transform.parent.GetComponent<LumiaSC>()._InvincibleTimer <= 0 && (col.gameObject.layer == 12 || col.gameObject.tag == "Lazor"))
             {
                 if ((col.gameObject.layer == 12 && (col.gameObject.GetComponent<EnemyCommonSC>() != null && col.gameObject.GetComponent<EnemyCommonSC>()._HP > 0 || col.gameObject.GetComponent<EnemyCommonSC>() == null) || col.gameObject.tag == "Lazor") && _RB.bodyType == RigidbodyType2D.Dynamic)
                 {
-                    transform.parent.GetComponent<Lumia_SC>()._InvincibleTimer = transform.parent.GetComponent<Lumia_SC>()._InvincibleTime;
+                    transform.parent.GetComponent<LumiaSC>()._InvincibleTimer = transform.parent.GetComponent<LumiaSC>()._InvincibleTime;
                     _Damage();
                     if (_HP_Current >= 1)
                     {
-                        transform.parent.GetComponent<Lumia_SC>()._KnockbackCounter = 0.5f;
+                        transform.parent.GetComponent<LumiaSC>()._KnockbackCounter = 0.5f;
                         float a = 0;
                         if (col.gameObject.layer == 12)
                         {
@@ -167,8 +167,8 @@ public class LumiaHitboxSC : MonoBehaviour
         {
             yield return null;
         }
-        transform.parent.transform.position = transform.parent.GetComponent<Lumia_SC>()._RespawnPoint;
-        transform.parent.GetComponent<Lumia_SC>()._InvincibleTimer = transform.parent.GetComponent<Lumia_SC>()._InvincibleTime;
+        transform.parent.transform.position = transform.parent.GetComponent<LumiaSC>()._RespawnPoint;
+        transform.parent.GetComponent<LumiaSC>()._InvincibleTimer = transform.parent.GetComponent<LumiaSC>()._InvincibleTime;
         _ANI.SetBool("_Spiked", false);
         _ANI.SetTrigger("_AfterSpike");
         _RB.bodyType = RigidbodyType2D.Dynamic;

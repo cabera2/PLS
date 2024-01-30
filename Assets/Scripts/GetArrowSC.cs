@@ -32,7 +32,7 @@ public class GetArrowSC : MonoBehaviour
     {
         if (StageManagerSC._LumiaInst != null)
         {
-            if (GetComponent<BoxCollider2D>().IsTouching(StageManagerSC._LumiaInst.GetComponent<BoxCollider2D>()) && StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._IsGrounded == true && StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._CanControl == true)
+            if (GetComponent<BoxCollider2D>().IsTouching(StageManagerSC._LumiaInst.GetComponent<BoxCollider2D>()) && StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._IsGrounded == true && StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl == true)
             {
                 _Enabled = true;
                 if (_Arrow == null)

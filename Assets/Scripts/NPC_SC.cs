@@ -16,7 +16,7 @@ public class NPC_SC : MonoBehaviour
     {
         if (StageManagerSC._LSC != null && Mathf.Abs(StageManagerSC._LSC._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
         {
-            StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._CanControl = false;
+            StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
             float _TargetPos = 0;
             if (_TalkPos.Length == 1)
             {
@@ -40,12 +40,12 @@ public class NPC_SC : MonoBehaviour
     {
         float _Dir1 = (transform.position.x + _TargetPos2) - StageManagerSC._LumiaInst.transform.position.x;
         int _Dir2 = _Dir1 > 0 ? 1 : _Dir1 < 0 ? -1 : 0;
-        StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._AutoWalk = _Dir2;
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._AutoWalk = _Dir2;
         while (0 < ((transform.position.x + _TargetPos2) - StageManagerSC._LumiaInst.transform.position.x) * _Dir2)
         {
             yield return null;
         }
-        StageManagerSC._LumiaInst.GetComponent<Lumia_SC>()._AutoWalk = 0;
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._AutoWalk = 0;
         if (transform.position.x > StageManagerSC._LumiaInst.transform.position.x)
         {
             StageManagerSC._LumiaInst.GetComponent<SpriteRenderer>().flipX = false;

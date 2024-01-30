@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDetectorSC : MonoBehaviour
 {
     public GameObject _Lumia;
-    private Lumia_SC _LSC;
+    private LumiaSC _LSC;
     public GameObject _Parent;
     public GameObject _Particle;
     public AudioClip _SwordPickSFX;
@@ -18,7 +18,7 @@ public class PlayerDetectorSC : MonoBehaviour
     {
         _Parent = transform.parent.gameObject;
         _Lumia = _Parent.GetComponent<SwordSC>()._Lumia;
-        _LSC = _Lumia.GetComponent<Lumia_SC>();
+        _LSC = _Lumia.GetComponent<LumiaSC>();
     }
     void OnEnable()
     {
