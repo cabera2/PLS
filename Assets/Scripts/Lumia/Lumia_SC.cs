@@ -118,6 +118,7 @@ public class Lumia_SC : MonoBehaviour
     private float WhiteAlpha;
     public float _ColorFadeSpeed;
     public ParticleSystem _ReloadParticle;
+    private bool _reloadEffectPlaying;
 
     [Header("CameraMovement")]
     [HideInInspector] public GameObject _MyCamera;
@@ -364,7 +365,6 @@ public class Lumia_SC : MonoBehaviour
         }
 
         float _RSY = Input.GetAxisRaw("RightStickY");
-
         if (Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false)
         {
             if (_CanControl == false || _IsGrounded == false || _MoveInput != 0)
@@ -404,7 +404,7 @@ public class Lumia_SC : MonoBehaviour
         {
             _LookUpDownTimer = 0;
         }
-
+        
         if (_CanControl == true && Input.GetButton("Map") == false && Input.GetKey(SysSaveSC._Keys[4]) == false && _KnockbackCounter <= 0)
         {
             //Reloading
@@ -421,13 +421,23 @@ public class Lumia_SC : MonoBehaviour
                     _ReloadTimer += Time.deltaTime;
                     if (_ReloadTimer >= _StartReloadTime && _IsReloading == true)
                     {
-                        _ANI.SetBool("_IsReloadingAni", _IsReloading);
-                        _ReloadParticle.Play();
+                        if(_reloadEffectPlaying == false)
+                        {
+                            _ANI.SetBool("_IsReloadingAni", _IsReloading);
+                            _reloadEffectPlaying = true;
+                            _ReloadParticle.Play();
+                            Debug.Log("Play");
+                        }
                         if (_ReloadTimer >= _ReloadTime)
                         {
-                            _IsReloading = false;
-                            _ANI.SetBool("_IsReloadingAni", _IsReloading);
-                            _ReloadParticle.Stop();
+                            if (_reloadEffectPlaying == true)
+                            {
+                                _ANI.SetBool("_IsReloadingAni", false);
+                                _IsReloading = false;
+                                _ReloadParticle.Stop();
+                                Debug.Log("Stop");
+                            }
+
                             _SwordHanger.GetComponent<AudioSource>().Stop();
                             StartCoroutine(_Reload(true));
                             StartCoroutine(_WhiteFlash());
@@ -571,9 +581,14 @@ public class Lumia_SC : MonoBehaviour
                         _Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
                     }
                 }
-                _SwordHanger.GetComponent<AudioSource>().Stop();
-                _ANI.SetBool("_IsReloadingAni", false);
-                _ReloadParticle.Stop();
+                if (_reloadEffectPlaying)
+                {
+                    _SwordHanger.GetComponent<AudioSource>().Stop();
+                    _ANI.SetBool("_IsReloadingAni", false);
+                    _reloadEffectPlaying = false;
+                    Debug.Log("Stop");
+                    _ReloadParticle.Stop();
+                }
                 _IsReloading = false;
                 _ReloadTimer = 0;
             }
