@@ -1,11 +1,18 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ActiveRemembererSc : MonoBehaviour
 {
+    [Serializable]
+    private struct Item{
+        public GameObject GameObject;
+        public bool WasActive;
+        public CanvasGroup CanvasGroup;
+        public float Alpha;
+    }
     [SerializeField] private GameObject targetObject;
-    [SerializeField] private List<GameObject> isActive;
-    [SerializeField] private List<GameObject> isInactive;
+    [SerializeField] private List<Item> items;
     [ContextMenu("Remember")]
     private void Remember()
     {
@@ -13,14 +20,18 @@ public class ActiveRemembererSc : MonoBehaviour
     }
     private void Remember(GameObject target)
     {
-        if (target.activeSelf)
+        Item newItem = new Item()
         {
-            isActive.Add(target);
-        }
-        else
+            GameObject = target,
+            WasActive = target.activeSelf,
+            CanvasGroup = target.GetComponent<CanvasGroup>(),
+        };
+        if (newItem.CanvasGroup != null)
         {
-            isInactive.Add(target);
+            newItem.Alpha = newItem.CanvasGroup.alpha;
         }
+        items.Add(newItem);
+        
         foreach (Transform child in target.transform)
         {
             Remember(child.gameObject);
@@ -29,13 +40,13 @@ public class ActiveRemembererSc : MonoBehaviour
     [ContextMenu("Restore")]
     void Restore()
     {
-        for (int i = 0; i < isActive.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            isActive[i].SetActive(true);
-        }
-        for (int i = 0; i < isInactive.Count; i++)
-        {
-            isInactive[i].SetActive(false);
+            items[i].GameObject.SetActive(items[i].WasActive);
+            if (items[i].CanvasGroup != null)
+            {
+                items[i].CanvasGroup.alpha = items[i].Alpha;
+            }
         }
     }
 }
