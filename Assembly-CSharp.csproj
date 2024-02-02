@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Enemy\JumpingEnemySC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaSC.cs" />
     <Compile Include="Assets\Scripts\KeySettingSC.cs" />
+    <Compile Include="Assets\Scripts\ParallaxManagerSC.cs" />
     <Compile Include="Assets\Scripts\RotationSC.cs" />
     <Compile Include="Assets\Scripts\ParticlePoolingSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\WalkingEnemySC.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Scripts\Lumia\LumiaSC.Effects.cs" />
     <Compile Include="Assets\Scripts\NewSkillGuideSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaHitboxSC.cs" />
+    <Compile Include="Assets\Scripts\ParallaxDebugger.cs" />
     <Compile Include="Assets\Scripts\PressEventSC.cs" />
     <Compile Include="Assets\Scripts\FragileGrassSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyParentSC.cs" />
