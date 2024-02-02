@@ -187,7 +187,7 @@ public partial class LumiaSC : MonoBehaviour
         }
         else
         {
-            if (_ReloadTimer < _StartReloadTime && _WarpTimer == 0 && _ANI.GetBool("_Shield") == false)
+            if (_ReloadTimer < _StartReloadTime && _WarpTimer == 0 && _ANI.GetBool(AniIsShielding) == false)
             {
                 if (_SmoothMove == true)
                 {
@@ -271,15 +271,15 @@ public partial class LumiaSC : MonoBehaviour
         //Debug.Log("파티클 발생량: " + _em.rateOverDistanceMultiplier);
         if (_CanControl == true)
         {
-            _ANI.SetFloat("_XInput", Mathf.Abs(_MoveInput));
+            _ANI.SetFloat(AniXInputAbs, Mathf.Abs(_MoveInput));
         }
         else
         {
-            _ANI.SetFloat("_XInput", Mathf.Abs(_AutoWalk));
+            _ANI.SetFloat(AniXInputAbs, Mathf.Abs(_AutoWalk));
         }
         _ANI.SetFloat("_YInput", _UpDownInput);
-        _ANI.SetFloat("_YSpeed", _RB.velocity.y);
-        _ANI.SetBool("_IsGrounded", _IsGrounded);
+        _ANI.SetFloat(AniYVelocity, _RB.velocity.y);
+        _ANI.SetBool(AniIsGrounded, _IsGrounded);
         if (_CanControl == true)
         {
             if (_MoveInput > 0)
@@ -317,12 +317,12 @@ public partial class LumiaSC : MonoBehaviour
         //활공 중지
         if (_RB.gravityScale != _DefaultGravity && ((Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5])) || _CanControl == false || _IsGrounded == true || _RB.constraints == RigidbodyConstraints2D.FreezeAll))
         {
-            _ANI.SetBool("_Glide", false);
+            _ANI.SetBool(AniIsGliding, false);
             _RB.gravityScale = _DefaultGravity;
         }
 
         //의자 앉을 때/설 때 등의 검 위치 조정
-        if (_ANI.GetBool("_Sitting") == false)
+        if (_ANI.GetBool(AniIsSitting) == false)
         {
             _SwordHanger.transform.localPosition = new Vector2(_SR.flipX == true ? 0.3f : _SR.flipX == false ? -0.3f : 0, 0);
             _Shield.localPosition = new Vector2(_SR.flipX == true ? -0.8f : _SR.flipX == false ? 0.8f : 0, 0.7f);
@@ -456,14 +456,14 @@ public partial class LumiaSC : MonoBehaviour
                     {
                         _SwordHanger.GetComponent<AudioSource>().Play();
                         _WarpChargeMove = true;
-                        _ANI.SetBool("_WarpMove", true);
+                        _ANI.SetBool(AniIsWarpMoving, true);
                         _ReloadParticle.Play();
                     }
                     else if (_UpDownInput < 0.5f)
                     {
                         _SwordHanger.GetComponent<AudioSource>().Play();
                         _WarpChargeSet = true;
-                        _ANI.SetBool("_WarpSet", true);
+                        _ANI.SetBool(AniIsWarpSetting, true);
                         _ReloadParticle.Play();
                     }
                 }
@@ -477,8 +477,8 @@ public partial class LumiaSC : MonoBehaviour
                     _WarpTimer = 0;
                     _WarpChargeMove = false;
                     _WarpChargeSet = false;
-                    _ANI.SetBool("_WarpMove", false);
-                    _ANI.SetBool("_WarpSet", false);
+                    _ANI.SetBool(AniIsWarpMoving, false);
+                    _ANI.SetBool(AniIsWarpSetting, false);
                     if (_IsReloading == false)
                     {
                         _ReloadParticle.Stop();
@@ -512,11 +512,11 @@ public partial class LumiaSC : MonoBehaviour
             //Shield
             if ((Input.GetAxisRaw("Shield") >= 0.5f || Input.GetKey(SysSaveSC._Keys[14])) && _SwordStock >= 2 && _IsGrounded == true)
             {
-                _ANI.SetBool("_Shield", true);
+                _ANI.SetBool(AniIsShielding, true);
             }
             else
             {
-                _ANI.SetBool("_Shield", false);
+                _ANI.SetBool(AniIsShielding, false);
             }
             //SwordShot
             if ((Input.GetButtonUp("ButtonB") || Input.GetKeyUp(SysSaveSC._Keys[7])) && Time.timeScale > 0 && _AtkTimer <= 0)
@@ -528,25 +528,32 @@ public partial class LumiaSC : MonoBehaviour
                     RaycastHit2D _ShootRC = new RaycastHit2D();
                     if (_UpDownInput > 0.5f)
                     {
+                        _ANI.SetFloat(AniAtkDirection, 1);
                         _ShootAngle = 180;
                         _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.up, Mathf.Infinity, _GroundLayer);
                     }
                     else if (_UpDownInput < -0.5f && _IsGrounded == false)
                     {
+                        _ANI.SetFloat(AniAtkDirection, -1);
                         _ShootAngle = 0;
                         _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.down, Mathf.Infinity, _GroundLayer);
                         _RB.velocity = Vector2.up * _ShotRebound;
                     }
-                    else if (_SR.flipX == false)
+                    else
                     {
-                        _ShootAngle = 90;
-                        _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.right, Mathf.Infinity, _GroundLayer);
+                        _ANI.SetFloat(AniAtkDirection, 0);
+                        if (_SR.flipX == false)
+                        {
+                            _ShootAngle = 90;
+                            _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.right, Mathf.Infinity, _GroundLayer);
+                        }
+                        else
+                        {
+                            _ShootAngle = -90;
+                            _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.left, Mathf.Infinity, _GroundLayer);
+                        }
                     }
-                    else if (_SR.flipX == true)
-                    {
-                        _ShootAngle = -90;
-                        _ShootRC = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.left, Mathf.Infinity, _GroundLayer);
-                    }
+
 
                     if (_IsGrounded == false && _ShootAngle != 0)
                     {
@@ -556,7 +563,7 @@ public partial class LumiaSC : MonoBehaviour
                     if (_ShootRC.transform == null || (_ShootRC.transform == true && _ShootRC.transform.gameObject.GetComponent<PlatformEffector2D>() != null) || _FromWall >= 0.9f)
                     {
                         _AS.PlayOneShot(_SFX[0], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-                        _ANI.SetTrigger("_Shoot");
+                        _ANI.SetTrigger(AniDoShoot);
                         GameObject _SwordInst = null;
                         if (_SMSC._SwordPool.Count == 0)
                         {
@@ -586,20 +593,20 @@ public partial class LumiaSC : MonoBehaviour
             }
 
             //When not Reloading
-            if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false && _ANI.GetBool("_Shield") == false)
+            if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false && _ANI.GetBool(AniIsShielding) == false)
             {
                 //Glide
                 if (_SwordStock >= 3 && _IsGrounded == false && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
                 {
                     if ((Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5])) && _AutoGlide == false)
                     {
-                        _ANI.SetBool("_Glide", true);
+                        _ANI.SetBool(AniIsGliding, true);
                         _RB.velocity = Vector2.up * 0f;
                         _RB.gravityScale = 0.5f;
                     }
                     else if ((Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5])) && _AutoGlide == true && _RB.velocity.y < 0)
                     {
-                        _ANI.SetBool("_Glide", true);
+                        _ANI.SetBool(AniIsGliding, true);
                         _RB.gravityScale = 0.5f;
                     }
                 }
@@ -718,24 +725,27 @@ public partial class LumiaSC : MonoBehaviour
                         _SMSC._SlashPool.RemoveAt(0);
                     }
                     _SlashInst.transform.localScale = new Vector2(_SwordSizeVar[_SwordSizeLv], _SwordSizeVar[_SwordSizeLv]);
-                    _ANI.SetTrigger("_Slash");
+                    
+                    _ANI.SetTrigger(AniDoSlash);
                     if (_SR.flipX == true)
                     {
                         _SlashInst.GetComponent<SpriteRenderer>().flipX = true;
                     }
-
                     if (_UpDownInput > 0.5f)
                     {
+                        _ANI.SetFloat(AniAtkDirection, 1);
                         _SlashInst.transform.localPosition = new Vector3(0f, 0.7f, -0.1f);
                         _SlashInst.transform.rotation = Quaternion.Euler(0, 0, 180);
                     }
                     else if (_UpDownInput < -0.5f && _IsGrounded == false)
                     {
+                        _ANI.SetFloat(AniAtkDirection, -1);
                         _SlashInst.transform.localPosition = new Vector3(0f, 0.7f, -0.1f);
                         _SlashInst.transform.rotation = Quaternion.Euler(0, 0, 0);
                     }
                     else
                     {
+                        _ANI.SetFloat(AniAtkDirection, 0);
                         _SlashInst.transform.localPosition = new Vector3(0f, 0.7f, -0.1f);
                         if (_SR.flipX == false)
                         {
@@ -872,7 +882,8 @@ public partial class LumiaSC : MonoBehaviour
             Vector3 WarpOffset = new Vector3(0, -1.7f, 0f);
             transform.position = _SwordList[_NearestSword].transform.position + WarpOffset;
             transform.parent = _SwordList[_NearestSword].transform;
-            _ANI.SetBool("_Hanging", true);
+            _ANI.SetBool(AniIsHanging, true);
+            _ANI.SetTrigger(AniDoHang);
         }
         else if (_Height < _MinHightForHang)
         {
@@ -890,7 +901,7 @@ public partial class LumiaSC : MonoBehaviour
         }
         int _SlashingInt = _SlashingB == true ? 0 : _SlashingB == false ? 1 : 0;
         int _Zero = 1;
-        if (_ANI.GetBool("_Glide") == true || _WarpTimer != 0)
+        if (_ANI.GetBool(AniIsGliding) == true || _WarpTimer != 0)
         {
             _Zero = 0;
         }
@@ -1089,7 +1100,7 @@ public partial class LumiaSC : MonoBehaviour
     }
     public void _CancelHanging()
     {
-        _ANI.SetBool("_Hanging", false);
+        _ANI.SetBool(AniIsHanging, false);
         _RB.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (transform.parent != null)
         {

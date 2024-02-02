@@ -8,7 +8,8 @@ public class ChairSC : MonoBehaviour
 {
     [HideInInspector] public bool _CanStand;
     private LumiaSC _LSC;
-    public KeyCode[] _Keys;
+    private readonly int _aniDoSit = Animator.StringToHash("DoSit");
+    private readonly int _aniIsSitting = Animator.StringToHash("IsSitting");
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class ChairSC : MonoBehaviour
 
             else if (Mathf.Abs(_LSC._MoveInput) > 0.5f && _CanStand == true && GetComponent<BoxCollider2D>().IsTouching(StageManagerSC._LumiaInst.GetComponent<BoxCollider2D>()))
             {
-                StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool("_Sitting", false);
+                StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool(_aniIsSitting, false);
                 _LSC._CanControl = true;
             }
         }
@@ -60,7 +61,8 @@ public class ChairSC : MonoBehaviour
         SysSaveSC._CharSave();
         StartCoroutine(StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._WhiteFlash());
         StageManagerSC._LumiaInst.GetComponent<SpriteRenderer>().flipX = false;
-        StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool("_Sitting", true);
+        StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool(_aniIsSitting, true);
+        StageManagerSC._LumiaInst.GetComponent<Animator>().SetTrigger(_aniDoSit);
         StageManagerSC._LSC._TemporaryFlag.Clear();
 
         yield return new WaitForSeconds(1f);

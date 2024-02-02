@@ -111,7 +111,8 @@ public class StageManagerSC : MonoBehaviour
     public void _ChairStart()
     {
         _LumiaInst.transform.position = _Chair.transform.position;
-        _LumiaInst.GetComponent<Animator>().SetBool("_Sitting", true);
+        _LumiaInst.GetComponent<Animator>().SetBool(LumiaSC.AniIsSitting, true);
+        _LumiaInst.GetComponent<Animator>().SetTrigger(LumiaSC.AniDoSit);
         _LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
         _Chair.GetComponent<ChairSC>()._CanStand = true;
         StageManagerSC._LSC._TemporaryFlag.Clear();

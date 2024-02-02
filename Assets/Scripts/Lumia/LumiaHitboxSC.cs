@@ -81,7 +81,7 @@ public class LumiaHitboxSC : MonoBehaviour
             else if (col.gameObject.layer == 13)
             {
                 _LumiaSC._KnockbackCounter = 1f;
-                _ANI.SetBool("_Spiked", true);
+                _ANI.SetBool(LumiaSC.AniIsSpiked, true);
                 _Damage();
                 if (_HP_Current >= 1)
                 {
@@ -99,7 +99,7 @@ public class LumiaHitboxSC : MonoBehaviour
     IEnumerator _DeathEvent()
     {
         _DeathAniPlayed = true;
-        _ANI.SetBool("_Spiked", true);
+        _ANI.SetBool(LumiaSC.AniIsSpiked, true);
         _RB.bodyType = RigidbodyType2D.Static;
         GetComponent<AudioSource>().Stop();
         _AS.PlayOneShot(_SFX[1], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
@@ -136,7 +136,7 @@ public class LumiaHitboxSC : MonoBehaviour
         _Canvas.GetComponent<PauseSC>()._UpdateCurrentHp();
         _LumiaSC._SwordStock = _LumiaSC._SwordMax;
         _Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-        _ANI.SetBool("_Spiked", false);
+        _ANI.SetBool(LumiaSC.AniIsSpiked, false);
         _ANI.SetTrigger("_AfterSpike");
         _RB.bodyType = RigidbodyType2D.Dynamic;
         StageManagerSC._LSC._ChairRespawn = true;
@@ -146,10 +146,10 @@ public class LumiaHitboxSC : MonoBehaviour
     {
         _AS.PlayOneShot(_SFX[0], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
         _LumiaSC._MyCamera.GetComponent<AudioLowPassFilter>().cutoffFrequency = 10;
-        _ANI.SetTrigger("_Damage");
-        GameObject _ParticleInst;
-        _ParticleInst = Instantiate(_Particle);
-        _ParticleInst.transform.position = transform.position + Vector3.up * 0.7f;
+        _ANI.SetTrigger(LumiaSC.AniDoDamage);
+        GameObject particleInst;
+        particleInst = Instantiate(_Particle);
+        particleInst.transform.position = transform.position + Vector3.up * 0.7f;
         StartCoroutine(_HitStop(0.3f));
         StageManagerSC._CamSC._Shake(0.7f);
         if (_NoDamage == false)
@@ -169,7 +169,7 @@ public class LumiaHitboxSC : MonoBehaviour
         }
         transform.parent.transform.position = transform.parent.GetComponent<LumiaSC>()._RespawnPoint;
         transform.parent.GetComponent<LumiaSC>()._InvincibleTimer = transform.parent.GetComponent<LumiaSC>()._InvincibleTime;
-        _ANI.SetBool("_Spiked", false);
+        _ANI.SetBool(LumiaSC.AniIsSpiked, false);
         _ANI.SetTrigger("_AfterSpike");
         _RB.bodyType = RigidbodyType2D.Dynamic;
         _FadeObj.GetComponent<UIFaderSC>()._FadeOut();

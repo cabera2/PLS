@@ -20,15 +20,15 @@ public class SysSettingsSC : MonoBehaviour
     {
         Resolution[] allResolutions = Screen.resolutions;
         _availableResolutions = new();
+        List<int> widthInList = new();
         int selected = 0;
-        int lastWidth = 0;
         List<string> availableResString = new();
         for (int i = 0; i < allResolutions.Length; i++)
         {
             Debug.Log(allResolutions[i]);
-            if (allResolutions[i].width / 16 * 9 == allResolutions[i].height && lastWidth != allResolutions[i].width)
+            if (allResolutions[i].width / 16 * 9 == allResolutions[i].height && !widthInList.Contains(allResolutions[i].width))
             {
-                lastWidth = allResolutions[i].width;
+                widthInList.Add(allResolutions[i].width);
                 availableResString.Add($"{allResolutions[i].width} × {allResolutions[i].height}");
                 _availableResolutions.Add(allResolutions[i]);
                 if (allResolutions[i].width == Screen.width && allResolutions[i].height == Screen.height)

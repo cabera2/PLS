@@ -5,20 +5,17 @@ using UnityEngine;
 public class PlayerDetectorSC : MonoBehaviour
 {
     public GameObject _Lumia;
-    private LumiaSC _LSC;
-    public GameObject _Parent;
-    public GameObject _Particle;
-    public AudioClip _SwordPickSFX;
-    public int _ListPos;
+    private LumiaSC _lumiaSc;
+    private SwordSC _swordSc;
     public bool _Grounded;
     private bool _CanPick;
 
     // Use this for initialization
     void Start()
     {
-        _Parent = transform.parent.gameObject;
-        _Lumia = _Parent.GetComponent<SwordSC>()._Lumia;
-        _LSC = _Lumia.GetComponent<LumiaSC>();
+        _swordSc = transform.parent.GetComponent<SwordSC>();
+        _Lumia = _swordSc._Lumia;
+        _lumiaSc = _Lumia.GetComponent<LumiaSC>();
     }
     void OnEnable()
     {
@@ -35,15 +32,15 @@ public class PlayerDetectorSC : MonoBehaviour
         if (col.gameObject.layer == 9 && _Grounded == true)
         {
             Invoke("_CanPickOn", Time.deltaTime);
-            if (_LSC._IsWarp == false && _LSC._IsGrounded == false && _LSC._RB.constraints == RigidbodyConstraints2D.FreezeRotation && _Parent.transform.rotation != Quaternion.Euler(0, 0, 0))
+            if (_lumiaSc._IsWarp == false && _lumiaSc._IsGrounded == false && _lumiaSc._RB.constraints == RigidbodyConstraints2D.FreezeRotation && transform.parent.rotation != Quaternion.Euler(0, 0, 0))
             {
-                _LSC.ToSword();
+                _lumiaSc.ToSword();
             }
-            else if (_LSC._IsWarp == true)
+            else if (_lumiaSc._IsWarp == true)
             {
-                _LSC._IsWarp = false;
+                _lumiaSc._IsWarp = false;
             }
-            _Parent.GetComponent<SwordSC>()._RemoveFromList();
+            _swordSc._RemoveFromList();
         }
     }
     void _CanPickOn()
@@ -55,9 +52,11 @@ public class PlayerDetectorSC : MonoBehaviour
         if (col.gameObject.layer == 9 && _Grounded == true && _CanPick == true)
         {
             //_Lumia.GetComponent<AudioSource>().PlayOneShot(_SwordPickSFX, SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-            _LSC._SwordStock += 1;
-            _LSC._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-            _Parent.GetComponent<SwordSC>()._DestroySword(true);
+            _lumiaSc._SwordStock += 1;
+            _lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
+            
+            Debug.Log("Test1");
+            _swordSc._DestroySword(true);
         }
 
     }
