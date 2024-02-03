@@ -36,8 +36,8 @@ public class ShieldBossSC : MonoBehaviour
         StageManagerSC._CamSC._Shake(0.5f);
         yield return new WaitForSeconds(1f);
         _SESC.enabled = true;
-        StageManagerSC._LSC._CanControl = true;
-        StartCoroutine(StageManagerSC._LSC._ChangeMusic(_SFX[1]));
+        StageManagerSC._lumiaSc._CanControl = true;
+        StartCoroutine(StageManagerSC._lumiaSc._ChangeMusic(_SFX[1]));
     }
     // Update is called once per frame
     void Update()
@@ -50,7 +50,7 @@ public class ShieldBossSC : MonoBehaviour
                 GetComponent<MapSaverSC>()._SaveStatus();
             }
             GetComponent<ShutterControllerSC>()._Run(true);
-            StartCoroutine(StageManagerSC._LSC._ChangeMusic(null));
+            StartCoroutine(StageManagerSC._lumiaSc._ChangeMusic(null));
             _Meet._RevertCam();
         }
     }

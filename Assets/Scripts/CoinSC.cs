@@ -53,14 +53,14 @@ public class CoinSC : MonoBehaviour
         if (col.gameObject.name == "LumiaHitbox")
         {
             _AS.PlayOneShot(_SFX[Random.Range(2, 3)], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-            if (StageManagerSC._LSC._Money < 999999999)
+            if (StageManagerSC._lumiaSc._Money < 999999999)
             {
-                if (StageManagerSC._LSC._Money + _Amount > 999999999)
+                if (StageManagerSC._lumiaSc._Money + _Amount > 999999999)
                 {
-                    StageManagerSC._LSC._Money = 999999999;
+                    StageManagerSC._lumiaSc._Money = 999999999;
                 }
                 else {
-                    StageManagerSC._LSC._Money += _Amount;
+                    StageManagerSC._lumiaSc._Money += _Amount;
                 }
             }
             gameObject.SetActive(false);

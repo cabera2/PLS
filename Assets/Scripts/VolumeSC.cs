@@ -104,9 +104,9 @@ public class VolumeSC : MonoBehaviour
             }
             if (_Type <= 1)
             {
-                if (StageManagerSC._LSC != null)
+                if (StageManagerSC._lumiaSc != null)
                 {
-                    StageManagerSC._LSC._Hitbox.GetComponent<AudioSource>().volume = SysSaveSC._Vol_Master * SysSaveSC._Vol_BGM * 0.01f;
+                    StageManagerSC._lumiaSc._Hitbox.GetComponent<AudioSource>().volume = SysSaveSC._Vol_Master * SysSaveSC._Vol_BGM * 0.01f;
                 }
             }
             else

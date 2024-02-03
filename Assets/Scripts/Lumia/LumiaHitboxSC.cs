@@ -25,8 +25,7 @@ public class LumiaHitboxSC : MonoBehaviour
     private bool _DeathAniPlayed;
     public string _RestartScene;
     public Vector3 _RestartPos;
-
-    // Use this for initialization
+    
     void Start()
     {
         _Lumia = transform.parent.gameObject;
@@ -34,12 +33,6 @@ public class LumiaHitboxSC : MonoBehaviour
         _ANI = _Lumia.GetComponent<Animator>();
         _AS = _Lumia.GetComponent<AudioSource>();
         _LumiaSC = transform.parent.GetComponent<LumiaSC>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -139,7 +132,7 @@ public class LumiaHitboxSC : MonoBehaviour
         _ANI.SetBool(LumiaSC.AniIsSpiked, false);
         _ANI.SetTrigger("_AfterSpike");
         _RB.bodyType = RigidbodyType2D.Dynamic;
-        StageManagerSC._LSC._ChairRespawn = true;
+        StageManagerSC._lumiaSc._ChairRespawn = true;
         SysSaveSC._CharSave();
     }
     void _Damage()

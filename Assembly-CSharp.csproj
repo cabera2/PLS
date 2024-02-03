@@ -54,6 +54,7 @@
     <Compile Include="Assets\Scripts\Lumia\LumiaSlimeSC.cs" />
     <Compile Include="Assets\Scripts\BG_ControlSC.cs" />
     <Compile Include="Assets\Scripts\MakeCoinSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.Field.cs" />
     <Compile Include="Assets\Scripts\GateSC.cs" />
     <Compile Include="Assets\Scripts\PlayerDetectorSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\SlashSC.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\Scripts\DeBugSC.cs" />
     <Compile Include="Assets\Scripts\LangChangeSC.cs" />
     <Compile Include="Assets\Scripts\DialogueSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.Inspector.cs" />
     <Compile Include="Assets\Scripts\VesselSC.cs" />
     <Compile Include="Assets\Scripts\CoinSC.cs" />
     <Compile Include="Assets\Scripts\ActiveRemembererSc.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Assets\Scripts\Lumia\LumiaSC.Effects.cs" />
     <Compile Include="Assets\Scripts\NewSkillGuideSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaHitboxSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.SwordActions.cs" />
     <Compile Include="Assets\Scripts\ParallaxDebugger.cs" />
     <Compile Include="Assets\Scripts\PressEventSC.cs" />
     <Compile Include="Assets\Scripts\FragileGrassSC.cs" />
@@ -124,6 +127,7 @@
     <Compile Include="Assets\Scripts\AniSFXSC.cs" />
     <Compile Include="Assets\Scripts\SysSaveSC.cs" />
     <Compile Include="Assets\Scripts\BigGlowSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.NewMethods.cs" />
     <Compile Include="Assets\Scripts\MapSaverSC.cs" />
     <Compile Include="Assets\Scripts\HiddenPathSC.cs" />
     <Compile Include="Assets\Scripts\SwitchSC.cs" />

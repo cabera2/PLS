@@ -199,7 +199,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5732,6 +5731,26 @@ MonoBehaviour:
   _SwordMax: 5
   _Money: 0
   _HaveVessel: 0
+  levelData:
+    attackLv: 0
+    attackValues: 05000000090000000d0000001100000015000000
+    shotLv: 0
+    shotValues:
+    - 0.5
+    - 0.75
+    - 1
+    atkSpeedLv: 0
+    atkSpeedValues:
+    - 0.41
+    - 0.25
+    swordSizeLv: 0
+    swordSizeValues:
+    - 0.5
+    - 0.575
+    - 0.625
+    - 0.7
+    warpLv: 0
+    warpValues: 08000000
   _SlashAtkLv: 0
   _SlashAtkVar: 05000000090000000d0000001100000015000000
   _ShotAtkLv: 0
@@ -5759,7 +5778,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1546b4f95adbd4240949eb7283d4a5f4, type: 3}
   _RB: {fileID: 2851056531252651352}
   _Canvas: {fileID: 0}
-  _SMSC: {fileID: 0}
+  _stageManagerSc: {fileID: 0}
   _PS: {fileID: 2392156778914394641}
   _SR_Bright: 1
   _CanControl: 1
@@ -6922,7 +6941,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -69,6 +69,6 @@ public class NewSkillGuideSC : MonoBehaviour
             }
         }
         _Running = false;
-        StageManagerSC._LSC._CanControl = true;
+        StageManagerSC._lumiaSc._CanControl = true;
     }
 }

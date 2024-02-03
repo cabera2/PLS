@@ -9,7 +9,7 @@ public class StageManagerSC : MonoBehaviour
     public static GameObject _LumiaInst;
     public static GameObject _WorkingCam;
     public static GameObject _CanvasInst;
-    public static LumiaSC _LSC;
+    public static LumiaSC _lumiaSc;
     public static LumiaCamSC _CamSC;
     public GameObject _TargetMarkPrefab;
     public GameObject _CanvasPrefab;
@@ -46,14 +46,14 @@ public class StageManagerSC : MonoBehaviour
             Debug.Log("루미아 생성");
             //필수 Instantiate 생성
             _LumiaInst = Instantiate(_LumiaPrefab);
-            _LSC = _LumiaInst.GetComponent<LumiaSC>();
+            _lumiaSc = _LumiaInst.GetComponent<LumiaSC>();
             GameObject _TargetMark = Instantiate(_TargetMarkPrefab);
             _CanvasInst = Instantiate(_CanvasPrefab);
 
             //주인공 캐싱
-            _LSC._TargetMark = _TargetMark;
-            _LSC._Canvas = _CanvasInst;
-            LumiaHitboxSC _LHBSC = _LSC._Hitbox.GetComponent<LumiaHitboxSC>();
+            _lumiaSc._TargetMark = _TargetMark;
+            _lumiaSc._Canvas = _CanvasInst;
+            LumiaHitboxSC _LHBSC = _lumiaSc._Hitbox.GetComponent<LumiaHitboxSC>();
             _LHBSC._Canvas = _CanvasInst;
             _LHBSC._FadeObj = _CanvasInst.GetComponent<PauseSC>()._FadeObj;
 
@@ -64,19 +64,19 @@ public class StageManagerSC : MonoBehaviour
                 SysSaveSC._Load_Required = false;
                 _LHBSC._HP_Max = SysSaveSC._Loaded_HP_Max;
                 _LHBSC._HP_Current = SysSaveSC._Loaded_HP_Max;
-                _LSC._SavedScene = SysSaveSC._Loaded_SavedScene;
-                _LSC._FileNumber = SysSaveSC._Loaded_FileNumber;
-                _LSC._PlayTime = SysSaveSC._Loaded_PlayTime;
-                _LSC._SwordMax = SysSaveSC._Loaded_SwordMax;
-                _LSC._SwordStock = SysSaveSC._Loaded_SwordMax;
-                _LSC._Money = SysSaveSC._Loaded_Money;
-                _LSC._HaveVessel = SysSaveSC._Loaded_HaveVessel;
-                _LSC._SlashAtkLv = SysSaveSC._Loaded_SlashAtkLv;
-                _LSC._ShotAtkLv = SysSaveSC._Loaded_ShotAtkLv;
-                _LSC._AtkSpeedLv = SysSaveSC._Loaded_AtkSpeedLv;
-                _LSC._WarpLv = SysSaveSC._Loaded_WarpLv;
-                _LSC._SwordSizeLv = SysSaveSC._Loaded_SwordSizeLv;
-                _LSC._PermanentFlag = SysSaveSC._Loaded_PermanentFlag;
+                _lumiaSc._SavedScene = SysSaveSC._Loaded_SavedScene;
+                _lumiaSc._FileNumber = SysSaveSC._Loaded_FileNumber;
+                _lumiaSc._PlayTime = SysSaveSC._Loaded_PlayTime;
+                _lumiaSc._SwordMax = SysSaveSC._Loaded_SwordMax;
+                _lumiaSc._SwordStock = SysSaveSC._Loaded_SwordMax;
+                _lumiaSc._Money = SysSaveSC._Loaded_Money;
+                _lumiaSc._HaveVessel = SysSaveSC._Loaded_HaveVessel;
+                _lumiaSc.levelData.attackLv = SysSaveSC._Loaded_SlashAtkLv;
+                _lumiaSc.levelData.shotLv = SysSaveSC._Loaded_ShotAtkLv;
+                _lumiaSc.levelData.atkSpeedLv = SysSaveSC._Loaded_AtkSpeedLv;
+                _lumiaSc.levelData.warpLv = SysSaveSC._Loaded_WarpLv;
+                _lumiaSc.levelData.swordSizeLv = SysSaveSC._Loaded_SwordSizeLv;
+                _lumiaSc._PermanentFlag = SysSaveSC._Loaded_PermanentFlag;
             }
             
             //의자 존재여부 확인
@@ -96,14 +96,14 @@ public class StageManagerSC : MonoBehaviour
         //스테이지 초기화
         if (_LumiaInst != null)
         {
-            if (_LSC == null)
+            if (_lumiaSc == null)
             {
-                _LSC = _LumiaInst.GetComponent<LumiaSC>();
+                _lumiaSc = _LumiaInst.GetComponent<LumiaSC>();
             }
-            _LSC._MyCamera = gameObject;
+            _lumiaSc._MyCamera = gameObject;
             _CamSC = _LumiaInst.GetComponent<LumiaCamSC>();
             _CamSC._MyCamera = gameObject;
-            _LSC._WhenSceneLoad();
+            _lumiaSc._WhenSceneLoad();
             _CamSC._CameraControl();
             transform.position = _LumiaInst.GetComponent<LumiaCamSC>()._CamPos1;
         }
@@ -115,11 +115,6 @@ public class StageManagerSC : MonoBehaviour
         _LumiaInst.GetComponent<Animator>().SetTrigger(LumiaSC.AniDoSit);
         _LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
         _Chair.GetComponent<ChairSC>()._CanStand = true;
-        StageManagerSC._LSC._TemporaryFlag.Clear();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
+        _lumiaSc._TemporaryFlag.Clear();
     }
 }

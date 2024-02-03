@@ -58,7 +58,7 @@ public class DialogueSC : MonoBehaviour
                         if (_EndRebound == true)
                         {
                             SpriteRenderer _SR = _Lumia.GetComponent<SpriteRenderer>();
-                            StageManagerSC._LSC._AutoWalk = _SR.flipX == true ? 1f : _SR.flipX == false ? -1f : 0;
+                            StageManagerSC._lumiaSc._AutoWalk = _SR.flipX == true ? 1f : _SR.flipX == false ? -1f : 0;
                             Invoke("_ControlUnlock", 0.5f);
                         }
 
@@ -117,17 +117,17 @@ public class DialogueSC : MonoBehaviour
             _TalkArrow = StageManagerSC._WorkingCam.GetComponent<StageManagerSC>()._TalkWinInst.transform.GetChild(1).gameObject;
         }
 
-        if (StageManagerSC._LSC != null && StageManagerSC._LSC._Canvas == true)
+        if (StageManagerSC._lumiaSc != null && StageManagerSC._lumiaSc._Canvas == true)
         {
-            if (StageManagerSC._LSC._Canvas.activeSelf == true)
+            if (StageManagerSC._lumiaSc._Canvas.activeSelf == true)
             {
-                StartCoroutine(StageManagerSC._LSC._Canvas.GetComponent<PauseSC>()._Fade(false)); 
+                StartCoroutine(StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._Fade(false)); 
             }
         }
-        if (StageManagerSC._LSC != null)
+        if (StageManagerSC._lumiaSc != null)
         {
-            StageManagerSC._LSC._CanControl = false;
-            StageManagerSC._LSC._MoveInput = 0;
+            StageManagerSC._lumiaSc._CanControl = false;
+            StageManagerSC._lumiaSc._MoveInput = 0;
         }
         else if (_Lumia.GetComponent<LumiaSlimeSC>() != null)
         {
@@ -155,9 +155,9 @@ public class DialogueSC : MonoBehaviour
     }
     IEnumerator TextWinFadeOut()
     {
-        if (StageManagerSC._LSC != null)
+        if (StageManagerSC._lumiaSc != null)
         {
-            StartCoroutine(StageManagerSC._LSC._Canvas.GetComponent<PauseSC>()._Fade(true)); 
+            StartCoroutine(StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._Fade(true)); 
         }
         while (_TextWin.alpha > 0)
         {
@@ -165,9 +165,9 @@ public class DialogueSC : MonoBehaviour
             _TextWin.alpha -= _FadeSpeed * Time.deltaTime;
             yield return null;
         }
-        if (StageManagerSC._LSC != null)
+        if (StageManagerSC._lumiaSc != null)
         {
-            StageManagerSC._LSC._CanControl = true;
+            StageManagerSC._lumiaSc._CanControl = true;
         }
         else if (_Lumia.GetComponent<LumiaSlimeSC>() != null)
         {
@@ -181,8 +181,8 @@ public class DialogueSC : MonoBehaviour
     }
     void _ControlUnlock()
     {
-        StageManagerSC._LSC._CanControl = true;
-        StageManagerSC._LSC._AutoWalk = 0;
+        StageManagerSC._lumiaSc._CanControl = true;
+        StageManagerSC._lumiaSc._AutoWalk = 0;
     }
     IEnumerator WriteText()
     {

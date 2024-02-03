@@ -16,7 +16,7 @@ public class EnemyCommonSC : MonoBehaviour
     public AudioClip[] _SFX;
     private GameObject _Lumia;
     public GameObject _BleedFX;
-    private LumiaSC _Lumia_SC2;
+    private LumiaSC lumiaSC;
     public int _HP;
     public GameObject _CoinPrefab;
     private float WhiteAlpha;
@@ -50,9 +50,9 @@ public class EnemyCommonSC : MonoBehaviour
         {
             _Lumia = StageManagerSC._LumiaInst;
         }
-        if (_Lumia_SC2 == null)
+        if (lumiaSC == null)
         {
-            _Lumia_SC2 = _Lumia.GetComponent<LumiaSC>();
+            lumiaSC = _Lumia.GetComponent<LumiaSC>();
         }
     }
 
@@ -143,11 +143,11 @@ public class EnemyCommonSC : MonoBehaviour
         _FXInst.transform.rotation = col.transform.rotation;
         if (col.gameObject.name == "Slash(Clone)")
         {
-            _GetDamage(_Lumia_SC2._SlashAtkVar[_Lumia_SC2._SlashAtkLv], col.transform.rotation * Vector3.down);
+            _GetDamage(lumiaSC.levelData.attackValues[lumiaSC.levelData.attackLv], col.transform.rotation * Vector3.down);
         }
         else if (col.gameObject.name == "PlayerDetector" && col.GetComponent<PlayerDetectorSC>()._Grounded == false)
         {
-            _GetDamage((Int16)(Math.Round(_Lumia_SC2._SlashAtkVar[_Lumia_SC2._SlashAtkLv] * _Lumia_SC2._ShotAtkVar[_Lumia_SC2._ShotAtkLv], 0, MidpointRounding.AwayFromZero)), col.transform.rotation * Vector3.down);
+            _GetDamage((Int16)(Math.Round(lumiaSC.levelData.attackValues[lumiaSC.levelData.attackLv] * lumiaSC.levelData.shotValues[lumiaSC.levelData.shotLv], 0, MidpointRounding.AwayFromZero)), col.transform.rotation * Vector3.down);
         }
     }
     public void _BoomHit(Vector3 _Pos)

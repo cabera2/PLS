@@ -13,7 +13,7 @@ public class DeBugSC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _LSC = StageManagerSC._LSC;
+        _LSC = StageManagerSC._lumiaSc;
         _LHBSC = _LSC._Hitbox.GetComponent<LumiaHitboxSC>();
         _UISC = transform.parent.GetComponent<PauseSC>();
         _NoDamageToggle(false);

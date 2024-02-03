@@ -63,7 +63,7 @@ public class ChairSC : MonoBehaviour
         StageManagerSC._LumiaInst.GetComponent<SpriteRenderer>().flipX = false;
         StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool(_aniIsSitting, true);
         StageManagerSC._LumiaInst.GetComponent<Animator>().SetTrigger(_aniDoSit);
-        StageManagerSC._LSC._TemporaryFlag.Clear();
+        StageManagerSC._lumiaSc._TemporaryFlag.Clear();
 
         yield return new WaitForSeconds(1f);
         _CanStand = true;

@@ -44,17 +44,17 @@ public class VesselSC : MonoBehaviour
         _GetVesselAniInst.transform.position = _FadeObj.transform.position;
         _GetVesselAniInst.transform.localScale = new Vector3(1, 1, 1);
         Animator _GetAni = _GetVesselAniInst.GetComponent<Animator>();
-        if (StageManagerSC._LSC._HaveVessel == false)
+        if (StageManagerSC._lumiaSc._HaveVessel == false)
         {
-            StageManagerSC._LSC._HaveVessel = true;
+            StageManagerSC._lumiaSc._HaveVessel = true;
             _GetAni.SetTrigger("_Half");
             yield return new WaitForSecondsRealtime(3f);
         }
         else
         {
-            StageManagerSC._LSC._HaveVessel = false;
+            StageManagerSC._lumiaSc._HaveVessel = false;
             _GetAni.SetTrigger("_Whole");
-            LumiaHitboxSC _HBSC = StageManagerSC._LSC._Hitbox.GetComponent<LumiaHitboxSC>();
+            LumiaHitboxSC _HBSC = StageManagerSC._lumiaSc._Hitbox.GetComponent<LumiaHitboxSC>();
             _HBSC._HP_Max += 1;
             yield return new WaitForSecondsRealtime(3f);
             StageManagerSC._CanvasInst.GetComponent<PauseSC>()._UpdateMaxHp();

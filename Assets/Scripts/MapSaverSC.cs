@@ -13,7 +13,7 @@ public class MapSaverSC : MonoBehaviour
     {
         if (StageManagerSC._LumiaInst != null)
         {
-            if (StageManagerSC._LSC._TemporaryFlag.Contains(_ID) == true || StageManagerSC._LSC._PermanentFlag.Contains(_ID) == true)
+            if (StageManagerSC._lumiaSc._TemporaryFlag.Contains(_ID) == true || StageManagerSC._lumiaSc._PermanentFlag.Contains(_ID) == true)
             {
                 if (_Destroy == true)
                 {
@@ -50,11 +50,11 @@ public class MapSaverSC : MonoBehaviour
     {
         if (_ReGenWhenSave == true)
         {
-            StageManagerSC._LSC._TemporaryFlag.Add(_ID);
+            StageManagerSC._lumiaSc._TemporaryFlag.Add(_ID);
         }
         else
         {
-            StageManagerSC._LSC._PermanentFlag.Add(_ID);
+            StageManagerSC._lumiaSc._PermanentFlag.Add(_ID);
         }
     }
 }

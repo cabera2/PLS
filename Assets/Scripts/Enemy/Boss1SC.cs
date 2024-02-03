@@ -101,7 +101,7 @@ public class Boss1SC : EnemyParentSC
     }
     IEnumerator _StartEvent()
     {
-        StartCoroutine(StageManagerSC._LSC._ChangeMusic(null));
+        StartCoroutine(StageManagerSC._lumiaSc._ChangeMusic(null));
         yield return new WaitForSeconds(2.0f);
 
         _AS.PlayOneShot(_SFX[1], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
@@ -110,11 +110,11 @@ public class Boss1SC : EnemyParentSC
         StageManagerSC._CamSC._CoolDownLock = true;
         StageManagerSC._CamSC._Shake(0.5f);
         yield return new WaitForSeconds(3.0f);
-        StartCoroutine(StageManagerSC._LSC._ChangeMusic(_SFX[0]));
+        StartCoroutine(StageManagerSC._lumiaSc._ChangeMusic(_SFX[0]));
         StageManagerSC._CamSC._CoolDownLock = false;
         _Ani.SetInteger("_BubblePhase", 0);
         _FXAni.SetBool("_Roar", false);
-        StageManagerSC._LSC._CanControl = true;
+        StageManagerSC._lumiaSc._CanControl = true;
         _BattleStart = true;
         _NextPattern();
     }
@@ -189,7 +189,7 @@ public class Boss1SC : EnemyParentSC
     }
     IEnumerator _ClearEvent()
     {
-        StartCoroutine(StageManagerSC._LSC._ChangeMusic(null));
+        StartCoroutine(StageManagerSC._lumiaSc._ChangeMusic(null));
         Time.timeScale = 0.5f;
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
@@ -203,7 +203,7 @@ public class Boss1SC : EnemyParentSC
         {
             _SSC[i]._Open();
         }
-        StageManagerSC._LSC._MusicCheck();
+        StageManagerSC._lumiaSc._MusicCheck();
     }
     IEnumerator _LastShake()
     {

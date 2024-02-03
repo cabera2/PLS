@@ -15,7 +15,7 @@ public class SealSwordSC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StageManagerSC._LSC != null && Mathf.Abs(StageManagerSC._LSC._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
+        if (StageManagerSC._lumiaSc != null && Mathf.Abs(StageManagerSC._lumiaSc._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
         {
             StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
             float _TargetPos = 0;
@@ -47,25 +47,25 @@ public class SealSwordSC : MonoBehaviour
     public void _NewSkillGuide()
     {
 
-        if (StageManagerSC._LSC != null)
+        if (StageManagerSC._lumiaSc != null)
         {
-            StageManagerSC._LSC._SwordMax += 1;
-            StageManagerSC._LSC._SwordStock += 1;
-            StageManagerSC._LSC._Canvas.GetComponent<PauseSC>()._UpdateSwordMax();
-            StageManagerSC._LSC._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-            StageManagerSC._LSC._UpdateBackSwords();
+            StageManagerSC._lumiaSc._SwordMax += 1;
+            StageManagerSC._lumiaSc._SwordStock += 1;
+            StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordMax();
+            StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
+            StageManagerSC._lumiaSc._UpdateBackSwords();
         }
-        if (_Canvas != null && _NewSkillGuideObj != null && StageManagerSC._LSC._SwordMax <= 5)
+        if (_Canvas != null && _NewSkillGuideObj != null && StageManagerSC._lumiaSc._SwordMax <= 5)
         {
             GameObject _Guide = Instantiate(_NewSkillGuideObj);
             _Guide.transform.parent = _Canvas;
             _Guide.transform.position = _Canvas.position;
             _Guide.transform.localScale = new Vector3(1f, 1f, 1f);
-            _Guide.GetComponent<NewSkillGuideSC>()._Run(StageManagerSC._LSC._SwordMax);
+            _Guide.GetComponent<NewSkillGuideSC>()._Run(StageManagerSC._lumiaSc._SwordMax);
         }
         else
         {
-            StageManagerSC._LSC._CanControl = true;
+            StageManagerSC._lumiaSc._CanControl = true;
 
         }
         gameObject.SetActive(false);

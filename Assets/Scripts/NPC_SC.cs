@@ -14,7 +14,7 @@ public class NPC_SC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StageManagerSC._LSC != null && Mathf.Abs(StageManagerSC._LSC._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
+        if (StageManagerSC._lumiaSc != null && Mathf.Abs(StageManagerSC._lumiaSc._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
         {
             StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
             float _TargetPos = 0;

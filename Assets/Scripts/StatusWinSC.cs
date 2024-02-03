@@ -39,19 +39,19 @@ public class StatusWinSC : MonoBehaviour
         int _LvlValue = 0;
         if (_Num == 0)
         {
-            _LvlValue = StageManagerSC._LSC._SlashAtkLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.attackLv;
         }
         else if (_Num == 1)
         {
-            _LvlValue = StageManagerSC._LSC._SwordSizeLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.swordSizeLv;
         }
         else if (_Num == 2)
         {
-            _LvlValue = StageManagerSC._LSC._AtkSpeedLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.atkSpeedLv;
         }
         else if (_Num == 3)
         {
-            _LvlValue = StageManagerSC._LSC._ShotAtkLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.shotLv;
         }
         for (int i = 0; i < _Icons[_Num].transform.childCount; i++)
         {
@@ -97,7 +97,7 @@ public class StatusWinSC : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_Icons[0]);
         _SelectChange(0);
         _UpdateCost(0);
-        if (StageManagerSC._LSC._HaveVessel == false)
+        if (StageManagerSC._lumiaSc._HaveVessel == false)
         {
             Vessel.sprite = VesselImg[0];
         }
@@ -111,41 +111,41 @@ public class StatusWinSC : MonoBehaviour
         int _LvlValue = 0;
         if (_Num == 0)
         {
-            _LvlValue = StageManagerSC._LSC._SlashAtkLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.attackLv;
         }
         else if (_Num == 1)
         {
-            _LvlValue = StageManagerSC._LSC._SwordSizeLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.swordSizeLv;
         }
         else if (_Num == 2)
         {
-            _LvlValue = StageManagerSC._LSC._AtkSpeedLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.atkSpeedLv;
         }
         else if (_Num == 3)
         {
-            _LvlValue = StageManagerSC._LSC._ShotAtkLv;
+            _LvlValue = StageManagerSC._lumiaSc.levelData.shotLv;
         }
-        if (_CurrentCost <= StageManagerSC._LSC._Money && _Costs[_Num]._Cost.Length > _LvlValue)
+        if (_CurrentCost <= StageManagerSC._lumiaSc._Money && _Costs[_Num]._Cost.Length > _LvlValue)
         {
             _AS.PlayOneShot(_SFX[0], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-            if (_Num == 0 && StageManagerSC._LSC._SlashAtkLv < StageManagerSC._LSC._SlashAtkVar.Length)
+            if (_Num == 0 && StageManagerSC._lumiaSc.levelData.attackLv < StageManagerSC._lumiaSc.levelData.attackValues.Length)
             {
-                StageManagerSC._LSC._SlashAtkLv += 1;
+                StageManagerSC._lumiaSc.levelData.attackLv += 1;
             }
-            else if (_Num == 1 && StageManagerSC._LSC._SwordSizeLv < StageManagerSC._LSC._SwordSizeVar.Length)
+            else if (_Num == 1 && StageManagerSC._lumiaSc.levelData.swordSizeLv < StageManagerSC._lumiaSc.levelData.swordSizeValues.Length)
             {
-                StageManagerSC._LSC._SwordSizeLv += 1;
+                StageManagerSC._lumiaSc.levelData.swordSizeLv += 1;
             }
-            else if (_Num == 2 && StageManagerSC._LSC._AtkSpeedLv < StageManagerSC._LSC._AtkSpeedVar.Length)
+            else if (_Num == 2 && StageManagerSC._lumiaSc.levelData.atkSpeedLv < StageManagerSC._lumiaSc.levelData.atkSpeedValues.Length)
             {
-                StageManagerSC._LSC._AtkSpeedLv += 1;
+                StageManagerSC._lumiaSc.levelData.atkSpeedLv += 1;
             }
-            else if (_Num == 3 && StageManagerSC._LSC._ShotAtkLv < StageManagerSC._LSC._ShotAtkVar.Length)
+            else if (_Num == 3 && StageManagerSC._lumiaSc.levelData.shotLv < StageManagerSC._lumiaSc.levelData.shotValues.Length)
             {
-                StageManagerSC._LSC._ShotAtkLv += 1;
+                StageManagerSC._lumiaSc.levelData.shotLv += 1;
             }
             _PS.Play();
-            StageManagerSC._LSC._Money -= _CurrentCost;
+            StageManagerSC._lumiaSc._Money -= _CurrentCost;
             _GaugeUpdate(_Num);
             _UpdateCost(_Num);
         }
@@ -170,25 +170,25 @@ public class StatusWinSC : MonoBehaviour
             int _LvlValue = 0;
             if (_Num == 0)
             {
-                _LvlValue = StageManagerSC._LSC._SlashAtkLv;
+                _LvlValue = StageManagerSC._lumiaSc.levelData.attackLv;
             }
             else if (_Num == 1)
             {
-                _LvlValue = StageManagerSC._LSC._SwordSizeLv;
+                _LvlValue = StageManagerSC._lumiaSc.levelData.swordSizeLv;
             }
             else if (_Num == 2)
             {
-                _LvlValue = StageManagerSC._LSC._AtkSpeedLv;
+                _LvlValue = StageManagerSC._lumiaSc.levelData.atkSpeedLv;
             }
             else if (_Num == 3)
             {
-                _LvlValue = StageManagerSC._LSC._ShotAtkLv;
+                _LvlValue = StageManagerSC._lumiaSc.levelData.shotLv;
             }
             if (_Costs[_Num]._Cost.Length > _LvlValue)
             {
                 _TextObj[1].text = "Cost: " + _Costs[_Num]._Cost[_LvlValue].ToString();
                 _CurrentCost = _Costs[_Num]._Cost[_LvlValue];
-                if (StageManagerSC._LSC._Money < _Costs[_Num]._Cost[_LvlValue])
+                if (StageManagerSC._lumiaSc._Money < _Costs[_Num]._Cost[_LvlValue])
                 {
                     _TextObj[1].color = new Color(0.5f, 0.5f, 0.5f, 1f);
 

@@ -148,11 +148,11 @@ public class SysSaveSC : MonoBehaviour
         data._SwordMax = _LSC._SwordMax;
         data._Money = _LSC._Money;
         data._HaveVessel = _LSC._HaveVessel;
-        data._SlashAtkLv = _LSC._SlashAtkLv;
-        data._ShotAtkLv = _LSC._ShotAtkLv;
-        data._AtkSpeedLv = _LSC._AtkSpeedLv;
-        data._WarpLv = _LSC._WarpLv;
-        data._SwordSizeLv = _LSC._SwordSizeLv;
+        data._SlashAtkLv = _LSC.levelData.attackLv;
+        data._ShotAtkLv = _LSC.levelData.shotLv;
+        data._AtkSpeedLv = _LSC.levelData.atkSpeedLv;
+        data._WarpLv = _LSC.levelData.warpLv;
+        data._SwordSizeLv = _LSC.levelData.swordSizeLv;
         data._PermanentFlag = _LSC._PermanentFlag;
 
         _BF.Serialize(file, data);

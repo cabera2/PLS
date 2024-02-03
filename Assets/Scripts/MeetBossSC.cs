@@ -33,7 +33,7 @@ public class MeetBossSC : MonoBehaviour
                 _ShutterSC[i]._Close();
             }
 
-            StageManagerSC._LSC._CanControl = false;
+            StageManagerSC._lumiaSc._CanControl = false;
             float _BosDir = _Boss.transform.position.x - StageManagerSC._LumiaInst.transform.position.x;
             StageManagerSC._LumiaInst.GetComponent<SpriteRenderer>().flipX = _BosDir > 0 ? false : _BosDir < 0 ? true : false;
             _CurrentSM = StageManagerSC._WorkingCam.GetComponent<StageManagerSC>();
