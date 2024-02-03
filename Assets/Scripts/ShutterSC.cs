@@ -27,12 +27,6 @@ public class ShutterSC : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void _Open()
     {
         StartCoroutine(_OpenC());
