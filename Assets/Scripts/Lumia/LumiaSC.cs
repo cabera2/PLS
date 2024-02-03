@@ -396,7 +396,7 @@ public partial class LumiaSC : MonoBehaviour
             {
                 if ((Input.GetButtonDown("ButtonB") || Input.GetKeyDown(SysSaveSC._Keys[7])) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
                 {
-                    _reloadAudioSource.Play();
+                    //_reloadAudioSource.Play();
                     _IsReloading = true;
                     _ReloadTimer += Time.deltaTime;
                 }

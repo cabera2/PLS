@@ -11,6 +11,7 @@ public partial class LumiaSC
         if (isStart)
         {
             _ReloadParticle.Play();
+            _reloadAudioSource.Play();
         }
         else
         {

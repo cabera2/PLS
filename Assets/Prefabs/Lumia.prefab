@@ -5751,26 +5751,7 @@ MonoBehaviour:
     - 0.7
     warpLv: 0
     warpValues: 08000000
-  _SlashAtkLv: 0
-  _SlashAtkVar: 05000000090000000d0000001100000015000000
-  _ShotAtkLv: 0
-  _ShotAtkVar:
-  - 0.5
-  - 0.75
-  - 1
-  _AtkSpeedLv: 0
-  _AtkSpeedVar:
-  - 0.41
-  - 0.25
-  _WarpLv: 0
-  _WarpVar: 08000000
-  _SwordSizeLv: 0
-  _SwordSizeVar:
-  - 0.5
-  - 0.575
-  - 0.625
-  - 0.7
-  _SFX:
+  sfx:
   - {fileID: 8300000, guid: bf96495cd914f4b46a41dd1bec93a3c7, type: 3}
   - {fileID: 8300000, guid: e56530f3d9e29d7489eeb65886763623, type: 3}
   - {fileID: 8300000, guid: bb212b3e8c3241647b5d88082ee497de, type: 3}
