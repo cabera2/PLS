@@ -11,6 +11,7 @@ public partial class LumiaSC
         if (isStart)
         {
             _ReloadParticle.Play();
+            _reloadAudioSource.volume = SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f;
             _reloadAudioSource.Play();
         }
         else

@@ -25,12 +25,8 @@ public class LumiaCamSC : MonoBehaviour
     {
         _RB = GetComponent<Rigidbody2D>();
     }
-    void Update()
-    {
-
-    }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Time.timeScale != 0)
         {

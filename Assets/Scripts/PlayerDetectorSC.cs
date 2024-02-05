@@ -51,11 +51,8 @@ public class PlayerDetectorSC : MonoBehaviour
     {
         if (col.gameObject.layer == 9 && _Grounded == true && _CanPick == true)
         {
-            //_Lumia.GetComponent<AudioSource>().PlayOneShot(_SwordPickSFX, SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
             _lumiaSc._SwordStock += 1;
             _lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-            
-            Debug.Log("Test1");
             _swordSc._DestroySword(true);
         }
 

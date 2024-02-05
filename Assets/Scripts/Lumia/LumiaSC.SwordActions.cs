@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public partial class LumiaSC
@@ -129,6 +130,41 @@ public partial class LumiaSC
 
         _IsReloading = false;
         _ReloadTimer = 0;
+    }
+
+    private void FindNearestSword()
+    {
+        //가까운 검 찾기
+        if (_SwordList.Count > 0)
+        {
+            for (int i = 0; i < _SwordList.Count; i++)
+            {
+                _SwordDistanceList[i] = Vector2.Distance(_SwordList[i].transform.position, transform.position + new Vector3(0f, 0.7f, 0f));
+            }
+            _NearestSword = _SwordDistanceList.IndexOf(_SwordDistanceList.Min());
+            if (_SwordDistanceList[_NearestSword] <= _WarpDistance)
+            {
+
+                //_TargetMark.transform.position = Vector2.MoveTowards(_TargetMark.transform.position, _SwordList[_NearestSword].transform.position, _TargetMarkSpeed * Time.deltaTime);
+                if (_NearestSword != _NearestSword_Old || _InRange == false)
+                {
+                    _TargetOnOff(true);
+                    _TarAni.SetTrigger("_Trigger");
+                    _InRange = true;
+                    _mainAudioSource.PlayOneShot(sfx[4], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
+                    _NearestSword_Old = _NearestSword;
+                }
+                _TargetMark.transform.position = _SwordList[_NearestSword].transform.position;
+            }
+            else if (_SwordDistanceList[_NearestSword] > _WarpDistance)
+            {
+                TargetPosReset();
+            }
+        }
+        else if (_SwordList.Count == 0)
+        {
+            TargetPosReset();
+        }
     }
 
     private void Teleport()

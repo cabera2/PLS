@@ -22,7 +22,7 @@ public class PressEventSC : MonoBehaviour
         }
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._SwordMax = 0;
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._SwordStock = 0;
-        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._UpdateBackSwords();
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>().UpdateBackSwords();
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class PressEventSC : MonoBehaviour
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._CanControl = true;
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._SwordMax = _SwordCount;
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._SwordStock = _SwordCount;
-        StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._UpdateBackSwords();
+        StageManagerSC._LumiaInst.GetComponent<LumiaSC>().UpdateBackSwords();
         StageManagerSC._LumiaInst.GetComponent<LumiaSC>()._Canvas.GetComponent<PauseSC>()._UpdateSwordMax();
         gameObject.SetActive(false);
     }

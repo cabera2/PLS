@@ -162,85 +162,12 @@ public partial class LumiaSC : MonoBehaviour
         _TarSR = _TargetMark.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (_KnockbackCounter > 0)
-        {
-            _KnockbackCounter -= Time.fixedDeltaTime;
-        }
-        else
-        {
-            if (_ReloadTimer < _StartReloadTime && _WarpTimer == 0 && _mainAnimator.GetBool(AniIsShielding) == false)
-            {
-                if (_SmoothMove == true)
-                {
-                    _MoveInput = Input.GetAxisRaw("LeftStickX");
-                }
-                else if (_SmoothMove == false)
-                {
-                    int _LeftPressed = Input.GetKey(SysSaveSC._Keys[2]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[2]) == false ? 0 : 0;
-                    int _RightPressed = Input.GetKey(SysSaveSC._Keys[3]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[3]) == false ? 0 : 0;
-                    _MoveInput = Input.GetAxisRaw("LeftStickX") + _LeftPressed + _RightPressed;
-                    if (_MoveInput != 0)
-                    {
-                        if (_MoveInput < 0)
-                        {
-                            _MoveInput = -1f;
-                        }
-
-                        if (_MoveInput > 0)
-                        {
-                            _MoveInput = 1f;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                _MoveInput = 0;
-            }
-
-            int _UpPressed = Input.GetKey(SysSaveSC._Keys[0]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[0]) == false ? 0 : 0;
-            int _DownPressed = Input.GetKey(SysSaveSC._Keys[1]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[1]) == false ? 0 : 0;
-            _UpDownInput = Input.GetAxisRaw("LeftStickY") + _UpPressed + _DownPressed;
-            if (_UpDownInput != 0)
-            {
-                if (_UpDownInput < -0.5f)
-                {
-                    _UpDownInput = -1f;
-                }
-
-                if (_UpDownInput > 0.5f)
-                {
-                    _UpDownInput = 1f;
-                }
-            }
-
-            if (_CanControl == true)
-            {
-                if (_RB.bodyType == RigidbodyType2D.Dynamic)
-                {
-                    _RB.velocity = new Vector2(_MoveInput * _CurrentWalkSpeed, _RB.velocity.y);
-                }
-            }
-            if (_CanControl == false)
-            {
-                _RB.velocity = new Vector2(_AutoWalk * _CurrentWalkSpeed, _RB.velocity.y);
-                if (_AutoJumping == true)
-                {
-                    _RB.velocity = new Vector2(_AutoWalk * 2 * _CurrentWalkSpeed, _JumpForce);
-                }
-            }
-            if (_RB.bodyType == RigidbodyType2D.Dynamic)
-            {
-                _RB.velocity = Vector3.ClampMagnitude(_RB.velocity, _MaxSpeed);
-            }
-        }
-    }
-
     void Update()
     {
+        UpdateBackSwords();
+        Blink();
+        CheckGrounded();
+        Move();
         _Canvas.GetComponent<PauseSC>()._MoneyText.text = _Money.ToString();
         ParticleSystem.EmissionModule _em = _PS.emission;
         if (_IsGrounded == false)
@@ -288,10 +215,6 @@ public partial class LumiaSC : MonoBehaviour
         }
         _glowSpriteRenderer.flipX = _mainSpriteRenderer.flipX;
 
-        _UpdateBackSwords();
-        _Blink();
-        _CheckGrounded();
-
         //공격 딜레이 타이머
         if (_AtkTimer > 0)
         {
@@ -315,38 +238,7 @@ public partial class LumiaSC : MonoBehaviour
         {
             _SwordHanger.transform.localPosition = new Vector2(0, 0.1f);
         }
-
-        //가까운 검 찾기
-        if (_SwordList.Count > 0)
-        {
-            for (int i = 0; i < _SwordList.Count; i++)
-            {
-                _SwordDistanceList[i] = Vector2.Distance(_SwordList[i].transform.position, transform.position + new Vector3(0f, 0.7f, 0f));
-            }
-            _NearestSword = _SwordDistanceList.IndexOf(_SwordDistanceList.Min());
-            if (_SwordDistanceList[_NearestSword] <= _WarpDistance)
-            {
-
-                //_TargetMark.transform.position = Vector2.MoveTowards(_TargetMark.transform.position, _SwordList[_NearestSword].transform.position, _TargetMarkSpeed * Time.deltaTime);
-                if (_NearestSword != _NearestSword_Old || _InRange == false)
-                {
-                    _TargetOnOff(true);
-                    _TarAni.SetTrigger("_Trigger");
-                    _InRange = true;
-                    _mainAudioSource.PlayOneShot(sfx[4], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-                    _NearestSword_Old = _NearestSword;
-                }
-                _TargetMark.transform.position = _SwordList[_NearestSword].transform.position;
-            }
-            else if (_SwordDistanceList[_NearestSword] > _WarpDistance)
-            {
-                TargetPosReset();
-            }
-        }
-        else if (_SwordList.Count == 0)
-        {
-            TargetPosReset();
-        }
+        FindNearestSword();
 
         float _RSY = Input.GetAxisRaw("RightStickY");
         if (Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false)
@@ -527,26 +419,6 @@ public partial class LumiaSC : MonoBehaviour
                     }
                 }
 
-                //Jump
-                if ((Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5])) && _IsJumping == true)
-                {
-                    if (_JumpTimeCounter > 0 && _JumpCountCounter > 0)
-                    {
-                        _CoyoteTimer = _CoyoteTime;
-                        _RB.velocity = Vector2.up * _JumpForce;
-                        _JumpTimeCounter -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        _IsJumping = false;
-                    }
-                }
-                //StopJump
-                if ((Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5])) && _JumpCountCounter > 0)
-                {
-                    _JumpCountCounter -= 1;
-                }
-
                 //GroundPass
                 if ((Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5])))
                 {
@@ -557,7 +429,7 @@ public partial class LumiaSC : MonoBehaviour
                         if (_PassGround != null)
                         {
                             _PassGround.colliderMask = 64823;
-                            _CheckGrounded();
+                            CheckGrounded();
                             StartCoroutine(_ResetPass());
                         }
                     }
@@ -653,7 +525,7 @@ public partial class LumiaSC : MonoBehaviour
         }
         _SwordStock = _SwordMax;
         _Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-        _UpdateBackSwords();
+        UpdateBackSwords();
 
     }
     public IEnumerator _WhiteFlash()
@@ -681,11 +553,11 @@ public partial class LumiaSC : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         _BackSwords[4].GetComponent<Animation>().Play("BackSwordAni");
     }
-    void _CheckGrounded()
+    void CheckGrounded()
     {
-        Collider2D _Ground;
-        _Ground = Physics2D.OverlapBox(transform.position, new Vector2(0.4f, 0.1f), 0f, _GroundLayer);
-        if (_Ground != null && _RB.velocity.y <= 0.01 && ((_Ground.gameObject.GetComponent<PlatformEffector2D>() == null) || (_Ground.gameObject.GetComponent<PlatformEffector2D>() != null && _Ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
+        Collider2D ground;
+        ground = Physics2D.OverlapBox(transform.position, new Vector2(0.4f, 0.1f), 0f, _GroundLayer);
+        if (ground != null && _RB.velocity.y <= 0.01 && ((ground.gameObject.GetComponent<PlatformEffector2D>() == null) || (ground.gameObject.GetComponent<PlatformEffector2D>() != null && ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
         {
             _IsGrounded = true;
             _CoyoteTimer = 0;
@@ -735,7 +607,7 @@ public partial class LumiaSC : MonoBehaviour
             transform.position = _SwordList[_NearestSword].transform.position + WarpOffset;
         }
     }
-    public void _UpdateBackSwords()
+    public void UpdateBackSwords()
     {
         bool _SlashingB = false;
         if (_mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashSide") == true || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashUp") == true || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashDown") == true)
@@ -769,7 +641,7 @@ public partial class LumiaSC : MonoBehaviour
     {
         _mainAudioSource.PlayOneShot(sfx[3], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
     }
-    void _Blink()
+    void Blink()
     {
         if (_InvincibleTimer > 0)
         {

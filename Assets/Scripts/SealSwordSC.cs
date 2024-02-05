@@ -53,7 +53,7 @@ public class SealSwordSC : MonoBehaviour
             StageManagerSC._lumiaSc._SwordStock += 1;
             StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordMax();
             StageManagerSC._lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
-            StageManagerSC._lumiaSc._UpdateBackSwords();
+            StageManagerSC._lumiaSc.UpdateBackSwords();
         }
         if (_Canvas != null && _NewSkillGuideObj != null && StageManagerSC._lumiaSc._SwordMax <= 5)
         {
