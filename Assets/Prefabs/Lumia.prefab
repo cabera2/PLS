@@ -5846,7 +5846,7 @@ MonoBehaviour:
   _CameraOffset: {x: 2, y: 1.5}
   _CamPos1: {x: 0, y: 0, z: 0}
   _LookUpDown: 0
-  _Speed: 0.07
+  _Speed: 0.3
   _CoolDownLock: 0
   _CoolDownSpeed: 2
 --- !u!50 &2851056531252651352

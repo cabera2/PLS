@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class LumiaSC
 {
     //Components
+    private LumiaCamSC _lumiaCamSc;
     private SpriteRenderer _mainSpriteRenderer;
     private SpriteRenderer _glowSpriteRenderer;
     private Animator _mainAnimator;

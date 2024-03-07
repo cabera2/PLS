@@ -150,6 +150,7 @@ public partial class LumiaSC : MonoBehaviour
         _Canvas.GetComponent<Canvas>().worldCamera = _MyCamera.GetComponent<Camera>();
         _stageManagerSc = _MyCamera.GetComponent<StageManagerSC>();
         _reloadAudioSource = _SwordHanger.GetComponent<AudioSource>();
+        _lumiaCamSc = GetComponent<LumiaCamSC>();
     }
     IEnumerator StartC()
     {
@@ -246,7 +247,7 @@ public partial class LumiaSC : MonoBehaviour
             if (_CanControl == false || _IsGrounded == false || _MoveInput != 0)
             {
                 _LookUpDownTimer = 0;
-                GetComponent<LumiaCamSC>()._LookUpDown = 0;
+                _lumiaCamSc._LookUpDown = 0;
             }
             else
             {
@@ -272,7 +273,7 @@ public partial class LumiaSC : MonoBehaviour
                 }
                 int LUDS = LUDL + _LUDR;
                 int LUDS2 = LUDS > 0 ? 1 : LUDS < 0 ? -1 : 0;
-                GetComponent<LumiaCamSC>()._LookUpDown = Mathf.MoveTowards(GetComponent<LumiaCamSC>()._LookUpDown, LUDS2 * _LookUpDownDistance, Time.deltaTime * 30);
+                _lumiaCamSc._LookUpDown = Mathf.MoveTowards(_lumiaCamSc._LookUpDown, LUDS2 * _LookUpDownDistance, Time.deltaTime * 30);
             }
 
         }
@@ -477,6 +478,10 @@ public partial class LumiaSC : MonoBehaviour
         if (_MyCamera != null && _MyCamera.GetComponent<AudioLowPassFilter>().cutoffFrequency < 22000)
         {
             _MyCamera.GetComponent<AudioLowPassFilter>().cutoffFrequency += _FrquencySpeed * Time.unscaledDeltaTime;
+        }
+        if (_lumiaCamSc != null)
+        {
+            _lumiaCamSc.UpdateCamera();
         }
     }
     void _SetPortal()

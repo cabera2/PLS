@@ -13,6 +13,7 @@ public class LumiaCamSC : MonoBehaviour
     [HideInInspector] public float _LookUpDown = 0;
     private Vector3 _PrevPos;
     public float _Speed;
+    private Vector3 currentVelocity = Vector3.zero;
 
 
     private bool _Shaking;
@@ -26,7 +27,7 @@ public class LumiaCamSC : MonoBehaviour
         _RB = GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame
-    void Update()
+    public void UpdateCamera()
     {
         if (Time.timeScale != 0)
         {
@@ -55,7 +56,8 @@ public class LumiaCamSC : MonoBehaviour
 
             _CamPos1.x = Mathf.Clamp(_CamPos1.x, _CamMinPos.x, _CamMaxPos.x);
             _CamPos1.y = Mathf.Clamp(_CamPos1.y, _CamMinPos.y, _CamMaxPos.y);
-            _MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
+            //_MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
+            _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, _CamPos1, ref currentVelocity, _Speed);
         }
     }
     void OnTriggerEnter2D(Collider2D col)

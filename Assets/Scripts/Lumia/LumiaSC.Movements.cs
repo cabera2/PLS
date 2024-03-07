@@ -59,6 +59,14 @@ public partial class LumiaSC
             if (_CanControl == true)
             {
                 //Walk
+                if (_CanControl == false)
+                {
+                    _RB.velocity = new Vector2(_AutoWalk * _CurrentWalkSpeed, _RB.velocity.y);
+                    if (_AutoJumping == true)
+                    {
+                        _RB.velocity = new Vector2(_AutoWalk * 2 * _CurrentWalkSpeed, _JumpForce);
+                    }
+                }
                 if (_RB.bodyType == RigidbodyType2D.Dynamic)
                 {
                     _RB.velocity = new Vector2(_MoveInput * _CurrentWalkSpeed, _RB.velocity.y);
@@ -82,20 +90,19 @@ public partial class LumiaSC
                 {
                     _JumpCountCounter -= 1;
                 }
-                if (_CanControl == false)
+            }
+            if (_CanControl == false)
+            {
+                _RB.velocity = new Vector2(_AutoWalk * _CurrentWalkSpeed, _RB.velocity.y);
+                if (_AutoJumping == true)
                 {
-                    _RB.velocity = new Vector2(_AutoWalk * _CurrentWalkSpeed, _RB.velocity.y);
-                    if (_AutoJumping == true)
-                    {
-                        _RB.velocity = new Vector2(_AutoWalk * 2 * _CurrentWalkSpeed, _JumpForce);
-                    }
-                }
-                if (_RB.bodyType == RigidbodyType2D.Dynamic)
-                {
-                    _RB.velocity = Vector3.ClampMagnitude(_RB.velocity, _MaxSpeed);
+                    _RB.velocity = new Vector2(_AutoWalk * 2 * _CurrentWalkSpeed, _JumpForce);
                 }
             }
-            
+            if (_RB.bodyType == RigidbodyType2D.Dynamic)
+            {
+                _RB.velocity = Vector3.ClampMagnitude(_RB.velocity, _MaxSpeed);
+            }
         }
     }
 }
