@@ -54,15 +54,15 @@ public class LumiaCamSC : MonoBehaviour
                 _CamMinPos = _MyCamera.GetComponent<StageManagerSC>()._CamMinPos;
                 _CamMaxPos = _MyCamera.GetComponent<StageManagerSC>()._CamMaxPos;
             }
-
-            camTargetPos.x = Mathf.Clamp(camTargetPos.x, _CamMinPos.x, _CamMaxPos.x);
-            camTargetPos.y = Mathf.Clamp(camTargetPos.y, _CamMinPos.y, _CamMaxPos.y);
-            if (transform.position.y < _MyCamera.transform.position.y - 4)
+            if (transform.position.y < _MyCamera.transform.position.y - 5)
             {
                 var FastDownCamPos = _MyCamera.transform.position;
-                FastDownCamPos.y = transform.position.y + 4;
+                FastDownCamPos.y = transform.position.y + 5;
+                FastDownCamPos.y = Mathf.Clamp(FastDownCamPos.y, _CamMinPos.y, _CamMaxPos.y);
                 _MyCamera.transform.position = FastDownCamPos;
             }
+            camTargetPos.x = Mathf.Clamp(camTargetPos.x, _CamMinPos.x, _CamMaxPos.x);
+            camTargetPos.y = Mathf.Clamp(camTargetPos.y, _CamMinPos.y, _CamMaxPos.y);
             //_MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
             _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, camTargetPos, ref currentVelocity, _Speed);
 
