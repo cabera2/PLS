@@ -84,7 +84,7 @@ public class JumpingEnemySC : EnemyParentSC
                     _JumpTimer = 0.7f;
                     if (_Glide == false || _InRange == false)
                     {
-                        _RB.AddForce(new Vector2(_MoveSpeed, 600));
+                        _RB.AddForce(new Vector2(_MoveSpeed, 12), ForceMode2D.Impulse);
                     }
                     else
                     {
@@ -100,7 +100,7 @@ public class JumpingEnemySC : EnemyParentSC
     }
     IEnumerator _Attack()
     {
-        _RB.AddForce(new Vector2(_MoveSpeed, 900));
+        _RB.AddForce(new Vector2(_MoveSpeed, 18), ForceMode2D.Impulse);
         while (_RB.velocity.y >= 0)
         {
             yield return null;

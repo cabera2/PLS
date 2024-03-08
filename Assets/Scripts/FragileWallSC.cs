@@ -89,8 +89,8 @@ public class FragileWallSC : MonoBehaviour
                     FragInst.AddComponent(typeof(PolygonCollider2D));
                     FragInst.transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-2f, 2f), 0);
                     float _Dir = transform.position.x - col.transform.position.x;
-                    float _Force = _Dir > 0 ? 300 : _Dir < 0 ? -300 : 0;
-                    FragInst.GetComponent<Rigidbody2D>().AddForce(new Vector2(_Force, 0f));
+                    float _Force = _Dir > 0 ? 6 : _Dir < 0 ? -6 : 0;
+                    FragInst.GetComponent<Rigidbody2D>().AddForce(new Vector2(_Force, 0f), ForceMode2D.Impulse);
                 }
             }
         }
