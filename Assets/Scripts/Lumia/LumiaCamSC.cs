@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LumiaCamSC : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LumiaCamSC : MonoBehaviour
     private GameObject _CamArea;
     private Rigidbody2D _RB;
     public Vector2 _CameraOffset;
-    [HideInInspector] public Vector3 _CamPos1;
+    [FormerlySerializedAs("_CamPos1")] [HideInInspector] public Vector3 camTargetPos;
     private bool _InCamArea;
     [HideInInspector] public float _LookUpDown = 0;
     private Vector3 _PrevPos;
@@ -40,7 +41,7 @@ public class LumiaCamSC : MonoBehaviour
         if (_MyCamera != null)
         {
             int _Direction = GetComponent<SpriteRenderer>().flipX ? -1 : 1;
-            _CamPos1 = new Vector3(transform.position.x + _CameraOffset.x * _Direction, transform.position.y + _CameraOffset.y + _LookUpDown, -10);
+            camTargetPos = new Vector3(transform.position.x + _CameraOffset.x * _Direction, transform.position.y + _CameraOffset.y + _LookUpDown, -10);
             Vector2 _CamMinPos;
             Vector2 _CamMaxPos;
             if (_InCamArea == true)
@@ -54,10 +55,17 @@ public class LumiaCamSC : MonoBehaviour
                 _CamMaxPos = _MyCamera.GetComponent<StageManagerSC>()._CamMaxPos;
             }
 
-            _CamPos1.x = Mathf.Clamp(_CamPos1.x, _CamMinPos.x, _CamMaxPos.x);
-            _CamPos1.y = Mathf.Clamp(_CamPos1.y, _CamMinPos.y, _CamMaxPos.y);
+            camTargetPos.x = Mathf.Clamp(camTargetPos.x, _CamMinPos.x, _CamMaxPos.x);
+            camTargetPos.y = Mathf.Clamp(camTargetPos.y, _CamMinPos.y, _CamMaxPos.y);
+            if (transform.position.y < _MyCamera.transform.position.y - 4)
+            {
+                var FastDownCamPos = _MyCamera.transform.position;
+                FastDownCamPos.y = transform.position.y + 4;
+                _MyCamera.transform.position = FastDownCamPos;
+            }
             //_MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
-            _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, _CamPos1, ref currentVelocity, _Speed);
+            _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, camTargetPos, ref currentVelocity, _Speed);
+
         }
     }
     void OnTriggerEnter2D(Collider2D col)
