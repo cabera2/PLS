@@ -3327,6 +3327,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3476,6 +3477,31 @@ MonoBehaviour:
   _JumpDustPool: []
   _CoinPool: []
   _CoinFXPool: []
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a20dce86234194b88a450a1e84c4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgItems:
+  - bgTransform: {fileID: 881575575}
+    multiply: -0.1
+  - bgTransform: {fileID: 400931522}
+    multiply: 0.5
+  - bgTransform: {fileID: 826481166}
+    multiply: 0.05
+  - bgTransform: {fileID: 1378651685}
+    multiply: 0.1
+  - bgTransform: {fileID: 1526860445}
+    multiply: -0.02
+  cameraTransform: {fileID: 519420032}
+  groundTransform: {fileID: 695320204}
 --- !u!1001 &523245684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3559,7 +3585,8 @@ PrefabInstance:
       propertyPath: _PosMultiply
       value: -0.02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8855070372394932158, guid: 277e00cc2f231ba4cbc946a217871b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6112602664096552250, guid: 277e00cc2f231ba4cbc946a217871b1b,
@@ -16192,7 +16219,8 @@ PrefabInstance:
       propertyPath: _PosMultiply
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8855070372394932158, guid: 277e00cc2f231ba4cbc946a217871b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16850,7 +16878,8 @@ PrefabInstance:
       propertyPath: _PosMultiply
       value: 0.05
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8855070372394932158, guid: 277e00cc2f231ba4cbc946a217871b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -24807,7 +24836,8 @@ PrefabInstance:
       propertyPath: _PosMultiply
       value: -0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8855070372394932158, guid: 277e00cc2f231ba4cbc946a217871b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6112602664096552250, guid: 277e00cc2f231ba4cbc946a217871b1b,
@@ -25551,7 +25581,8 @@ PrefabInstance:
       propertyPath: _PosMultiply
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8855070372394932158, guid: 277e00cc2f231ba4cbc946a217871b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6112602664096552250, guid: 277e00cc2f231ba4cbc946a217871b1b,

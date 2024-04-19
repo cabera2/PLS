@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\FragileGrassSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyParentSC.cs" />
     <Compile Include="Assets\Scripts\LoadButtonSC.cs" />
+    <Compile Include="Assets\Scripts\ParallexManagerClassic.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\FragileWallSC.cs" />
     <Compile Include="Assets\Scripts\AniSFXSC.cs" />
