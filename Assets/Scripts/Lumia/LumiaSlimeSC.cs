@@ -11,6 +11,8 @@ public class LumiaSlimeSC : MonoBehaviour
     private Rigidbody2D _RB;
     private Animator _ANI;
     private SpriteRenderer _SR;
+    private LumiaCamSC _lumiaCamSc;
+    private bool _camActive = false;
     public GameObject _MyCamera;
     private GameObject _CamArea;
     public Vector2 _CameraOffset;
@@ -42,6 +44,7 @@ public class LumiaSlimeSC : MonoBehaviour
         _ANI = GetComponent<Animator>();
         _SR = GetComponent<SpriteRenderer>();
         _AS = GetComponent<AudioSource>();
+        _lumiaCamSc = GetComponent<LumiaCamSC>();
     }
     void _WalkSFX()
     {
@@ -49,7 +52,7 @@ public class LumiaSlimeSC : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Move()
     {
         if (_CanControl == true)
         {
@@ -107,6 +110,7 @@ public class LumiaSlimeSC : MonoBehaviour
     }
     void Update()
     {
+        Move();
         if (_InteractObj != null)
         {
             if (_CanControl == true && GetComponent<BoxCollider2D>().IsTouching(_InteractObj.GetComponent<BoxCollider2D>()) && Mathf.Abs(_UpDownInput) >= 0.5)
@@ -120,6 +124,10 @@ public class LumiaSlimeSC : MonoBehaviour
                 }
             }
         }
+        if (_lumiaCamSc != null && _camActive)
+        {
+            _lumiaCamSc.UpdateCamera();
+        }
     }
     public void _OpEvent()
     {
@@ -130,7 +138,7 @@ public class LumiaSlimeSC : MonoBehaviour
         StageManagerSC._LumiaInst = _NewLumia;
         StageManagerSC._CanvasInst = _NewCanvas;
         _CamSC = GetComponent<LumiaCamSC>();
-        _CamSC.enabled = true;
+        _camActive = true;
         StageManagerSC._CamSC = _CamSC;
         yield return new WaitForSeconds(6f);
         _ANI.enabled = true;
