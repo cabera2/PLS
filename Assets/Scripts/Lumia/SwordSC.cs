@@ -19,6 +19,7 @@ namespace Lumia
         public LayerMask _GroundLayer;
         public LayerMask _EnemyLayer;
         public float _Height;
+        public float PlayerDistace;
 
         // Use this for initialization
         void Start()
@@ -46,8 +47,7 @@ namespace Lumia
                 if (_PDSC._Grounded == false)
                 {
                     Invoke("_GroundedOn", Time.deltaTime);
-                    _LSC._SwordList.Add(gameObject);
-                    _LSC._SwordDistanceList.Add(Vector2.Distance(_Lumia.transform.position, transform.position));
+                    _LSC.swordDatas.Add(this);
                     _PDSC._Grounded = true;
                     if (col.gameObject.layer == 8 && col.gameObject.tag == "MovingPlatform")
                     {
@@ -123,12 +123,9 @@ namespace Lumia
         }
         public void _RemoveFromList()
         {
-            if (_LSC._SwordList.Contains(gameObject))
+            if (_LSC.swordDatas.Contains(this))
             {
-                int _ListPos;
-                _ListPos = _LSC._SwordList.IndexOf(gameObject);
-                _LSC._SwordList.RemoveAt(_ListPos);
-                _LSC._SwordDistanceList.RemoveAt(_ListPos);
+                _LSC.swordDatas.Remove(this);
             }
         }
     }

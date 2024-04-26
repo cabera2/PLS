@@ -116,8 +116,7 @@ namespace Lumia
             _DeathImpactInst.GetComponent<ParticleSystem>().Stop();
             StageManagerSC._CamSC._CoolDownLock = false;
             yield return new WaitForSeconds(1f);
-            _LumiaSC._SwordList.Clear();
-            _LumiaSC._SwordDistanceList.Clear();
+            _LumiaSC.swordDatas.Clear();
             _LumiaSC._SwordStock = _LumiaSC._SwordMax;
             AsyncOperation op = SceneManager.LoadSceneAsync(_LumiaSC._SavedScene);
             op.allowSceneActivation = false;

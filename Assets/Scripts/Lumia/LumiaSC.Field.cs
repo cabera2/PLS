@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Lumia
 {
@@ -12,8 +14,8 @@ namespace Lumia
         private AudioSource _mainAudioSource;
         private AudioSource _reloadAudioSource;
         private AudioSource _bgmPlayer;
-    
-        //Animation Parameters
+        
+        #region Animation Parameters
         public static readonly int AniXInputAbs = Animator.StringToHash("XInputAbs");
         public static readonly int AniYVelocity = Animator.StringToHash("YVelocity");
         public static readonly int AniIsGrounded = Animator.StringToHash("IsGrounded");
@@ -31,5 +33,9 @@ namespace Lumia
         public static readonly int AniDoShoot = Animator.StringToHash("DoShoot");
         public static readonly int AniDoSit = Animator.StringToHash("DoSit");
         public static readonly int AniDoDamage = Animator.StringToHash("DoDamage");
+        #endregion
+        
+        public List<SwordSC> swordDatas = new ();
+        private SwordSC _nearestSword;
     }
 }

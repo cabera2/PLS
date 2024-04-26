@@ -82,13 +82,13 @@ namespace Lumia
         public float _SwordSpeed;
         public float _TargetMarkSpeed;
         public float _ShotRebound;
-        private int _NearestSword;
-        private int _NearestSword_Old;
+        //private int _NearestSword;
+        //private int _NearestSword_Old;
         private bool _InRange;
         private float _AtkTimer;
         public float _WarpDistance;
-        [HideInInspector] public List<GameObject> _SwordList = new List<GameObject>();
-        [HideInInspector] public List<float> _SwordDistanceList = new List<float>();
+        //[HideInInspector] public List<GameObject> _SwordList = new List<GameObject>();
+        //[HideInInspector] public List<float> _SwordDistanceList = new List<float>();
         private Vector2 _ShootVector;
         public bool _IsWarp;
         [Header("Reload Control")]
@@ -169,6 +169,7 @@ namespace Lumia
             Blink();
             CheckGrounded();
             Move();
+            UpdateNearestSword();
             _Canvas.GetComponent<PauseSC>()._MoneyText.text = _Money.ToString();
             ParticleSystem.EmissionModule _em = _PS.emission;
             if (_IsGrounded == false)
@@ -239,7 +240,6 @@ namespace Lumia
             {
                 _SwordHanger.transform.localPosition = new Vector2(0, 0.1f);
             }
-            FindNearestSword();
 
             float _RSY = Input.GetAxisRaw("RightStickY");
             if (Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false)
@@ -463,7 +463,7 @@ namespace Lumia
                     }
 
                     //Teleport
-                    if ((Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8])) && _SwordList.Count > 0 && _SwordDistanceList[_NearestSword] <= _WarpDistance)
+                    if ((Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8])) && _nearestSword != null)
                     {
                         Teleport();
                     }
@@ -492,24 +492,10 @@ namespace Lumia
             }
             _CurrentPortal.transform.position = _WarpPos;
         }
-        void TargetPosReset()
-        {
-            _TargetOnOff(false);
-            _InRange = false;
-            Vector3 ResetOffset = new Vector3(0, 0.7f, 0f);
-            _TargetMark.transform.position = Vector3.MoveTowards(_TargetMark.transform.position, transform.position + ResetOffset, _TargetMarkSpeed * Time.deltaTime);
-        }
-        void _TargetOnOff(bool _On)
-        {
-            if (_TarSR != null)
-            {
-                _TarSR.enabled = _On;
-            }
-        }
+
         IEnumerator _Reload(bool _Manual)
         {
-            _SwordList.Clear();
-            _SwordDistanceList.Clear();
+            swordDatas.Clear();
 
             GameObject[] _Swords = GameObject.FindGameObjectsWithTag("Sword");
 
@@ -594,14 +580,14 @@ namespace Lumia
         }
         public void ToSword()
         {
-            RaycastHit2D _LumiaRCH = Physics2D.Raycast(_SwordList[_NearestSword].transform.position, Vector2.down, Mathf.Infinity, _GroundLayer);
+            RaycastHit2D _LumiaRCH = Physics2D.Raycast(_nearestSword.transform.position, Vector2.down, Mathf.Infinity, _GroundLayer);
             float _Height = _LumiaRCH.distance;
             if (_Height >= _MinHightForHang)
             {
                 _RB.constraints = RigidbodyConstraints2D.FreezeAll;
                 Vector3 WarpOffset = new Vector3(0, -1.7f, 0f);
-                transform.position = _SwordList[_NearestSword].transform.position + WarpOffset;
-                transform.parent = _SwordList[_NearestSword].transform;
+                transform.position = _nearestSword.transform.position + WarpOffset;
+                transform.parent = _nearestSword.transform;
                 _mainAnimator.SetBool(AniIsHanging, true);
                 _mainAnimator.SetTrigger(AniDoHang);
             }
@@ -609,7 +595,7 @@ namespace Lumia
             {
                 _CancelHanging();
                 Vector3 WarpOffset = new Vector3(0, -0.6f, 0f);
-                transform.position = _SwordList[_NearestSword].transform.position + WarpOffset;
+                transform.position = _nearestSword.transform.position + WarpOffset;
             }
         }
         public void UpdateBackSwords()

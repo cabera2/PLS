@@ -134,38 +134,48 @@ namespace Lumia
             _ReloadTimer = 0;
         }
 
-        private void FindNearestSword()
+        private void UpdateNearestSword()
         {
-            //가까운 검 찾기
-            if (_SwordList.Count > 0)
-            {
-                for (int i = 0; i < _SwordList.Count; i++)
-                {
-                    _SwordDistanceList[i] = Vector2.Distance(_SwordList[i].transform.position, transform.position + new Vector3(0f, 0.7f, 0f));
-                }
-                _NearestSword = _SwordDistanceList.IndexOf(_SwordDistanceList.Min());
-                if (_SwordDistanceList[_NearestSword] <= _WarpDistance)
-                {
-
-                    //_TargetMark.transform.position = Vector2.MoveTowards(_TargetMark.transform.position, _SwordList[_NearestSword].transform.position, _TargetMarkSpeed * Time.deltaTime);
-                    if (_NearestSword != _NearestSword_Old || _InRange == false)
-                    {
-                        _TargetOnOff(true);
-                        _TarAni.SetTrigger("_Trigger");
-                        _InRange = true;
-                        _mainAudioSource.PlayOneShot(sfx[4], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
-                        _NearestSword_Old = _NearestSword;
-                    }
-                    _TargetMark.transform.position = _SwordList[_NearestSword].transform.position;
-                }
-                else if (_SwordDistanceList[_NearestSword] > _WarpDistance)
-                {
-                    TargetPosReset();
-                }
-            }
-            else if (_SwordList.Count == 0)
+            if (swordDatas.Count <= 0)
             {
                 TargetPosReset();
+                return;
+            }
+            for (int i = 0; i < swordDatas.Count; i++)
+            {
+                swordDatas[i].PlayerDistace = Vector2.Distance(swordDatas[i].transform.position, transform.position + new Vector3(0f, 0.7f, 0f));
+            }
+            swordDatas.Sort((x, y) => x.PlayerDistace.CompareTo(y.PlayerDistace));
+            if (swordDatas[0].PlayerDistace > _WarpDistance)
+            {
+                TargetPosReset();
+                return;
+            }
+            if (_nearestSword == swordDatas[0])
+            {
+                return;
+            }
+            _nearestSword = swordDatas[0];
+            _TargetOnOff(true);
+            _TargetMark.transform.position = _nearestSword.transform.position;
+            _TarAni.SetTrigger("_Trigger");
+            _InRange = true;
+            _mainAudioSource.PlayOneShot(sfx[4], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
+
+        }
+        void TargetPosReset()
+        {
+            _nearestSword = null;
+            _TargetOnOff(false);
+            _InRange = false;
+            Vector3 ResetOffset = new Vector3(0, 0.7f, 0f);
+            _TargetMark.transform.position = Vector3.MoveTowards(_TargetMark.transform.position, transform.position + ResetOffset, _TargetMarkSpeed * Time.deltaTime);
+        }
+        void _TargetOnOff(bool _On)
+        {
+            if (_TarSR != null)
+            {
+                _TarSR.enabled = _On;
             }
         }
 
@@ -175,10 +185,10 @@ namespace Lumia
             _mainAudioSource.PlayOneShot(sfx[1], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
             Vector2 _ParticlePos;
             var _ParticleOffset = new Vector3(0, -0.7f, 0f);
-            for (var i = 0; i <= _SwordDistanceList[_NearestSword] / _ParticleGap; i++)
+            for (var i = 0; i <= _nearestSword.PlayerDistace / _ParticleGap; i++)
             {
                 _ParticlePos =
-                    (_SwordList[_NearestSword].transform.position - transform.position + _ParticleOffset).normalized * (_ParticleGap * i) + transform.position;
+                    (_nearestSword.transform.position - transform.position + _ParticleOffset).normalized * (_ParticleGap * i) + transform.position;
                 GameObject _WarpParticle;
                 if (_stageManagerSc._WarpParticlePool.Count == 0)
                 {
