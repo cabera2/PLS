@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Lumia\LumiaHitboxSC.cs" />
     <Compile Include="Assets\Scripts\ParallaxDebugger.cs" />
     <Compile Include="Assets\Scripts\PressEventSC.cs" />
+    <Compile Include="Assets\Scripts\Lumia\LumiaSC.Scene.cs" />
     <Compile Include="Assets\Scripts\FragileGrassSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyParentSC.cs" />
     <Compile Include="Assets\Scripts\LoadButtonSC.cs" />

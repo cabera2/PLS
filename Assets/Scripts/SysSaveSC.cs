@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Lumia;
 
 public class SysSaveSC : MonoBehaviour
 {

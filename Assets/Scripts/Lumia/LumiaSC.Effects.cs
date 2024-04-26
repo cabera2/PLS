@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public partial class LumiaSC
+namespace Lumia
 {
-    private void ReloadingEffect(bool isStart)
+    public partial class LumiaSC
     {
-        _mainAnimator.SetBool(AniIsReloading, isStart);
-        _reloadEffectPlaying = isStart;
-        if (isStart)
+        private void ReloadingEffect(bool isStart)
         {
-            _ReloadParticle.Play();
-            _reloadAudioSource.volume = SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f;
-            _reloadAudioSource.Play();
-        }
-        else
-        {
-            _ReloadParticle.Stop();
-            _reloadAudioSource.Stop();
+            _mainAnimator.SetBool(AniIsReloading, isStart);
+            _reloadEffectPlaying = isStart;
+            if (isStart)
+            {
+                _ReloadParticle.Play();
+                _reloadAudioSource.volume = SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f;
+                _reloadAudioSource.Play();
+            }
+            else
+            {
+                _ReloadParticle.Stop();
+                _reloadAudioSource.Stop();
+            }
         }
     }
 }
