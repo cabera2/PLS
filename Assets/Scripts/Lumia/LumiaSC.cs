@@ -224,7 +224,7 @@ namespace Lumia
             }
 
             //활공 중지
-            if (_RB.gravityScale != _DefaultGravity && ((Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5])) || _CanControl == false || _IsGrounded == true || _RB.constraints == RigidbodyConstraints2D.FreezeAll))
+            if (_RB.gravityScale != _DefaultGravity && (_myInput.GetButtonUp(KeyType.Jump) || _CanControl == false || _IsGrounded || _RB.constraints == RigidbodyConstraints2D.FreezeAll))
             {
                 _mainAnimator.SetBool(AniIsGliding, false);
                 _RB.gravityScale = _DefaultGravity;
@@ -287,16 +287,16 @@ namespace Lumia
                 //Reloading
                 if (_IsGrounded == true && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
                 {
-                    if ((Input.GetButtonDown("ButtonB") || Input.GetKeyDown(SysSaveSC._Keys[7])) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
+                    if (_myInput.GetButton(KeyType.Shoot) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
                     {
                         //_reloadAudioSource.Play();
                         _IsReloading = true;
                         _ReloadTimer += Time.deltaTime;
                     }
-                    if ((Input.GetButton("ButtonB") || Input.GetKey(SysSaveSC._Keys[7])) && _IsReloading == true)
+                    if (_myInput.GetButton(KeyType.Shoot) && _IsReloading)
                     {
                         _ReloadTimer += Time.deltaTime;
-                        if (_ReloadTimer >= _StartReloadTime && _IsReloading == true)
+                        if (_ReloadTimer >= _StartReloadTime && _IsReloading)
                         {
                             if (_reloadEffectPlaying == false)
                             {
@@ -387,7 +387,7 @@ namespace Lumia
                 }
 
                 //Shield
-                if ((Input.GetAxisRaw("Shield") >= 0.5f || Input.GetKey(SysSaveSC._Keys[14])) && _SwordStock >= 2 && _IsGrounded == true)
+                if (_myInput.GetButton(KeyType.Shield) && _SwordStock >= 2 && _IsGrounded == true)
                 {
                     _mainAnimator.SetBool(AniIsShielding, true);
                 }
@@ -396,9 +396,9 @@ namespace Lumia
                     _mainAnimator.SetBool(AniIsShielding, false);
                 }
                 //SwordShot
-                if ((Input.GetButtonUp("ButtonB") || Input.GetKeyUp(SysSaveSC._Keys[7])) && Time.timeScale > 0 && _AtkTimer <= 0)
+                if ((_myInput.GetButtonUp(KeyType.Shoot)) && Time.timeScale > 0 && _AtkTimer <= 0)
                 {
-                    Shot();
+                    Shoot();
                 }
 
                 //When not Reloading

@@ -50,7 +50,7 @@ namespace Lumia
             }
         }
 
-        private void Shot()
+        private void Shoot()
         {
             _AtkTimer = levelData.atkSpeedValues[levelData.atkSpeedLv];
             if (_SwordStock > 0 && _ReloadTimer <= _ShootTime)

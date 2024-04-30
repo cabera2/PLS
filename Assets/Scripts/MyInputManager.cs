@@ -11,6 +11,12 @@ public class MyInputManager
         {
             case KeyType.Jump:
                 return Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5]);
+            case KeyType.Shoot:
+                return Input.GetButton("ButtonB") || Input.GetKey(SysSaveSC._Keys[7]);
+            case KeyType.Shield:
+                return Input.GetAxisRaw("Shield") >= 0.5f || Input.GetKey(SysSaveSC._Keys[14]);
+            case KeyType.Warp:
+                return Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]);
             default:
                 return false;
             
@@ -33,6 +39,10 @@ public class MyInputManager
     {
         switch (keyType)
         {
+            case KeyType.Jump:
+                return Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5]);
+            case KeyType.Shoot:
+                return Input.GetButtonUp("ButtonB") || Input.GetKeyUp(SysSaveSC._Keys[7]);
             case KeyType.Teleport:
                 return Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8]);
             default:
