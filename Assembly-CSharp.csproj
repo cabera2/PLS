@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Enemy\ShootingEnemy1SC.cs" />
     <Compile Include="Assets\Scripts\WaterDropSC.cs" />
     <Compile Include="Assets\Scripts\StageManagerSC.cs" />
+    <Compile Include="Assets\Scripts\MyInputManager.cs" />
     <Compile Include="Assets\Scripts\MyEventTriggerSC.cs" />
     <Compile Include="Assets\Scripts\GetArrowSC.cs" />
     <Compile Include="Assets\Scripts\ParentToPoolSC.cs" />

@@ -407,13 +407,13 @@ namespace Lumia
                     //Glide
                     if (_SwordStock >= 3 && _IsGrounded == false && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
                     {
-                        if ((Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5])) && _AutoGlide == false)
+                        if (_myInput.GetButtonDown(KeyType.Jump) && _AutoGlide == false)
                         {
                             _mainAnimator.SetBool(AniIsGliding, true);
                             _RB.velocity = Vector2.up * 0f;
                             _RB.gravityScale = 0.5f;
                         }
-                        else if ((Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5])) && _AutoGlide == true && _RB.velocity.y < 0)
+                        else if (_myInput.GetButton(KeyType.Jump) && _AutoGlide && _RB.velocity.y < 0)
                         {
                             _mainAnimator.SetBool(AniIsGliding, true);
                             _RB.gravityScale = 0.5f;
@@ -421,7 +421,7 @@ namespace Lumia
                     }
 
                     //GroundPass
-                    if ((Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5])))
+                    if (_myInput.GetButtonDown(KeyType.Jump))
                     {
                         _CoyoteTimer = _CoyoteTime;
                         if (_IsGrounded == true && _UpDownInput <= -0.5f)
@@ -461,17 +461,15 @@ namespace Lumia
                             _JumpTimeCounter = _JumpMaxTime;
                         }
                     }
-
-                    //Teleport
-                    if ((Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8])) && _nearestSword != null)
-                    {
-                        Teleport();
-                    }
-
                     //Slash
-                    if ((Input.GetButtonDown("ButtonX") || Input.GetKeyDown(SysSaveSC._Keys[6])) & _AtkTimer <= 0)
+                    if (_myInput.GetButtonDown(KeyType.Slash) & _AtkTimer <= 0)
                     {
                         Slash();
+                    }
+                    //Teleport
+                    if (_myInput.GetButtonUp(KeyType.Teleport) && _nearestSword != null)
+                    {
+                        Teleport();
                     }
                 }
             }

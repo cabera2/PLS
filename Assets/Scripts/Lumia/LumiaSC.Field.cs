@@ -37,5 +37,6 @@ namespace Lumia
         
         public List<SwordSC> swordDatas = new ();
         private SwordSC _nearestSword;
+        private readonly MyInputManager _myInput = new();
     }
 }

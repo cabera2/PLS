@@ -74,7 +74,7 @@ namespace Lumia
                         _RB.velocity = new Vector2(_MoveInput * _CurrentWalkSpeed, _RB.velocity.y);
                     }
                     //Jump
-                    if ((Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5])) && _IsJumping == true)
+                    if (_myInput.GetButton(KeyType.Jump) && _IsJumping)
                     {
                         if (_JumpTimeCounter > 0 && _JumpCountCounter > 0)
                         {
@@ -88,7 +88,7 @@ namespace Lumia
                         }
                     }
                     //StopJump
-                    if ((Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5])) && _JumpCountCounter > 0)
+                    if (_myInput.GetButtonDown(KeyType.Jump) && _JumpCountCounter > 0)
                     {
                         _JumpCountCounter -= 1;
                     }
