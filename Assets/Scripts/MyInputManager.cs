@@ -16,10 +16,12 @@ public class MyInputManager
             case KeyType.Shield:
                 return Input.GetAxisRaw("Shield") >= 0.5f || Input.GetKey(SysSaveSC._Keys[14]);
             case KeyType.Warp:
-                return Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]);
+                return Input.GetButton("Warp") || Input.GetKey(SysSaveSC._Keys[13]);
+            case KeyType.Map:
+                return Input.GetButton("Map") || Input.GetKey(SysSaveSC._Keys[4]);
             default:
+                Debug.Log("Unknown GetButton");
                 return false;
-            
         }
     }
     public bool GetButtonDown(KeyType keyType)
@@ -30,9 +32,11 @@ public class MyInputManager
                 return Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5]);
             case KeyType.Slash:
                 return Input.GetButtonDown("ButtonX") || Input.GetKeyDown(SysSaveSC._Keys[6]);
+            case KeyType.Warp:
+                return Input.GetButtonDown("Warp") || Input.GetKeyDown(SysSaveSC._Keys[13]);
             default:
+                Debug.Log("Unknown GetButtonDown");
                 return false;
-            
         }
     }
     public bool GetButtonUp(KeyType keyType)
@@ -45,9 +49,11 @@ public class MyInputManager
                 return Input.GetButtonUp("ButtonB") || Input.GetKeyUp(SysSaveSC._Keys[7]);
             case KeyType.Teleport:
                 return Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8]);
+            case KeyType.Warp:
+                return Input.GetButtonUp("Warp") || Input.GetKeyUp(SysSaveSC._Keys[13]);
             default:
+                Debug.Log("Unknown GetButtonUp");
                 return false;
-            
         }
     }
 }

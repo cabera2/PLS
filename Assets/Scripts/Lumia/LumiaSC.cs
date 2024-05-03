@@ -242,7 +242,7 @@ namespace Lumia
             }
 
             float _RSY = Input.GetAxisRaw("RightStickY");
-            if (Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false)
+            if (_myInput.GetButton(KeyType.Warp) == false)
             {
                 if (_CanControl == false || _IsGrounded == false || _MoveInput != 0)
                 {
@@ -282,7 +282,7 @@ namespace Lumia
                 _LookUpDownTimer = 0;
             }
         
-            if (_CanControl == true && Input.GetButton("Map") == false && Input.GetKey(SysSaveSC._Keys[4]) == false && _KnockbackCounter <= 0)
+            if (_CanControl && _myInput.GetButton(KeyType.Map) == false && _KnockbackCounter <= 0)
             {
                 //Reloading
                 if (_IsGrounded == true && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
@@ -324,9 +324,10 @@ namespace Lumia
                     _ReloadTimer = 0;
                 }
                 //Warp Charge
-                if (_KnockbackCounter == 0 && _IsGrounded == true && _SwordStock >= 5)
+                if (_KnockbackCounter == 0 && _IsGrounded && _SwordStock >= 5)
                 {
-                    if (Mathf.Abs(_UpDownInput) > 0.5f && (Input.GetButtonDown("Warp") || Input.GetKeyDown(SysSaveSC._Keys[13])))
+                    
+                    if (Mathf.Abs(_UpDownInput) > 0.5f && _myInput.GetButtonDown(KeyType.Warp))
                     {
                         _WarpSwordHolder.SetBool("_Down", false);
                         if (_UpDownInput > 0.5f && string.IsNullOrEmpty(_WarpScene) == false)
@@ -345,12 +346,13 @@ namespace Lumia
                         }
                     }
 
-                    if ((_WarpChargeMove == true || _WarpChargeSet == true) && (Input.GetButton("Warp") || Input.GetKey(SysSaveSC._Keys[13])) && _KnockbackCounter == 0 && _IsGrounded == true)
+                    if ((_WarpChargeMove || _WarpChargeSet) && _myInput.GetButton(KeyType.Warp) && _KnockbackCounter == 0 && _IsGrounded)
                     {
                         _WarpTimer += Time.deltaTime;
                     }
                     else
                     {
+                        _reloadAudioSource.Stop();
                         _WarpTimer = 0;
                         _WarpChargeMove = false;
                         _WarpChargeSet = false;
@@ -361,7 +363,7 @@ namespace Lumia
                             _ReloadParticle.Stop();
                         }
                     }
-                    if (_WarpChargeSet == true && _WarpTimer >= 1.4f)
+                    if (_WarpChargeSet && _WarpTimer >= 1.4f)
                     {
                         _reloadAudioSource.Stop();
                         StartCoroutine(_WhiteFlash());
@@ -371,7 +373,7 @@ namespace Lumia
                         _SetPortal();
                         _WarpChargeSet = false;
                     }
-                    else if (_WarpChargeMove == true && _WarpTimer >= 2.25f)
+                    else if (_WarpChargeMove && _WarpTimer >= 2.25f)
                     {
                         _CanControl = false;
                         _reloadAudioSource.Stop();
@@ -402,7 +404,7 @@ namespace Lumia
                 }
 
                 //When not Reloading
-                if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && Input.GetButton("Warp") == false && Input.GetKey(SysSaveSC._Keys[13]) == false && _mainAnimator.GetBool(AniIsShielding) == false)
+                if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && _myInput.GetButton(KeyType.Warp) == false && _mainAnimator.GetBool(AniIsShielding) == false)
                 {
                     //Glide
                     if (_SwordStock >= 3 && _IsGrounded == false && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
@@ -598,14 +600,10 @@ namespace Lumia
         }
         public void UpdateBackSwords()
         {
-            bool _SlashingB = false;
-            if (_mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashSide") == true || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashUp") == true || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashDown") == true)
-            {
-                _SlashingB = true;
-            }
+            bool _SlashingB = _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashSide") || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashUp") || _mainAnimator.GetCurrentAnimatorStateInfo(0).IsName("SlashDown");
             int _SlashingInt = _SlashingB == true ? 0 : _SlashingB == false ? 1 : 0;
             int _Zero = 1;
-            if (_mainAnimator.GetBool(AniIsGliding) == true || _WarpTimer != 0)
+            if (_mainAnimator.GetBool(AniIsGliding) || _WarpTimer != 0)
             {
                 _Zero = 0;
             }
