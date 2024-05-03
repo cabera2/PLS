@@ -1,8 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+
 public enum KeyType
 {
-    Map, Jump, Slash, Shoot, Teleport, Submit, Cancel, Pause, Status, Warp, Shield
+    Map, Jump, Slash, Shoot, Teleport, Submit, Cancel, Pause, Status, Warp, Shield, LeftStick, RightStick
 }
 public class MyInputManager
 {
@@ -66,5 +67,75 @@ public class MyInputManager
                 //Debug.Log("Unknown GetButtonUp");
                 return false;
         }
+    }
+
+    public Vector2 GetAxis(KeyType keyType)
+    {
+        Vector2 output;
+        switch (keyType)
+        {
+            case KeyType.LeftStick:
+            {
+                output = new Vector2(Input.GetAxisRaw("LeftStickX"), Input.GetAxisRaw("LeftStickY"));
+                if (output.x > 0)
+                {
+                    output.x = 1;
+                }
+                else if(output.x < 0)
+                {
+                    output.x = -1;
+                }
+                if (output.y > 0.5f)
+                {
+                    output.y = 1;
+                }
+                else if(output.y < -0.5f)
+                {
+                    output.y = -1;
+                }
+                if(Input.GetKey(SysSaveSC._Keys[0]))
+                {
+                    output.y += 1;
+                }
+                if(Input.GetKey(SysSaveSC._Keys[1]))
+                {
+                    output.y -= 1;
+                }
+                if(Input.GetKey(SysSaveSC._Keys[2]))
+                {
+                    output.x -= 1;
+                }
+                if(Input.GetKey(SysSaveSC._Keys[3]))
+                {
+                    output.x += 1;
+                }
+                break;
+            }
+            case KeyType.RightStick:
+            {
+                output = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
+                if (output.x > 0)
+                {
+                    output.x = 1;
+                }
+                else if(output.x < 0)
+                {
+                    output.x = -1;
+                }
+                if (output.y > 0.5f)
+                {
+                    output.y = 1;
+                }
+                else if(output.y < -0.5f)
+                {
+                    output.y = -1;
+                }
+                break;
+            }
+            default:
+                output = Vector2.zero;
+                break;
+        }
+        return output;
     }
 }
