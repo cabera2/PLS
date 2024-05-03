@@ -39,6 +39,7 @@ public class PauseSC : MonoBehaviour
     private float _SwordStockTimer;
     private Animator _Ani;
     private CanvasGroup _CG;
+    private readonly MyInputManager _myInput = new();
 
     // Start is called before the first frame update
     void Start()
@@ -82,21 +83,21 @@ public class PauseSC : MonoBehaviour
     }
     void Update()
     {
-        if (_MapOpen == false && ((Input.GetButtonDown("Map") || Input.GetKeyDown(SysSaveSC._Keys[4])) && _IsPaused == false && _StatusOpen == false && _LSC._IsGrounded == true && _LSC._CanControl == true))
+        if (_MapOpen == false && _myInput.GetButtonDown(KeyType.Map) && _IsPaused == false && _StatusOpen == false && _LSC._IsGrounded == true && _LSC._CanControl == true)
         {
             _MapOpen = true;
             _DarkScreen(true);
             _MapWin.SetActive(true);
             StartCoroutine(_MoveMapPin());
         }
-        else if (_MapOpen == true && (Input.GetButtonUp("Map") || Input.GetKeyUp(SysSaveSC._Keys[4]) || _LSC._IsGrounded == false || _LSC._CanControl == false))
+        else if (_MapOpen == true && _myInput.GetButtonUp(KeyType.Map) || _LSC._IsGrounded == false || _LSC._CanControl == false)
         {
             _MapOpen = false;
             _DarkScreen(false);
             _MapWin.GetComponent<UIFaderSC>()._FadeOut();
         }
 
-        if ((Input.GetButtonUp("Pause") || Input.GetKeyUp(SysSaveSC._Keys[11])) && _MapOpen == false && _StatusOpen == false)
+        if (_myInput.GetButtonUp(KeyType.Pause) && _MapOpen == false && _StatusOpen == false)
         {
             if (_IsPaused == false)
             {
@@ -123,7 +124,7 @@ public class PauseSC : MonoBehaviour
                 _ClosePause();
             }
         }
-        if ((Input.GetButtonUp("Status") || Input.GetKeyUp(SysSaveSC._Keys[12])) && _MapOpen == false && _IsPaused == false)
+        if (_myInput.GetButtonUp(KeyType.Status) && _MapOpen == false && _IsPaused == false)
         {
             if (_StatusOpen == false)
             {

@@ -23,22 +23,13 @@ public class DialogueSC : MonoBehaviour
     public bool _StartByTouch;
     public bool _EndDestroy;
     public bool _EndRebound;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    private readonly MyInputManager _myInput = new();
     void Update()
     {
         if (_Talking == true)
         {
-            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel") || Input.GetKeyUp(SysSaveSC._Keys[9]) || Input.GetKeyUp(SysSaveSC._Keys[10]))
+            if (_myInput.GetButtonDown(KeyType.Submit) || _myInput.GetButtonDown(KeyType.Cancel))
             {
-                Debug.Log("눌림");
                 if (_CharCount < _TextStrings[_CurrentText].Length)
                 {
                     _CharCount = _TextStrings[_CurrentText].Length;

@@ -46,21 +46,18 @@ public class SysSaveSC : MonoBehaviour
         KeyCode.DownArrow,
         KeyCode.LeftArrow,
         KeyCode.RightArrow,
-        KeyCode.Tab,
-        KeyCode.Z,
-        KeyCode.X,
-        KeyCode.C,
-        KeyCode.F,
-        KeyCode.Z,
-        KeyCode.X,
-        KeyCode.Escape,
-        KeyCode.I,
-        KeyCode.D,
-        KeyCode.S
+        KeyCode.Tab,//Map
+        KeyCode.Z,//Jump
+        KeyCode.X,//Slash
+        KeyCode.C,//Shoot
+        KeyCode.F,//Teleport
+        KeyCode.Z,//Submit
+        KeyCode.X,//Cancel
+        KeyCode.Escape,//Pause
+        KeyCode.I,//Status
+        KeyCode.D,//Warp
+        KeyCode.S//Shield
 };
-
-
-
     public static bool _Load_Required;
     public static int _Loaded_FileNumber;
     public static string _Loaded_SavedScene;
@@ -75,21 +72,7 @@ public class SysSaveSC : MonoBehaviour
     public static int _Loaded_WarpLv;
     public static int _Loaded_SwordSizeLv;
     public static List<int> _Loaded_PermanentFlag;
-
-
-
     public static bool _Loading = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public static void _SysSave()
     {
         BinaryFormatter _BF = new BinaryFormatter();
