@@ -83,14 +83,14 @@ public class PauseSC : MonoBehaviour
     }
     void Update()
     {
-        if (_MapOpen == false && _myInput.GetButtonDown(KeyType.Map) && _IsPaused == false && _StatusOpen == false && _LSC._IsGrounded == true && _LSC._CanControl == true)
+        if (_MapOpen == false && (_myInput.GetButtonDown(KeyType.Map) && _IsPaused == false && _StatusOpen == false && _LSC._IsGrounded == true && _LSC._CanControl == true))
         {
             _MapOpen = true;
             _DarkScreen(true);
             _MapWin.SetActive(true);
             StartCoroutine(_MoveMapPin());
         }
-        else if (_MapOpen == true && _myInput.GetButtonUp(KeyType.Map) || _LSC._IsGrounded == false || _LSC._CanControl == false)
+        else if (_MapOpen == true && ( _myInput.GetButtonUp(KeyType.Map) || _LSC._IsGrounded == false || _LSC._CanControl == false))
         {
             _MapOpen = false;
             _DarkScreen(false);
