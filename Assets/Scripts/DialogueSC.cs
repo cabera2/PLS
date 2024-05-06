@@ -124,7 +124,7 @@ public class DialogueSC : MonoBehaviour
         else if (_Lumia.GetComponent<LumiaSlimeSC>() != null)
         {
             _Lumia.GetComponent<LumiaSlimeSC>()._CanControl = false;
-            _Lumia.GetComponent<LumiaSlimeSC>()._MoveInput = 0;
+            _Lumia.GetComponent<LumiaSlimeSC>().leftStickX = 0;
         }
         if (_TextStrings == null || _TextStrings.Length == 0 || _LastLang != SysSaveSC._Language)
         {

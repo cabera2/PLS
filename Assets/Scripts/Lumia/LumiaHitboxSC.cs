@@ -23,11 +23,7 @@ namespace Lumia
         public GameObject _DeathImpact;
         public GameObject _Canvas;
         private LumiaSC _LumiaSC;
-        public float _HitStopTime;
-        public float _HitStopTimer;
         private bool _DeathAniPlayed;
-        public string _RestartScene;
-        public Vector3 _RestartPos;
     
         void Start()
         {
@@ -36,16 +32,18 @@ namespace Lumia
             _ANI = _Lumia.GetComponent<Animator>();
             _AS = _Lumia.GetComponent<AudioSource>();
             _LumiaSC = transform.parent.GetComponent<LumiaSC>();
+
         }
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (_NoHit == false)
+            if (_NoHit == false && _RB.bodyType == RigidbodyType2D.Dynamic)
             {
                 if (transform.parent.GetComponent<LumiaSC>()._InvincibleTimer <= 0 && (col.gameObject.layer == 12 || col.gameObject.tag == "Lazor"))
                 {
                     if ((col.gameObject.layer == 12 && (col.gameObject.GetComponent<EnemyCommonSC>() != null && col.gameObject.GetComponent<EnemyCommonSC>()._HP > 0 || col.gameObject.GetComponent<EnemyCommonSC>() == null) || col.gameObject.tag == "Lazor") && _RB.bodyType == RigidbodyType2D.Dynamic)
                     {
                         transform.parent.GetComponent<LumiaSC>()._InvincibleTimer = transform.parent.GetComponent<LumiaSC>()._InvincibleTime;
+                        //Debug.Log($"Pattern1, Damaged by {col.gameObject.name} in Scene {SceneManager.GetActiveScene().name}");
                         _Damage();
                         if (_HP_Current >= 1)
                         {
@@ -78,6 +76,7 @@ namespace Lumia
                 {
                     _LumiaSC._KnockbackCounter = 1f;
                     _ANI.SetBool(LumiaSC.AniIsSpiked, true);
+                    //Debug.Log($"Pattern2, Damaged by {col.gameObject.name} in Scene {SceneManager.GetActiveScene().name}");
                     _Damage();
                     if (_HP_Current >= 1)
                     {
@@ -133,10 +132,10 @@ namespace Lumia
             _Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();
             _ANI.SetBool(LumiaSC.AniIsSpiked, false);
             _ANI.SetTrigger("_AfterSpike");
-            _RB.bodyType = RigidbodyType2D.Dynamic;
             StageManagerSC._lumiaSc._ChairRespawn = true;
             SysSaveSC._CharSave();
         }
+
         void _Damage()
         {
             _AS.PlayOneShot(_SFX[0], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);

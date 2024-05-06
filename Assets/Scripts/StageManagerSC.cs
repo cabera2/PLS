@@ -111,11 +111,17 @@ public class StageManagerSC : MonoBehaviour
     }
     public void _ChairStart()
     {
+        _lumiaSc._TemporaryFlag.Clear();
+        if (_Chair == null)
+        {
+            _LumiaInst.transform.position = _StartPos;
+            Debug.Log("Chair not Found");
+            return;
+        }
         _LumiaInst.transform.position = _Chair.transform.position;
         _LumiaInst.GetComponent<Animator>().SetBool(LumiaSC.AniIsSitting, true);
         _LumiaInst.GetComponent<Animator>().SetTrigger(LumiaSC.AniDoSit);
         _LumiaInst.GetComponent<LumiaSC>()._CanControl = false;
         _Chair.GetComponent<ChairSC>()._CanStand = true;
-        _lumiaSc._TemporaryFlag.Clear();
     }
 }

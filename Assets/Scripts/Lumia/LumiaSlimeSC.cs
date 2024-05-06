@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Lumia
@@ -21,9 +22,8 @@ namespace Lumia
         private bool _InCamArea;
         public float _CamSpeed;
         public bool _CanControl;
-        public bool _SmoothMove;
-        [HideInInspector] public float _MoveInput;
-        private float _UpDownInput;
+        [HideInInspector] public float leftStickX;
+        private float leftStickY;
         public float _WalkSpeed;
         public bool _CamActive;
         public CanvasGroup _InterActionArrow;
@@ -37,8 +37,7 @@ namespace Lumia
         private AudioSource _AS;
         public AudioClip[] _SFX;
         private LumiaCamSC _CamSC;
-
-        // Start is called before the first frame update
+        private MyInputManager _myInput = new();
         void Start()
         {
             _RB = GetComponent<Rigidbody2D>();
@@ -51,59 +50,33 @@ namespace Lumia
         {
             _AS.PlayOneShot(_SFX[0], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
         }
-
-        // Update is called once per frame
         void Move()
         {
-            if (_CanControl == true)
+            Vector2Int leftStickInput = _myInput.GetAxis(KeyType.LeftStick);
+            if (_CanControl)
             {
-                if (_SmoothMove == true)
+                leftStickX = leftStickInput.x;
+                leftStickY = leftStickInput.y;
+                if (leftStickY != 0)
                 {
-                    _MoveInput = Input.GetAxisRaw("LeftStickX");
-                }
-                else if (_SmoothMove == false)
-                {
-                    int _LeftPressed = Input.GetKey(SysSaveSC._Keys[2]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[2]) == false ? 0 : 0;
-                    int _RightPressed = Input.GetKey(SysSaveSC._Keys[3]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[3]) == false ? 0 : 0;
-                    _MoveInput = Input.GetAxisRaw("LeftStickX") + _LeftPressed + _RightPressed;
-                    if (_MoveInput != 0)
+                    if (leftStickY < -0.5f)
                     {
-                        if (_MoveInput < 0)
-                        {
-                            _MoveInput = -1f;
-                        }
-
-                        if (_MoveInput > 0)
-                        {
-                            _MoveInput = 1f;
-                        }
-                    }
-                }
-                int _UpPressed = Input.GetKey(SysSaveSC._Keys[0]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[0]) == false ? 0 : 0;
-                int _DownPressed = Input.GetKey(SysSaveSC._Keys[1]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[1]) == false ? 0 : 0;
-                _UpDownInput = Input.GetAxisRaw("LeftStickY") + _UpPressed + _DownPressed;
-
-                if (_UpDownInput != 0)
-                {
-                    if (_UpDownInput < -0.5f)
-                    {
-                        _UpDownInput = -1f;
+                        leftStickY = -1f;
                     }
 
-                    if (_UpDownInput > 0.5f)
+                    if (leftStickY > 0.5f)
                     {
-                        _UpDownInput = 1f;
+                        leftStickY = 1f;
                     }
                 }
-                Debug.Log(_UpDownInput);
             }
-            _RB.velocity = new Vector2(_MoveInput * _WalkSpeed, _RB.velocity.y);
-            _ANI.SetFloat("_XInput", Mathf.Abs(_MoveInput));
-            if (_MoveInput > 0)
+            _RB.velocity = new Vector2(leftStickX * _WalkSpeed, _RB.velocity.y);
+            _ANI.SetFloat("_XInput", Mathf.Abs(leftStickX));
+            if (leftStickX > 0)
             {
                 _SR.flipX = false;
             }
-            else if (_MoveInput < 0)
+            else if (leftStickX < 0)
             {
                 _SR.flipX = true;
             }
@@ -114,10 +87,10 @@ namespace Lumia
             Move();
             if (_InteractObj != null)
             {
-                if (_CanControl == true && GetComponent<BoxCollider2D>().IsTouching(_InteractObj.GetComponent<BoxCollider2D>()) && Mathf.Abs(_UpDownInput) >= 0.5)
+                if (_CanControl && GetComponent<BoxCollider2D>().IsTouching(_InteractObj.GetComponent<BoxCollider2D>()) && Mathf.Abs(leftStickY) >= 0.5)
                 {
                     _CanControl = false;
-                    _MoveInput = 0;
+                    leftStickX = 0;
                     StartCoroutine(_ArrowFadeOutC());
                     if (_InteractObj.name == "SealSword")
                     {
@@ -174,7 +147,6 @@ namespace Lumia
         }
         IEnumerator _ArrowFadeInC()
         {
-            Debug.Log("test123");
             while (_InterActionArrow.alpha < 1)
             {
                 _InterActionArrow.alpha += 3f * Time.deltaTime;

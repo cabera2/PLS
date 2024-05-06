@@ -42,19 +42,19 @@ namespace Lumia
             {
                 _SetPortal();
             }
-            if (_ChairRespawn == true)
+            if (_ChairRespawn)
             {
                 _ChairRespawn = false;
                 _stageManagerSc._ChairStart();
                 _RB.bodyType = RigidbodyType2D.Dynamic;
             }
-            if (_PassingPortal == true)
+            if (_PassingPortal)
             {
                 _PassingPortal = false;
                 transform.position = _WarpPos;
                 _CanControl = true;
             }
-            if (_PassingGate == true)
+            if (_PassingGate)
             {
                 _PassingGate = false;
                 transform.position = _stageManagerSc._Gates[_GateNumber].position;

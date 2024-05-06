@@ -22,19 +22,6 @@ namespace Lumia
                     leftStickX = 0;
                 }
                 leftStickY = leftStickInput.y;
-                if (leftStickY != 0)
-                {
-                    if (leftStickY < -0.5f)
-                    {
-                        leftStickY = -1f;
-                    }
-
-                    if (leftStickY > 0.5f)
-                    {
-                        leftStickY = 1f;
-                    }
-                }
-
                 if (_CanControl == true)
                 {
                     //Walk

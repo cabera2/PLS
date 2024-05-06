@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -32,8 +33,8 @@ namespace Lumia
         private float _CurrentWalkSpeed;
         public float _MaxSpeed;
         public float _JumpForce;
-        [HideInInspector] public float leftStickX;
-        [HideInInspector] public float leftStickY;
+        [HideInInspector] public int leftStickX;
+        [HideInInspector] public int leftStickY;
         public float _CoyoteTime;
         private float _CoyoteTimer;
 
@@ -135,6 +136,7 @@ namespace Lumia
             _DefaultGravity = _RB.gravityScale;
             material = _mainSpriteRenderer.material;
             _bgmPlayer.clip = _MyCamera.GetComponent<StageManagerSC>()._StageBGM;
+            _SavedScene = _FileNumber == 0 ? _SavedScene = SceneManager.GetActiveScene().name : "OpeningStage";
         }
         void CacheComponents()
         {
@@ -176,9 +178,7 @@ namespace Lumia
             {
                 _em.rateOverDistanceMultiplier = 3;
             }
-
-            //Debug.Log("파티클 발생량: " + _em.rateOverDistanceMultiplier);
-            if (_CanControl == true)
+            if (_CanControl)
             {
                 _mainAnimator.SetFloat(AniXInputAbs, Mathf.Abs(leftStickX));
             }
@@ -186,7 +186,6 @@ namespace Lumia
             {
                 _mainAnimator.SetFloat(AniXInputAbs, Mathf.Abs(_AutoWalk));
             }
-            //_mainAnimator.SetFloat("_YInput", _UpDownInput);
             _mainAnimator.SetFloat(AniYVelocity, _RB.velocity.y);
             _mainAnimator.SetBool(AniIsGrounded, _IsGrounded);
             if (_CanControl == true)
@@ -236,8 +235,6 @@ namespace Lumia
             {
                 _SwordHanger.transform.localPosition = new Vector2(0, 0.1f);
             }
-
-            float _RSY = Input.GetAxisRaw("RightStickY");
             if (_myInput.GetButton(KeyType.Warp) == false)
             {
                 if (_CanControl == false || _IsGrounded == false || leftStickX != 0)
@@ -251,10 +248,7 @@ namespace Lumia
                     {
                         _LookUpDownTimer = 0;
                     }
-                    int _LUDR;
-                    _LUDR = _RSY > 0 ? 1 : _RSY < 0 ? -1 : 0;
-
-                    int LUDL = 0;
+                    int rightStickY = _myInput.GetAxis(KeyType.RightStick).y;
                     if (_LookUpDownTimer < 0.5f)
                     {
                         if (Mathf.Abs(leftStickY) > 0.5)
@@ -265,13 +259,12 @@ namespace Lumia
                     if (_LookUpDownTimer >= 0.5f)
                     {
                         float b = leftStickY;
-                        LUDL = b > 0 ? 1 : b < 0 ? -1 : 0;
+                        leftStickY = b > 0 ? 1 : b < 0 ? -1 : 0;
                     }
-                    int LUDS = LUDL + _LUDR;
-                    int LUDS2 = LUDS > 0 ? 1 : LUDS < 0 ? -1 : 0;
-                    _lumiaCamSc._LookUpDown = Mathf.MoveTowards(_lumiaCamSc._LookUpDown, LUDS2 * _LookUpDownDistance, Time.deltaTime * 30);
+                    int leftRightYMerge = leftStickY + rightStickY;
+                    int leftRightYMergeNormal = leftRightYMerge > 0 ? 1 : leftRightYMerge < 0 ? -1 : 0;
+                    _lumiaCamSc._LookUpDown = Mathf.MoveTowards(_lumiaCamSc._LookUpDown, leftRightYMergeNormal * _LookUpDownDistance, Time.deltaTime * 30);
                 }
-
             }
             else
             {
@@ -285,7 +278,6 @@ namespace Lumia
                 {
                     if (_myInput.GetButton(KeyType.Shoot) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
                     {
-                        //_reloadAudioSource.Play();
                         _IsReloading = true;
                         _ReloadTimer += Time.deltaTime;
                     }
