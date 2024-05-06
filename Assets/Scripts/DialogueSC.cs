@@ -119,7 +119,7 @@ public class DialogueSC : MonoBehaviour
         if (StageManagerSC._lumiaSc != null)
         {
             StageManagerSC._lumiaSc._CanControl = false;
-            StageManagerSC._lumiaSc._MoveInput = 0;
+            StageManagerSC._lumiaSc.leftStickX = 0;
         }
         else if (_Lumia.GetComponent<LumiaSlimeSC>() != null)
         {

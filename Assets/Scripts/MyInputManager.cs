@@ -69,29 +69,30 @@ public class MyInputManager
         }
     }
 
-    public Vector2 GetAxis(KeyType keyType)
+    public Vector2Int GetAxis(KeyType keyType)
     {
-        Vector2 output;
+        Vector2 input;
+        Vector2Int output = Vector2Int.zero;
         switch (keyType)
         {
             case KeyType.LeftStick:
             {
-                output = new Vector2(Input.GetAxisRaw("LeftStickX"), Input.GetAxisRaw("LeftStickY"));
-                if (output.x > 0)
-                {
-                    output.x = 1;
-                }
-                else if(output.x < 0)
+                input = new Vector2(Input.GetAxisRaw("LeftStickX"), Input.GetAxisRaw("LeftStickY"));
+                if (input.x < 0)
                 {
                     output.x = -1;
                 }
-                if (output.y > 0.5f)
+                else if (input.x > 0)
                 {
-                    output.y = 1;
+                    output.x = 1;
                 }
-                else if(output.y < -0.5f)
+                if (input.y < -0.5f)
                 {
                     output.y = -1;
+                }
+                else if (input.y > 0.5f)
+                {
+                    output.y = 1;
                 }
                 if(Input.GetKey(SysSaveSC._Keys[0]))
                 {
@@ -113,28 +114,25 @@ public class MyInputManager
             }
             case KeyType.RightStick:
             {
-                output = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
-                if (output.x > 0)
-                {
-                    output.x = 1;
-                }
-                else if(output.x < 0)
+                input = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
+                if (input.x < -0)
                 {
                     output.x = -1;
                 }
-                if (output.y > 0.5f)
+                else if (input.x > 0)
                 {
-                    output.y = 1;
+                    output.x = 1;
                 }
-                else if(output.y < -0.5f)
+                if (input.y < 0)
                 {
                     output.y = -1;
                 }
+                else if (input.y > 0)
+                {
+                    output.y = 1;
+                }
                 break;
             }
-            default:
-                output = Vector2.zero;
-                break;
         }
         return output;
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Lumia
 {
@@ -27,13 +28,12 @@ namespace Lumia
         public float _SR_Bright;
         [Header("Movement")]
         public bool _CanControl;
-        public bool _SmoothMove;
         public float _DefaultWalkSpeed;
         private float _CurrentWalkSpeed;
         public float _MaxSpeed;
         public float _JumpForce;
-        [HideInInspector] public float _MoveInput;
-        [HideInInspector] public float _UpDownInput;
+        [HideInInspector] public float leftStickX;
+        [HideInInspector] public float leftStickY;
         public float _CoyoteTime;
         private float _CoyoteTimer;
 
@@ -82,13 +82,9 @@ namespace Lumia
         public float _SwordSpeed;
         public float _TargetMarkSpeed;
         public float _ShotRebound;
-        //private int _NearestSword;
-        //private int _NearestSword_Old;
         private bool _InRange;
         private float _AtkTimer;
         public float _WarpDistance;
-        //[HideInInspector] public List<GameObject> _SwordList = new List<GameObject>();
-        //[HideInInspector] public List<float> _SwordDistanceList = new List<float>();
         private Vector2 _ShootVector;
         public bool _IsWarp;
         [Header("Reload Control")]
@@ -184,7 +180,7 @@ namespace Lumia
             //Debug.Log("파티클 발생량: " + _em.rateOverDistanceMultiplier);
             if (_CanControl == true)
             {
-                _mainAnimator.SetFloat(AniXInputAbs, Mathf.Abs(_MoveInput));
+                _mainAnimator.SetFloat(AniXInputAbs, Mathf.Abs(leftStickX));
             }
             else
             {
@@ -195,11 +191,11 @@ namespace Lumia
             _mainAnimator.SetBool(AniIsGrounded, _IsGrounded);
             if (_CanControl == true)
             {
-                if (_MoveInput > 0)
+                if (leftStickX > 0)
                 {
                     _mainSpriteRenderer.flipX = false;
                 }
-                else if (_MoveInput < 0)
+                else if (leftStickX < 0)
                 {
                     _mainSpriteRenderer.flipX = true;
                 }
@@ -244,14 +240,14 @@ namespace Lumia
             float _RSY = Input.GetAxisRaw("RightStickY");
             if (_myInput.GetButton(KeyType.Warp) == false)
             {
-                if (_CanControl == false || _IsGrounded == false || _MoveInput != 0)
+                if (_CanControl == false || _IsGrounded == false || leftStickX != 0)
                 {
                     _LookUpDownTimer = 0;
                     _lumiaCamSc._LookUpDown = 0;
                 }
                 else
                 {
-                    if (_UpDownInput == 0)
+                    if (leftStickY == 0)
                     {
                         _LookUpDownTimer = 0;
                     }
@@ -261,14 +257,14 @@ namespace Lumia
                     int LUDL = 0;
                     if (_LookUpDownTimer < 0.5f)
                     {
-                        if (Mathf.Abs(_UpDownInput) > 0.5)
+                        if (Mathf.Abs(leftStickY) > 0.5)
                         {
                             _LookUpDownTimer += Time.deltaTime;
                         }
                     }
                     if (_LookUpDownTimer >= 0.5f)
                     {
-                        float b = _UpDownInput;
+                        float b = leftStickY;
                         LUDL = b > 0 ? 1 : b < 0 ? -1 : 0;
                     }
                     int LUDS = LUDL + _LUDR;
@@ -327,17 +323,17 @@ namespace Lumia
                 if (_KnockbackCounter == 0 && _IsGrounded && _SwordStock >= 5)
                 {
                     
-                    if (Mathf.Abs(_UpDownInput) > 0.5f && _myInput.GetButtonDown(KeyType.Warp))
+                    if (Mathf.Abs(leftStickY) > 0.5f && _myInput.GetButtonDown(KeyType.Warp))
                     {
                         _WarpSwordHolder.SetBool("_Down", false);
-                        if (_UpDownInput > 0.5f && string.IsNullOrEmpty(_WarpScene) == false)
+                        if (leftStickY > 0.5f && string.IsNullOrEmpty(_WarpScene) == false)
                         {
                             _reloadAudioSource.Play();
                             _WarpChargeMove = true;
                             _mainAnimator.SetBool(AniIsWarpMoving, true);
                             _ReloadParticle.Play();
                         }
-                        else if (_UpDownInput < 0.5f)
+                        else if (leftStickY < 0.5f)
                         {
                             _reloadAudioSource.Play();
                             _WarpChargeSet = true;
@@ -426,7 +422,7 @@ namespace Lumia
                     if (_myInput.GetButtonDown(KeyType.Jump))
                     {
                         _CoyoteTimer = _CoyoteTime;
-                        if (_IsGrounded == true && _UpDownInput <= -0.5f)
+                        if (_IsGrounded == true && leftStickY <= -0.5f)
                         {
                             PlatformEffector2D _PassGround = FindObjectOfType<PlatformEffector2D>();
                             if (_PassGround != null)

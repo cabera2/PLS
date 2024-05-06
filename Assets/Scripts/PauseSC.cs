@@ -170,7 +170,7 @@ public class PauseSC : MonoBehaviour
         {
             Vector2 _V2 = StageManagerSC._LumiaInst.transform.position;
             _MapPin.transform.localPosition = (_V2 + StageManagerSC._MapOffsetNow) * 4 + _MapOffset;
-            if (_LSC._MoveInput != 0)
+            if (_LSC.leftStickX != 0)
             {
                 _MapPinAni.SetBool("_Walking", true);
             }

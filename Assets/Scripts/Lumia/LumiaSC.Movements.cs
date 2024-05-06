@@ -6,6 +6,7 @@ namespace Lumia
     {
         private void Move()
         {
+            Vector2Int leftStickInput = _myInput.GetAxis(KeyType.LeftStick);
             if (_KnockbackCounter > 0)
             {
                 _KnockbackCounter -= Time.deltaTime;
@@ -14,47 +15,23 @@ namespace Lumia
             {
                 if (_ReloadTimer < _StartReloadTime && _WarpTimer == 0 && _mainAnimator.GetBool(AniIsShielding) == false)
                 {
-                    if (_SmoothMove == true)
-                    {
-                        _MoveInput = Input.GetAxisRaw("LeftStickX");
-                    }
-                    else if (_SmoothMove == false)
-                    {
-                        int _LeftPressed = Input.GetKey(SysSaveSC._Keys[2]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[2]) == false ? 0 : 0;
-                        int _RightPressed = Input.GetKey(SysSaveSC._Keys[3]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[3]) == false ? 0 : 0;
-                        _MoveInput = Input.GetAxisRaw("LeftStickX") + _LeftPressed + _RightPressed;
-                        if (_MoveInput != 0)
-                        {
-                            if (_MoveInput < 0)
-                            {
-                                _MoveInput = -1f;
-                            }
-
-                            if (_MoveInput > 0)
-                            {
-                                _MoveInput = 1f;
-                            }
-                        }
-                    }
+                    leftStickX = leftStickInput.x;
                 }
                 else
                 {
-                    _MoveInput = 0;
+                    leftStickX = 0;
                 }
-
-                int _UpPressed = Input.GetKey(SysSaveSC._Keys[0]) == true ? 1 : Input.GetKey(SysSaveSC._Keys[0]) == false ? 0 : 0;
-                int _DownPressed = Input.GetKey(SysSaveSC._Keys[1]) == true ? -1 : Input.GetKey(SysSaveSC._Keys[1]) == false ? 0 : 0;
-                _UpDownInput = Input.GetAxisRaw("LeftStickY") + _UpPressed + _DownPressed;
-                if (_UpDownInput != 0)
+                leftStickY = leftStickInput.y;
+                if (leftStickY != 0)
                 {
-                    if (_UpDownInput < -0.5f)
+                    if (leftStickY < -0.5f)
                     {
-                        _UpDownInput = -1f;
+                        leftStickY = -1f;
                     }
 
-                    if (_UpDownInput > 0.5f)
+                    if (leftStickY > 0.5f)
                     {
-                        _UpDownInput = 1f;
+                        leftStickY = 1f;
                     }
                 }
 
@@ -71,7 +48,7 @@ namespace Lumia
                     }
                     if (_RB.bodyType == RigidbodyType2D.Dynamic)
                     {
-                        _RB.velocity = new Vector2(_MoveInput * _CurrentWalkSpeed, _RB.velocity.y);
+                        _RB.velocity = new Vector2(leftStickX * _CurrentWalkSpeed, _RB.velocity.y);
                     }
                     //Jump
                     if (_myInput.GetButton(KeyType.Jump) && _IsJumping)

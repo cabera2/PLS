@@ -31,14 +31,14 @@ public class ChairSC : MonoBehaviour
         if (_LSC != null)
         {
             //Debug.Log(_LSC._MoveInput + "" + _CanStand);
-            if (Mathf.Abs(_LSC._UpDownInput) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
+            if (Mathf.Abs(_LSC.leftStickY) > 0.5f && GetComponent<GetArrowSC>()._Enabled == true)
             {
                 _LSC._CanControl = false;
                 _CanStand = false;
                 StartCoroutine(_MoveToPos());
             }
 
-            else if (Mathf.Abs(_LSC._MoveInput) > 0.5f && _CanStand == true && GetComponent<BoxCollider2D>().IsTouching(StageManagerSC._LumiaInst.GetComponent<BoxCollider2D>()))
+            else if (Mathf.Abs(_LSC.leftStickX) > 0.5f && _CanStand == true && GetComponent<BoxCollider2D>().IsTouching(StageManagerSC._LumiaInst.GetComponent<BoxCollider2D>()))
             {
                 StageManagerSC._LumiaInst.GetComponent<Animator>().SetBool(_aniIsSitting, false);
                 _LSC._CanControl = true;

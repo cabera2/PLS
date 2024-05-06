@@ -28,13 +28,13 @@ namespace Lumia
 
             _mainAnimator.SetTrigger(AniDoSlash);
             if (_mainSpriteRenderer.flipX) _SlashInst.GetComponent<SpriteRenderer>().flipX = true;
-            if (_UpDownInput > 0.5f)
+            if (leftStickY > 0.5f)
             {
                 _mainAnimator.SetFloat(AniAtkDirection, 1);
                 _SlashInst.transform.localPosition = new Vector3(0f, 0.7f, -0.1f);
                 _SlashInst.transform.rotation = Quaternion.Euler(0, 0, 180);
             }
-            else if (_UpDownInput < -0.5f && _IsGrounded == false)
+            else if (leftStickY < -0.5f && _IsGrounded == false)
             {
                 _mainAnimator.SetFloat(AniAtkDirection, -1);
                 _SlashInst.transform.localPosition = new Vector3(0f, 0.7f, -0.1f);
@@ -57,7 +57,7 @@ namespace Lumia
             {
                 float _ShootAngle = 0;
                 var _ShootRC = new RaycastHit2D();
-                if (_UpDownInput > 0.5f)
+                if (leftStickY > 0.5f)
                 {
                     _mainAnimator.SetFloat(AniAtkDirection, 1);
                     _ShootAngle = 180;
@@ -65,7 +65,7 @@ namespace Lumia
                         new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z), Vector2.up,
                         Mathf.Infinity, _GroundLayer);
                 }
-                else if (_UpDownInput < -0.5f && _IsGrounded == false)
+                else if (leftStickY < -0.5f && _IsGrounded == false)
                 {
                     _mainAnimator.SetFloat(AniAtkDirection, -1);
                     _ShootAngle = 0;
