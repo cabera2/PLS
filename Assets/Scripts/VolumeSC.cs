@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class VolumeSC : MonoBehaviour
 {
@@ -15,11 +12,12 @@ public class VolumeSC : MonoBehaviour
     public RectTransform _GaugeObj;
     public Animator[] _ArrowAni;
     private int _Value;
-    private MyInputManager _myInput = new();
+    private MyInputManager _myInput;
 
     // Start is called before the first frame update
     void Start()
     {
+        _myInput = Lumia.LumiaSC.MyInput;
         _Value = _Type == 0 ? SysSaveSC._Vol_Master : _Type == 1 ? SysSaveSC._Vol_BGM : _Type == 2 ? SysSaveSC._Vol_SFX : 10;
         _NumTextObj.text = _Value.ToString();
         _GaugeObj.sizeDelta = new Vector2(20 * _Value, 10);

@@ -126,7 +126,10 @@ namespace Lumia
         public List<int> _PermanentFlag = new List<int>();
         public List<int> _TemporaryFlag = new List<int>();
 
-        // Use this for initialization
+        void Awake()
+        {
+            MyInput = new();
+        }
         void Start()
         {
             //Debug.Log(Input.GetJoystickNames()[0] + "연결");
@@ -219,7 +222,7 @@ namespace Lumia
             }
 
             //활공 중지
-            if (_RB.gravityScale != _DefaultGravity && (_myInput.GetButtonUp(KeyType.Jump) || _CanControl == false || _IsGrounded || _RB.constraints == RigidbodyConstraints2D.FreezeAll))
+            if (_RB.gravityScale != _DefaultGravity && (MyInput.GetButtonUp(KeyType.Jump) || _CanControl == false || _IsGrounded || _RB.constraints == RigidbodyConstraints2D.FreezeAll))
             {
                 _mainAnimator.SetBool(AniIsGliding, false);
                 _RB.gravityScale = _DefaultGravity;
@@ -235,7 +238,7 @@ namespace Lumia
             {
                 _SwordHanger.transform.localPosition = new Vector2(0, 0.1f);
             }
-            if (_myInput.GetButton(KeyType.Warp) == false)
+            if (MyInput.GetButton(KeyType.Warp) == false)
             {
                 if (_CanControl == false || _IsGrounded == false || leftStickX != 0)
                 {
@@ -248,7 +251,7 @@ namespace Lumia
                     {
                         _LookUpDownTimer = 0;
                     }
-                    int rightStickY = _myInput.GetAxis(KeyType.RightStick).y;
+                    int rightStickY = MyInput.GetAxis(KeyType.RightStick).y;
                     if (_LookUpDownTimer < 0.5f)
                     {
                         if (Mathf.Abs(leftStickY) > 0.5)
@@ -271,17 +274,17 @@ namespace Lumia
                 _LookUpDownTimer = 0;
             }
         
-            if (_CanControl && _myInput.GetButton(KeyType.Map) == false && _KnockbackCounter <= 0)
+            if (_CanControl && MyInput.GetButton(KeyType.Map) == false && _KnockbackCounter <= 0)
             {
                 //Reloading
                 if (_IsGrounded == true && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
                 {
-                    if (_myInput.GetButton(KeyType.Shoot) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
+                    if (MyInput.GetButton(KeyType.Shoot) && _IsReloading == false && _ReloadTimer <= 0 && _SwordStock < _SwordMax)
                     {
                         _IsReloading = true;
                         _ReloadTimer += Time.deltaTime;
                     }
-                    if (_myInput.GetButton(KeyType.Shoot) && _IsReloading)
+                    if (MyInput.GetButton(KeyType.Shoot) && _IsReloading)
                     {
                         _ReloadTimer += Time.deltaTime;
                         if (_ReloadTimer >= _StartReloadTime && _IsReloading)
@@ -315,7 +318,7 @@ namespace Lumia
                 if (_KnockbackCounter == 0 && _IsGrounded && _SwordStock >= 5)
                 {
                     
-                    if (Mathf.Abs(leftStickY) > 0.5f && _myInput.GetButtonDown(KeyType.Warp))
+                    if (Mathf.Abs(leftStickY) > 0.5f && MyInput.GetButtonDown(KeyType.Warp))
                     {
                         _WarpSwordHolder.SetBool("_Down", false);
                         if (leftStickY > 0.5f && string.IsNullOrEmpty(_WarpScene) == false)
@@ -334,7 +337,7 @@ namespace Lumia
                         }
                     }
 
-                    if ((_WarpChargeMove || _WarpChargeSet) && _myInput.GetButton(KeyType.Warp) && _KnockbackCounter == 0 && _IsGrounded)
+                    if ((_WarpChargeMove || _WarpChargeSet) && MyInput.GetButton(KeyType.Warp) && _KnockbackCounter == 0 && _IsGrounded)
                     {
                         _WarpTimer += Time.deltaTime;
                     }
@@ -377,7 +380,7 @@ namespace Lumia
                 }
 
                 //Shield
-                if (_myInput.GetButton(KeyType.Shield) && _SwordStock >= 2 && _IsGrounded == true)
+                if (MyInput.GetButton(KeyType.Shield) && _SwordStock >= 2 && _IsGrounded == true)
                 {
                     _mainAnimator.SetBool(AniIsShielding, true);
                 }
@@ -386,24 +389,24 @@ namespace Lumia
                     _mainAnimator.SetBool(AniIsShielding, false);
                 }
                 //SwordShot
-                if ((_myInput.GetButtonUp(KeyType.Shoot)) && Time.timeScale > 0 && _AtkTimer <= 0)
+                if ((MyInput.GetButtonUp(KeyType.Shoot)) && Time.timeScale > 0 && _AtkTimer <= 0)
                 {
                     Shoot();
                 }
 
                 //When not Reloading
-                if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && _myInput.GetButton(KeyType.Warp) == false && _mainAnimator.GetBool(AniIsShielding) == false)
+                if ((_ReloadTimer < _StartReloadTime || _ReloadTimer >= _ReloadTime || _IsReloading == false) && Time.timeScale > 0 && MyInput.GetButton(KeyType.Warp) == false && _mainAnimator.GetBool(AniIsShielding) == false)
                 {
                     //Glide
                     if (_SwordStock >= 3 && _IsGrounded == false && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
                     {
-                        if (_myInput.GetButtonDown(KeyType.Jump) && _AutoGlide == false)
+                        if (MyInput.GetButtonDown(KeyType.Jump) && _AutoGlide == false)
                         {
                             _mainAnimator.SetBool(AniIsGliding, true);
                             _RB.velocity = Vector2.up * 0f;
                             _RB.gravityScale = 0.5f;
                         }
-                        else if (_myInput.GetButton(KeyType.Jump) && _AutoGlide && _RB.velocity.y < 0)
+                        else if (MyInput.GetButton(KeyType.Jump) && _AutoGlide && _RB.velocity.y < 0)
                         {
                             _mainAnimator.SetBool(AniIsGliding, true);
                             _RB.gravityScale = 0.5f;
@@ -411,7 +414,7 @@ namespace Lumia
                     }
 
                     //GroundPass
-                    if (_myInput.GetButtonDown(KeyType.Jump))
+                    if (MyInput.GetButtonDown(KeyType.Jump))
                     {
                         _CoyoteTimer = _CoyoteTime;
                         if (_IsGrounded == true && leftStickY <= -0.5f)
@@ -452,12 +455,12 @@ namespace Lumia
                         }
                     }
                     //Slash
-                    if (_myInput.GetButtonDown(KeyType.Slash) & _AtkTimer <= 0)
+                    if (MyInput.GetButtonDown(KeyType.Slash) & _AtkTimer <= 0)
                     {
                         Slash();
                     }
                     //Teleport
-                    if (_myInput.GetButtonUp(KeyType.Teleport) && _nearestSword != null)
+                    if (MyInput.GetButtonUp(KeyType.Teleport) && _nearestSword != null)
                     {
                         Teleport();
                     }

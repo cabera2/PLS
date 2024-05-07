@@ -6,7 +6,7 @@ namespace Lumia
     {
         private void Move()
         {
-            Vector2Int leftStickInput = _myInput.GetAxis(KeyType.LeftStick);
+            Vector2Int leftStickInput = MyInput.GetAxis(KeyType.LeftStick);
             if (_KnockbackCounter > 0)
             {
                 _KnockbackCounter -= Time.deltaTime;
@@ -38,7 +38,7 @@ namespace Lumia
                         _RB.velocity = new Vector2(leftStickX * _CurrentWalkSpeed, _RB.velocity.y);
                     }
                     //Jump
-                    if (_myInput.GetButton(KeyType.Jump) && _IsJumping)
+                    if (MyInput.GetButton(KeyType.Jump) && _IsJumping)
                     {
                         if (_JumpTimeCounter > 0 && _JumpCountCounter > 0)
                         {
@@ -52,7 +52,7 @@ namespace Lumia
                         }
                     }
                     //StopJump
-                    if (_myInput.GetButtonDown(KeyType.Jump) && _JumpCountCounter > 0)
+                    if (MyInput.GetButtonDown(KeyType.Jump) && _JumpCountCounter > 0)
                     {
                         _JumpCountCounter -= 1;
                     }

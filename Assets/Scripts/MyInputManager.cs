@@ -1,5 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
+using UnityEngine.InputSystem;
 
 public enum KeyType
 {
@@ -7,66 +8,39 @@ public enum KeyType
 }
 public class MyInputManager
 {
+    private PLS_InputActions _inputAction;
+    private readonly Dictionary<KeyType, InputAction> _inputActions = new() ;
+
+    public MyInputManager()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        _inputAction = new();
+        _inputActions.Add(KeyType.LeftStick, _inputAction.LumiaAction.LeftStick);
+        _inputActions.Add(KeyType.Map, _inputAction.LumiaAction.Map);
+        _inputActions.Add(KeyType.Jump, _inputAction.LumiaAction.Jump);
+        _inputActions.Add(KeyType.Slash, _inputAction.LumiaAction.Slash);
+        _inputActions.Add(KeyType.Shoot, _inputAction.LumiaAction.Shoot);
+        _inputActions.Add(KeyType.Teleport, _inputAction.LumiaAction.Teleport);
+        foreach (var item in _inputActions)
+        {
+            item.Value.Enable();
+        }
+    }
     public bool GetButton(KeyType keyType)
     {
-        switch (keyType)
-        {
-            case KeyType.Map:
-                return Input.GetButton("Map") || Input.GetKey(SysSaveSC._Keys[4]);
-            case KeyType.Jump:
-                return Input.GetButton("ButtonA") || Input.GetKey(SysSaveSC._Keys[5]);
-            case KeyType.Shoot:
-                return Input.GetButton("ButtonB") || Input.GetKey(SysSaveSC._Keys[7]);
-            case KeyType.Warp:
-                return Input.GetButton("Warp") || Input.GetKey(SysSaveSC._Keys[13]);
-            case KeyType.Shield:
-                return Input.GetAxisRaw("Shield") >= 0.5f || Input.GetKey(SysSaveSC._Keys[14]);
-            default:
-                //Debug.Log("Unknown GetButton");
-                return false;
-        }
+        return _inputActions.ContainsKey(keyType) && _inputActions[keyType].IsPressed();
     }
     public bool GetButtonDown(KeyType keyType)
     {
-        switch (keyType)
-        {
-            case KeyType.Map:
-                return Input.GetButtonDown("Map") || Input.GetKeyDown(SysSaveSC._Keys[4]);
-            case KeyType.Jump:
-                return Input.GetButtonDown("ButtonA") || Input.GetKeyDown(SysSaveSC._Keys[5]);
-            case KeyType.Slash:
-                return Input.GetButtonDown("ButtonX") || Input.GetKeyDown(SysSaveSC._Keys[6]);
-            case KeyType.Submit:
-                return Input.GetButtonDown("Submit") || Input.GetKeyDown(SysSaveSC._Keys[9]);
-            case KeyType.Cancel:
-                return Input.GetButtonDown("Cancel") || Input.GetKeyDown(SysSaveSC._Keys[10]);
-            case KeyType.Warp:
-                return Input.GetButtonDown("Warp") || Input.GetKeyDown(SysSaveSC._Keys[13]);
-            default:
-                //Debug.Log("Unknown GetButtonDown");
-                return false;
-        }
+        return _inputActions.ContainsKey(keyType) && _inputActions[keyType].WasPressedThisFrame();
     }
     public bool GetButtonUp(KeyType keyType)
     {
-        switch (keyType)
-        {
-            case KeyType.Map:
-                return Input.GetButtonUp("Map") || Input.GetKeyUp(SysSaveSC._Keys[4]);
-            case KeyType.Jump:
-                return Input.GetButtonUp("ButtonA") || Input.GetKeyUp(SysSaveSC._Keys[5]);
-            case KeyType.Shoot:
-                return Input.GetButtonUp("ButtonB") || Input.GetKeyUp(SysSaveSC._Keys[7]);
-            case KeyType.Teleport:
-                return Input.GetButtonUp("ButtonR1") || Input.GetKeyUp(SysSaveSC._Keys[8]);
-            case KeyType.Pause:
-                return Input.GetButtonUp("Pause") || Input.GetKeyUp(SysSaveSC._Keys[11]);
-            case KeyType.Status:
-                return Input.GetButtonUp("Status") || Input.GetKeyUp(SysSaveSC._Keys[12]);
-            default:
-                //Debug.Log("Unknown GetButtonUp");
-                return false;
-        }
+        return _inputActions.ContainsKey(keyType) && _inputActions[keyType].WasReleasedThisFrame();
     }
 
     public Vector2Int GetAxis(KeyType keyType)
@@ -77,7 +51,7 @@ public class MyInputManager
         {
             case KeyType.LeftStick:
             {
-                input = new Vector2(Input.GetAxisRaw("LeftStickX"), Input.GetAxisRaw("LeftStickY"));
+                input = _inputActions[KeyType.LeftStick].ReadValue<Vector2>();
                 if (input.x < 0)
                 {
                     output.x = -1;
@@ -94,43 +68,27 @@ public class MyInputManager
                 {
                     output.y = 1;
                 }
-                if(Input.GetKey(SysSaveSC._Keys[0]))
-                {
-                    output.y += 1;
-                }
-                if(Input.GetKey(SysSaveSC._Keys[1]))
-                {
-                    output.y -= 1;
-                }
-                if(Input.GetKey(SysSaveSC._Keys[2]))
-                {
-                    output.x -= 1;
-                }
-                if(Input.GetKey(SysSaveSC._Keys[3]))
-                {
-                    output.x += 1;
-                }
                 break;
             }
             case KeyType.RightStick:
             {
-                input = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
-                if (input.x < -0)
-                {
-                    output.x = -1;
-                }
-                else if (input.x > 0)
-                {
-                    output.x = 1;
-                }
-                if (input.y < 0)
-                {
-                    output.y = -1;
-                }
-                else if (input.y > 0)
-                {
-                    output.y = 1;
-                }
+                // input = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
+                // if (input.x < -0)
+                // {
+                //     output.x = -1;
+                // }
+                // else if (input.x > 0)
+                // {
+                //     output.x = 1;
+                // }
+                // if (input.y < 0)
+                // {
+                //     output.y = -1;
+                // }
+                // else if (input.y > 0)
+                // {
+                //     output.y = 1;
+                // }
                 break;
             }
         }

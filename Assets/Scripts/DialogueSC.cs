@@ -23,7 +23,12 @@ public class DialogueSC : MonoBehaviour
     public bool _StartByTouch;
     public bool _EndDestroy;
     public bool _EndRebound;
-    private readonly MyInputManager _myInput = new();
+    private MyInputManager _myInput;
+
+    void Start()
+    {
+        _myInput = LumiaSC.MyInput;
+    }
     void Update()
     {
         if (_Talking == true)

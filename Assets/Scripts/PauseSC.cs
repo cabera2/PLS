@@ -39,11 +39,12 @@ public class PauseSC : MonoBehaviour
     private float _SwordStockTimer;
     private Animator _Ani;
     private CanvasGroup _CG;
-    private readonly MyInputManager _myInput = new();
+    private MyInputManager _myInput;
 
     // Start is called before the first frame update
     void Start()
     {
+        _myInput = LumiaSC.MyInput;
         _MapOffset = _MapWin.transform.GetChild(0).localPosition;
         _MapPinAni = _MapPin.GetComponent<Animator>();
         _Ani = GetComponent<Animator>();

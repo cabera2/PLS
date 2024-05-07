@@ -37,9 +37,10 @@ namespace Lumia
         private AudioSource _AS;
         public AudioClip[] _SFX;
         private LumiaCamSC _CamSC;
-        private MyInputManager _myInput = new();
+        private MyInputManager _myInput;
         void Start()
         {
+            _myInput = LumiaSC.MyInput;
             _RB = GetComponent<Rigidbody2D>();
             _ANI = GetComponent<Animator>();
             _SR = GetComponent<SpriteRenderer>();
