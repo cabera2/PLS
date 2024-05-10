@@ -27,7 +27,7 @@ public class DialogueSC : MonoBehaviour
 
     void Start()
     {
-        _myInput = LumiaSC.MyInput;
+        _myInput = MyInputManager.GetMyInput();
     }
     void Update()
     {

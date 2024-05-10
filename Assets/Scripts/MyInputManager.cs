@@ -10,29 +10,56 @@ public class MyInputManager
 {
     private PLS_InputActions _inputAction;
     private readonly Dictionary<KeyType, InputAction> _inputActions = new() ;
+    private static MyInputManager _staticMyInput;
 
-    public MyInputManager()
+    public static MyInputManager GetMyInput()
     {
-        Initialize();
+        if (_staticMyInput == null)
+        {
+            _staticMyInput = new MyInputManager();
+            _staticMyInput.Initialize();
+        }
+        return _staticMyInput;
     }
 
     private void Initialize()
     {
         _inputAction = new();
-        _inputActions.Add(KeyType.LeftStick, _inputAction.LumiaAction.LeftStick);
-        _inputActions.Add(KeyType.Map, _inputAction.LumiaAction.Map);
-        _inputActions.Add(KeyType.Jump, _inputAction.LumiaAction.Jump);
-        _inputActions.Add(KeyType.Slash, _inputAction.LumiaAction.Slash);
-        _inputActions.Add(KeyType.Shoot, _inputAction.LumiaAction.Shoot);
-        _inputActions.Add(KeyType.Teleport, _inputAction.LumiaAction.Teleport);
-        foreach (var item in _inputActions)
+        _inputActions.Add(KeyType.LeftStick, _inputAction.LumiaActions.LeftStick);
+        _inputActions.Add(KeyType.RightStick, _inputAction.LumiaActions.RightStick);
+        _inputActions.Add(KeyType.Map, _inputAction.LumiaActions.Map);
+        _inputActions.Add(KeyType.Jump, _inputAction.LumiaActions.Jump);
+        _inputActions.Add(KeyType.Slash, _inputAction.LumiaActions.Slash);
+        _inputActions.Add(KeyType.Shoot, _inputAction.LumiaActions.Shoot);
+        _inputActions.Add(KeyType.Teleport, _inputAction.LumiaActions.Teleport);
+        _inputActions.Add(KeyType.Submit, _inputAction.UIActions.Submit);
+        _inputActions.Add(KeyType.Cancel, _inputAction.UIActions.Cancel);
+        _inputActions.Add(KeyType.Pause, _inputAction.UIActions.Pause);
+        _inputActions.Add(KeyType.Status, _inputAction.UIActions.Status);
+        _inputActions.Add(KeyType.Warp, _inputAction.LumiaActions.Warp);
+        _inputActions.Add(KeyType.Shield, _inputAction.LumiaActions.Shield);
+        _inputAction.LumiaActions.Enable();
+        _inputAction.UIActions.Enable();
+    }
+    public void PlayerActionOnOff(bool on)
+    {
+        if (on)
         {
-            item.Value.Enable();
+            _inputAction.LumiaActions.Enable();
+        }
+        else
+        {
+            _inputAction.LumiaActions.Disable();
         }
     }
     public bool GetButton(KeyType keyType)
     {
+        if (keyType == KeyType.Shield)
+        {
+            return _inputActions[KeyType.Shield].ReadValue<float>() > 0.5f;
+        }
         return _inputActions.ContainsKey(keyType) && _inputActions[keyType].IsPressed();
+
     }
     public bool GetButtonDown(KeyType keyType)
     {
@@ -72,23 +99,24 @@ public class MyInputManager
             }
             case KeyType.RightStick:
             {
-                // input = new Vector2(Input.GetAxisRaw("RightStickX"), Input.GetAxisRaw("RightStickY"));
-                // if (input.x < -0)
-                // {
-                //     output.x = -1;
-                // }
-                // else if (input.x > 0)
-                // {
-                //     output.x = 1;
-                // }
-                // if (input.y < 0)
-                // {
-                //     output.y = -1;
-                // }
-                // else if (input.y > 0)
-                // {
-                //     output.y = 1;
-                // }
+                
+                input = _inputActions[KeyType.RightStick].ReadValue<Vector2>();
+                if (input.x < -0)
+                {
+                    output.x = -1;
+                }
+                else if (input.x > 0)
+                {
+                    output.x = 1;
+                }
+                if (input.y < 0)
+                {
+                    output.y = -1;
+                }
+                else if (input.y > 0)
+                {
+                    output.y = 1;
+                }
                 break;
             }
         }
