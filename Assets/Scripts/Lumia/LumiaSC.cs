@@ -125,13 +125,10 @@ namespace Lumia
         [Header("Flags")]
         public List<int> _PermanentFlag = new List<int>();
         public List<int> _TemporaryFlag = new List<int>();
-
-        void Awake()
-        {
-            MyInput = new();
-        }
+        
         void Start()
         {
+            MyInput = MyInputManager.GetMyInput();
             //Debug.Log(Input.GetJoystickNames()[0] + "연결");
             CacheComponents();
             StartCoroutine(StartC());

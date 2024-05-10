@@ -40,7 +40,7 @@ namespace Lumia
         private MyInputManager _myInput;
         void Start()
         {
-            _myInput = LumiaSC.MyInput;
+            _myInput = MyInputManager.GetMyInput();
             _RB = GetComponent<Rigidbody2D>();
             _ANI = GetComponent<Animator>();
             _SR = GetComponent<SpriteRenderer>();

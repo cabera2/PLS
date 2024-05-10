@@ -76,7 +76,6 @@ public class SysSaveSC : MonoBehaviour
     public static void _SysSave()
     {
         BinaryFormatter _BF = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/SysSave.dat");
         SysSaveCon data = new SysSaveCon();
         data._Language = _Language;
         data._LastFile = _LastFile;
@@ -84,15 +83,20 @@ public class SysSaveSC : MonoBehaviour
         data._Vol_BGM = _Vol_BGM;
         data._Vol_SFX = _Vol_SFX;
         data._Keys = _Keys;
+#if UNITY_STANDALONE_WIN
+        FileStream file = File.Create(Application.persistentDataPath + "/SysSave.dat");
         _BF.Serialize(file, data);
         file.Close();
         Debug.Log("시스템 설정이 저장되었습니다. 언어:" + _Language + "마지막 파일" + _LastFile);
+#endif
     }
     public static void _SysLoad()
     {
         BinaryFormatter _BF = new BinaryFormatter();
-        bool _CheckExist = File.Exists(Application.persistentDataPath + "/SysSave.dat");
-        if (_CheckExist == true)
+        bool _CheckExist = false;
+#if UNITY_STANDALONE_WIN
+        _CheckExist = File.Exists(Application.persistentDataPath + "/SysSave.dat");
+        if (_CheckExist)
         {
             FileStream file = File.Open(Application.persistentDataPath + "/SysSave.dat", FileMode.Open);
             SysSaveCon data = (SysSaveCon)_BF.Deserialize(file);
@@ -118,14 +122,14 @@ public class SysSaveSC : MonoBehaviour
         }
         _Loading = false;
         Debug.Log("시스템 설정이 로드 완료. 음량: " + _Vol_Master + "/" + _Vol_BGM + "/" + _Vol_SFX);
+#endif
     }
     public static void _CharSave()
     {
         LumiaSC _LSC = StageManagerSC._LumiaInst.GetComponent<LumiaSC>();
         BinaryFormatter _BF = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/CharSave" + _LSC._FileNumber + ".dat");
+        
         CharSaveCon data = new CharSaveCon();
-
         data._Scene = _LSC._SavedScene;
         data._HP_Max = _LSC._Hitbox.GetComponent<LumiaHitboxSC>()._HP_Max;
         data._PlayTime = _LSC._PlayTime;
@@ -138,13 +142,16 @@ public class SysSaveSC : MonoBehaviour
         data._WarpLv = _LSC.levelData.warpLv;
         data._SwordSizeLv = _LSC.levelData.swordSizeLv;
         data._PermanentFlag = _LSC._PermanentFlag;
-
+#if UNITY_STANDALONE_WIN
+        FileStream file = File.Create(Application.persistentDataPath + "/CharSave" + _LSC._FileNumber + ".dat");
         _BF.Serialize(file, data);
         file.Close();
         Debug.Log("캐릭터 데이터가 " + _LSC._FileNumber + "번 파일에 저장되었습니다." + data._HP_Max);
+#endif
     }
     public static void _CharLoad(int _FileNumber, LoadButtonSC LBSC)
     {
+#if UNITY_STANDALONE_WIN
         BinaryFormatter _BF = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "/CharSave" + _FileNumber + ".dat", FileMode.Open);
         CharSaveCon data = (CharSaveCon)_BF.Deserialize(file);
@@ -162,5 +169,6 @@ public class SysSaveSC : MonoBehaviour
         LBSC._PermanentFlag = data._PermanentFlag;
         file.Close();
         LBSC._ChangeText();
+#endif
     }
 }

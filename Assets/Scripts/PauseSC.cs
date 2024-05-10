@@ -44,7 +44,7 @@ public class PauseSC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myInput = LumiaSC.MyInput;
+        _myInput = MyInputManager.GetMyInput();
         _MapOffset = _MapWin.transform.GetChild(0).localPosition;
         _MapPinAni = _MapPin.GetComponent<Animator>();
         _Ani = GetComponent<Animator>();

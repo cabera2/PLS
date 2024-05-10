@@ -24,7 +24,7 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
     ""name"": ""PLS_InputActions"",
     ""maps"": [
         {
-            ""name"": ""LumiaAction"",
+            ""name"": ""LumiaActions"",
             ""id"": ""6dba18fb-b79c-4e81-a7b9-55401bcaf6be"",
             ""actions"": [
                 {
@@ -80,6 +80,33 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightStick"",
+                    ""type"": ""Button"",
+                    ""id"": ""981809a2-2f82-4fee-ab02-1aa42c2141ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Warp"",
+                    ""type"": ""Button"",
+                    ""id"": ""1215b86f-f252-4ce2-a0d6-8e4769ec9cb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Value"",
+                    ""id"": ""4a8070c8-5cc8-4ab3-96e9-e93431ddad95"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -258,6 +285,193 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Teleport"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27d1f6be-017f-4c06-9641-29365d370295"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b5cf4b8-17de-48ab-9c83-1cb1362e8bf1"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Warp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""058e6b63-e5b8-47b3-bde3-124fc0a1e137"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Warp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08c1d7c3-83f3-4790-ac65-5e686756d92a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1106ab8f-c5bb-4efe-827f-4c09fe44f43e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UIActions"",
+            ""id"": ""a29c5d03-9a13-4e26-946d-663a80d4d9ae"",
+            ""actions"": [
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee844cbc-9c41-4844-ab9d-6c954f781c63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""7cac16ed-52b0-4c75-a2ba-5fed562f3963"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""51168a6a-5c47-4811-ac3c-51df7c6b26a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Status"",
+                    ""type"": ""Button"",
+                    ""id"": ""68a653ef-c46f-4eba-b3e1-a54479bfce5d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""215ed3e8-e40a-4de8-9104-038bcf4e200a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91a09dc3-6564-494c-afe7-ec010b34804d"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f15bae80-097f-4d36-a323-64aaea036bfd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6485b44-c05f-40fb-a763-fd984248df96"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f9cc5e1-688f-4476-872f-7f7db6708f36"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b588fdba-5ec0-4c32-9c81-33b3cfca898c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""321a236a-428d-4739-9ef7-23fcb82d0f01"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Status"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0880bc4a-c0b3-41db-842a-d4f100ade202"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Status"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -286,14 +500,23 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // LumiaAction
-        m_LumiaAction = asset.FindActionMap("LumiaAction", throwIfNotFound: true);
-        m_LumiaAction_LeftStick = m_LumiaAction.FindAction("LeftStick", throwIfNotFound: true);
-        m_LumiaAction_Map = m_LumiaAction.FindAction("Map", throwIfNotFound: true);
-        m_LumiaAction_Jump = m_LumiaAction.FindAction("Jump", throwIfNotFound: true);
-        m_LumiaAction_Slash = m_LumiaAction.FindAction("Slash", throwIfNotFound: true);
-        m_LumiaAction_Shoot = m_LumiaAction.FindAction("Shoot", throwIfNotFound: true);
-        m_LumiaAction_Teleport = m_LumiaAction.FindAction("Teleport", throwIfNotFound: true);
+        // LumiaActions
+        m_LumiaActions = asset.FindActionMap("LumiaActions", throwIfNotFound: true);
+        m_LumiaActions_LeftStick = m_LumiaActions.FindAction("LeftStick", throwIfNotFound: true);
+        m_LumiaActions_Map = m_LumiaActions.FindAction("Map", throwIfNotFound: true);
+        m_LumiaActions_Jump = m_LumiaActions.FindAction("Jump", throwIfNotFound: true);
+        m_LumiaActions_Slash = m_LumiaActions.FindAction("Slash", throwIfNotFound: true);
+        m_LumiaActions_Shoot = m_LumiaActions.FindAction("Shoot", throwIfNotFound: true);
+        m_LumiaActions_Teleport = m_LumiaActions.FindAction("Teleport", throwIfNotFound: true);
+        m_LumiaActions_RightStick = m_LumiaActions.FindAction("RightStick", throwIfNotFound: true);
+        m_LumiaActions_Warp = m_LumiaActions.FindAction("Warp", throwIfNotFound: true);
+        m_LumiaActions_Shield = m_LumiaActions.FindAction("Shield", throwIfNotFound: true);
+        // UIActions
+        m_UIActions = asset.FindActionMap("UIActions", throwIfNotFound: true);
+        m_UIActions_Submit = m_UIActions.FindAction("Submit", throwIfNotFound: true);
+        m_UIActions_Cancel = m_UIActions.FindAction("Cancel", throwIfNotFound: true);
+        m_UIActions_Pause = m_UIActions.FindAction("Pause", throwIfNotFound: true);
+        m_UIActions_Status = m_UIActions.FindAction("Status", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -352,34 +575,40 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // LumiaAction
-    private readonly InputActionMap m_LumiaAction;
-    private List<ILumiaActionActions> m_LumiaActionActionsCallbackInterfaces = new List<ILumiaActionActions>();
-    private readonly InputAction m_LumiaAction_LeftStick;
-    private readonly InputAction m_LumiaAction_Map;
-    private readonly InputAction m_LumiaAction_Jump;
-    private readonly InputAction m_LumiaAction_Slash;
-    private readonly InputAction m_LumiaAction_Shoot;
-    private readonly InputAction m_LumiaAction_Teleport;
-    public struct LumiaActionActions
+    // LumiaActions
+    private readonly InputActionMap m_LumiaActions;
+    private List<ILumiaActionsActions> m_LumiaActionsActionsCallbackInterfaces = new List<ILumiaActionsActions>();
+    private readonly InputAction m_LumiaActions_LeftStick;
+    private readonly InputAction m_LumiaActions_Map;
+    private readonly InputAction m_LumiaActions_Jump;
+    private readonly InputAction m_LumiaActions_Slash;
+    private readonly InputAction m_LumiaActions_Shoot;
+    private readonly InputAction m_LumiaActions_Teleport;
+    private readonly InputAction m_LumiaActions_RightStick;
+    private readonly InputAction m_LumiaActions_Warp;
+    private readonly InputAction m_LumiaActions_Shield;
+    public struct LumiaActionsActions
     {
         private @PLS_InputActions m_Wrapper;
-        public LumiaActionActions(@PLS_InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftStick => m_Wrapper.m_LumiaAction_LeftStick;
-        public InputAction @Map => m_Wrapper.m_LumiaAction_Map;
-        public InputAction @Jump => m_Wrapper.m_LumiaAction_Jump;
-        public InputAction @Slash => m_Wrapper.m_LumiaAction_Slash;
-        public InputAction @Shoot => m_Wrapper.m_LumiaAction_Shoot;
-        public InputAction @Teleport => m_Wrapper.m_LumiaAction_Teleport;
-        public InputActionMap Get() { return m_Wrapper.m_LumiaAction; }
+        public LumiaActionsActions(@PLS_InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftStick => m_Wrapper.m_LumiaActions_LeftStick;
+        public InputAction @Map => m_Wrapper.m_LumiaActions_Map;
+        public InputAction @Jump => m_Wrapper.m_LumiaActions_Jump;
+        public InputAction @Slash => m_Wrapper.m_LumiaActions_Slash;
+        public InputAction @Shoot => m_Wrapper.m_LumiaActions_Shoot;
+        public InputAction @Teleport => m_Wrapper.m_LumiaActions_Teleport;
+        public InputAction @RightStick => m_Wrapper.m_LumiaActions_RightStick;
+        public InputAction @Warp => m_Wrapper.m_LumiaActions_Warp;
+        public InputAction @Shield => m_Wrapper.m_LumiaActions_Shield;
+        public InputActionMap Get() { return m_Wrapper.m_LumiaActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(LumiaActionActions set) { return set.Get(); }
-        public void AddCallbacks(ILumiaActionActions instance)
+        public static implicit operator InputActionMap(LumiaActionsActions set) { return set.Get(); }
+        public void AddCallbacks(ILumiaActionsActions instance)
         {
-            if (instance == null || m_Wrapper.m_LumiaActionActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_LumiaActionActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_LumiaActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_LumiaActionsActionsCallbackInterfaces.Add(instance);
             @LeftStick.started += instance.OnLeftStick;
             @LeftStick.performed += instance.OnLeftStick;
             @LeftStick.canceled += instance.OnLeftStick;
@@ -398,9 +627,18 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
             @Teleport.started += instance.OnTeleport;
             @Teleport.performed += instance.OnTeleport;
             @Teleport.canceled += instance.OnTeleport;
+            @RightStick.started += instance.OnRightStick;
+            @RightStick.performed += instance.OnRightStick;
+            @RightStick.canceled += instance.OnRightStick;
+            @Warp.started += instance.OnWarp;
+            @Warp.performed += instance.OnWarp;
+            @Warp.canceled += instance.OnWarp;
+            @Shield.started += instance.OnShield;
+            @Shield.performed += instance.OnShield;
+            @Shield.canceled += instance.OnShield;
         }
 
-        private void UnregisterCallbacks(ILumiaActionActions instance)
+        private void UnregisterCallbacks(ILumiaActionsActions instance)
         {
             @LeftStick.started -= instance.OnLeftStick;
             @LeftStick.performed -= instance.OnLeftStick;
@@ -420,23 +658,102 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
             @Teleport.started -= instance.OnTeleport;
             @Teleport.performed -= instance.OnTeleport;
             @Teleport.canceled -= instance.OnTeleport;
+            @RightStick.started -= instance.OnRightStick;
+            @RightStick.performed -= instance.OnRightStick;
+            @RightStick.canceled -= instance.OnRightStick;
+            @Warp.started -= instance.OnWarp;
+            @Warp.performed -= instance.OnWarp;
+            @Warp.canceled -= instance.OnWarp;
+            @Shield.started -= instance.OnShield;
+            @Shield.performed -= instance.OnShield;
+            @Shield.canceled -= instance.OnShield;
         }
 
-        public void RemoveCallbacks(ILumiaActionActions instance)
+        public void RemoveCallbacks(ILumiaActionsActions instance)
         {
-            if (m_Wrapper.m_LumiaActionActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_LumiaActionsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ILumiaActionActions instance)
+        public void SetCallbacks(ILumiaActionsActions instance)
         {
-            foreach (var item in m_Wrapper.m_LumiaActionActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_LumiaActionsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_LumiaActionActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_LumiaActionsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public LumiaActionActions @LumiaAction => new LumiaActionActions(this);
+    public LumiaActionsActions @LumiaActions => new LumiaActionsActions(this);
+
+    // UIActions
+    private readonly InputActionMap m_UIActions;
+    private List<IUIActionsActions> m_UIActionsActionsCallbackInterfaces = new List<IUIActionsActions>();
+    private readonly InputAction m_UIActions_Submit;
+    private readonly InputAction m_UIActions_Cancel;
+    private readonly InputAction m_UIActions_Pause;
+    private readonly InputAction m_UIActions_Status;
+    public struct UIActionsActions
+    {
+        private @PLS_InputActions m_Wrapper;
+        public UIActionsActions(@PLS_InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Submit => m_Wrapper.m_UIActions_Submit;
+        public InputAction @Cancel => m_Wrapper.m_UIActions_Cancel;
+        public InputAction @Pause => m_Wrapper.m_UIActions_Pause;
+        public InputAction @Status => m_Wrapper.m_UIActions_Status;
+        public InputActionMap Get() { return m_Wrapper.m_UIActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsActionsCallbackInterfaces.Add(instance);
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @Status.started += instance.OnStatus;
+            @Status.performed += instance.OnStatus;
+            @Status.canceled += instance.OnStatus;
+        }
+
+        private void UnregisterCallbacks(IUIActionsActions instance)
+        {
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @Status.started -= instance.OnStatus;
+            @Status.performed -= instance.OnStatus;
+            @Status.canceled -= instance.OnStatus;
+        }
+
+        public void RemoveCallbacks(IUIActionsActions instance)
+        {
+            if (m_Wrapper.m_UIActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActionsActions @UIActions => new UIActionsActions(this);
     private int m_PCSchemeIndex = -1;
     public InputControlScheme PCScheme
     {
@@ -446,7 +763,7 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_PCSchemeIndex];
         }
     }
-    public interface ILumiaActionActions
+    public interface ILumiaActionsActions
     {
         void OnLeftStick(InputAction.CallbackContext context);
         void OnMap(InputAction.CallbackContext context);
@@ -454,5 +771,15 @@ public partial class @PLS_InputActions: IInputActionCollection2, IDisposable
         void OnSlash(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnTeleport(InputAction.CallbackContext context);
+        void OnRightStick(InputAction.CallbackContext context);
+        void OnWarp(InputAction.CallbackContext context);
+        void OnShield(InputAction.CallbackContext context);
+    }
+    public interface IUIActionsActions
+    {
+        void OnSubmit(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnStatus(InputAction.CallbackContext context);
     }
 }
