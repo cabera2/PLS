@@ -153,11 +153,12 @@ namespace Lumia
             }
             if (_nearestSword == swordDatas[0])
             {
+                _TargetMark.transform.position = _nearestSword.transform.position;
                 return;
             }
+            // ChangeTarget
             _nearestSword = swordDatas[0];
             _TargetOnOff(true);
-            _TargetMark.transform.position = _nearestSword.transform.position;
             _TarAni.SetTrigger("_Trigger");
             _InRange = true;
             _mainAudioSource.PlayOneShot(sfx[4], SysSaveSC._Vol_Master * SysSaveSC._Vol_SFX * 0.01f);
