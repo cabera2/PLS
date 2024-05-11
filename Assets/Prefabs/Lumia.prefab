@@ -5763,12 +5763,11 @@ MonoBehaviour:
   _PS: {fileID: 2392156778914394641}
   _SR_Bright: 1
   _CanControl: 1
-  _SmoothMove: 0
   _DefaultWalkSpeed: 7
   _MaxSpeed: 25
   _JumpForce: 13
-  _MoveInput: 0
-  _UpDownInput: 0
+  leftStickX: 0
+  leftStickY: 0
   _CoyoteTime: 0.1
   _IsGrounded: 0
   _GroundLayer:
@@ -5808,8 +5807,6 @@ MonoBehaviour:
   _TargetMarkSpeed: 50
   _ShotRebound: 3
   _WarpDistance: 8.5
-  _SwordList: []
-  _SwordDistanceList: []
   _IsWarp: 0
   _ReloadTime: 2
   _ShootTime: 0.3
@@ -5830,6 +5827,7 @@ MonoBehaviour:
   _Shield: {fileID: 3470644699202618271}
   _PermanentFlag: 
   _TemporaryFlag: 
+  swordDatas: []
 --- !u!114 &1947907812125522032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5844,7 +5842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MyCamera: {fileID: 0}
   _CameraOffset: {x: 2, y: 1.5}
-  _CamPos1: {x: 0, y: 0, z: 0}
+  camTargetPos: {x: 0, y: 0, z: 0}
   _LookUpDown: 0
   _Speed: 0.3
   _CoolDownLock: 0
@@ -6800,10 +6798,6 @@ MonoBehaviour:
   _DeathImpact: {fileID: 3132329735431800829, guid: 25746d0cd3945e44aa75a303f35e9195,
     type: 3}
   _Canvas: {fileID: 0}
-  _HitStopTime: 0.3
-  _HitStopTimer: 0
-  _RestartScene: SampleScene
-  _RestartPos: {x: 0, y: 0, z: 0}
 --- !u!82 &2851056531872638372
 AudioSource:
   m_ObjectHideFlags: 0
