@@ -55,8 +55,8 @@ public class KeySettingSC : MonoBehaviour
         dualSence.Add(_buttonPathDic[Buttons.RightShoulder], "R1");
         dualSence.Add(_buttonPathDic[Buttons.LeftTrigger], "L2");
         dualSence.Add(_buttonPathDic[Buttons.RightTrigger], "R2");
-        dualSence.Add(_buttonPathDic[Buttons.Select], "Select");
-        dualSence.Add(_buttonPathDic[Buttons.Start], "Start");
+        dualSence.Add(_buttonPathDic[Buttons.Select], "Create");
+        dualSence.Add(_buttonPathDic[Buttons.Start], "Options");
         _deviceLayoutDic.Add(ControllerType.DualSence, dualSence);
         Dictionary<string, string> dualShock = new();
         dualShock.Add(_buttonPathDic[Buttons.ButtonNorth], "△");
@@ -67,8 +67,8 @@ public class KeySettingSC : MonoBehaviour
         dualShock.Add(_buttonPathDic[Buttons.RightShoulder], "R1");
         dualShock.Add(_buttonPathDic[Buttons.LeftTrigger], "L2");
         dualShock.Add(_buttonPathDic[Buttons.RightTrigger], "R2");
-        dualShock.Add(_buttonPathDic[Buttons.Select], "Create");
-        dualShock.Add(_buttonPathDic[Buttons.Start], "Options");
+        dualShock.Add(_buttonPathDic[Buttons.Select], "Select");
+        dualShock.Add(_buttonPathDic[Buttons.Start], "Start");
         _deviceLayoutDic.Add(ControllerType.DualShock, dualShock);
         Dictionary<string, string> xbox = new();
         xbox.Add(_buttonPathDic[Buttons.ButtonNorth], "Y");
@@ -125,6 +125,7 @@ public class KeySettingSC : MonoBehaviour
     private void DetectControllerType()
     {
         InputDevice gamepadType = Gamepad.current;
+        Debug.Log($"GamePadType is {gamepadType}");
         switch (gamepadType)
         {
             case DualSenseGamepadHID :
@@ -177,6 +178,7 @@ public class KeySettingSC : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log($"Not Containing {text}");
                     _KeyText[i].text =InputControlPath.ToHumanReadableString(
                         text, InputControlPath.HumanReadableStringOptions.OmitDevice);
                 }
