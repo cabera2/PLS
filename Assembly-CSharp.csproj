@@ -65,10 +65,8 @@
     <Compile Include="Assets\Scripts\WaterDropSC.cs" />
     <Compile Include="Assets\Scripts\SpeedTestSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\ShootingEnemy1SC.cs" />
-    <Compile Include="Assets\Scripts\MyInputManager.cs" />
     <Compile Include="Assets\Scripts\MyEventTriggerSC.cs" />
     <Compile Include="Assets\Scripts\ParentToPoolSC.cs" />
-    <Compile Include="Assets\PLS_InputActions.cs" />
     <Compile Include="Assets\Scripts\SysSettingsSC.cs" />
     <Compile Include="Assets\Scripts\MeetBossSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\ShieldEnmSC.cs" />
@@ -81,7 +79,6 @@
     <Compile Include="Assets\Scripts\FadeSC.cs" />
     <Compile Include="Assets\Scripts\CameraAreaSC.cs" />
     <Compile Include="Assets\Scripts\HitFXSC.cs" />
-    <Compile Include="Assets\Scripts\MyInputModuleSC.cs" />
     <Compile Include="Assets\Scripts\DialogueSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaSC.Inspector.cs" />
     <Compile Include="Assets\Scripts\CoinSC.cs" />
@@ -93,6 +90,7 @@
     <Compile Include="Assets\Scripts\ParallaxDebugger.cs" />
     <Compile Include="Assets\Scripts\PressEventSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyParentSC.cs" />
+    <Compile Include="Assets\Scripts\Input\PLS_InputActions.cs" />
     <Compile Include="Assets\Scripts\AniSFXSC.cs" />
     <Compile Include="Assets\Scripts\SysSaveSC.cs" />
     <Compile Include="Assets\Scripts\MapSaverSC.cs" />
@@ -114,6 +112,7 @@
     <Compile Include="Assets\Scripts\StageManagerSC.cs" />
     <Compile Include="Assets\Scripts\GetArrowSC.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyCommonSC.cs" />
+    <Compile Include="Assets\Scripts\Input\MyInputManager.cs" />
     <Compile Include="Assets\Scripts\AniParticleSC.cs" />
     <Compile Include="Assets\Scripts\Lifespand_SC.cs" />
     <Compile Include="Assets\Scripts\ReadTxtSC.cs" />
@@ -124,6 +123,7 @@
     <Compile Include="Assets\Scripts\DeBugSC.cs" />
     <Compile Include="Assets\Scripts\LangChangeSC.cs" />
     <Compile Include="Assets\Scripts\VesselSC.cs" />
+    <Compile Include="Assets\Scripts\Input\MyInputModuleSC.cs" />
     <Compile Include="Assets\Scripts\CostTableSC.cs" />
     <Compile Include="Assets\Scripts\NPC_SC.cs" />
     <Compile Include="Assets\Scripts\DebugEventSC.cs" />

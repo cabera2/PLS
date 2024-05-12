@@ -17,7 +17,8 @@ public class VolumeSC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myInput = Lumia.LumiaSC.MyInput;
+        _myInput = MyInputManager.GetMyInput();
+        _myInput.DeadZone = new Vector2(0.5f, 0.5f);
         _Value = _Type == 0 ? SysSaveSC._Vol_Master : _Type == 1 ? SysSaveSC._Vol_BGM : _Type == 2 ? SysSaveSC._Vol_SFX : 10;
         _NumTextObj.text = _Value.ToString();
         _GaugeObj.sizeDelta = new Vector2(20 * _Value, 10);
@@ -33,11 +34,11 @@ public class VolumeSC : MonoBehaviour
             {
                 if (_Timer == 0)
                 {
-                    if (xInput > 0 && _Value < 10)
+                    if (xInput > 0.5f && _Value < 10)
                     {
                         _ValueChange(1);
                     }
-                    else if (xInput < 0 && _Value > 0)
+                    else if (xInput < -0.5f && _Value > 0)
                     {
                         _ValueChange(-1);
                     }
@@ -64,7 +65,6 @@ public class VolumeSC : MonoBehaviour
     }
     public void _ValueChange(int _Amount)
     {
-        Debug.Log(gameObject + "" + _Timer);
         _ArrowAni[_Amount < 0 ? 0 : _Amount > 0 ? 1 : 0].SetTrigger("_Clicked");
         if (_Amount > 0 && _Value < 10 || _Amount < 0 && _Value > 0)
         {
