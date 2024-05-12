@@ -25,7 +25,7 @@ public class SysSettingsSC : MonoBehaviour
         List<string> availableResString = new();
         for (int i = 0; i < allResolutions.Length; i++)
         {
-            Debug.Log(allResolutions[i]);
+            //Debug.Log(allResolutions[i]);
             if (allResolutions[i].width / 16 * 9 == allResolutions[i].height && !widthInList.Contains(allResolutions[i].width))
             {
                 widthInList.Add(allResolutions[i].width);

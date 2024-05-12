@@ -1,10 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.Switch;
+using UnityEngine.InputSystem.XInput;
 using UnityEngine.UI;
 
 public class KeySettingSC : MonoBehaviour
 {
+    private MyInputManager _myInput;
+    private InputAction[] _inputActions;
+    private ControllerType _currentDevice;
     public Text[] _KeyText;
     [HideInInspector] public bool _Waiting;
     private int _Target;
@@ -12,48 +18,212 @@ public class KeySettingSC : MonoBehaviour
         "새 키 입력",
         "新しいキー入力"
     };
-    // Start is called before the first frame update
-    void Start()
+    private enum Buttons
     {
+        ButtonNorth,
+        ButtonEast,
+        ButtonSouth,
+        ButtonWest,
+        LeftShoulder,
+        RightShoulder,
+        LeftTrigger,
+        RightTrigger,
+        Select,
+        Start
+    }
+    private readonly Dictionary<Buttons, string> _buttonPathDic = new();
+    private readonly Dictionary<ControllerType, Dictionary<string, string>> _deviceLayoutDic = new();
 
+    void CreateDictionary()
+    {
+        _buttonPathDic.Add(Buttons.ButtonNorth, "<Gamepad>/buttonNorth");
+        _buttonPathDic.Add(Buttons.ButtonEast, "<Gamepad>/buttonEast");
+        _buttonPathDic.Add(Buttons.ButtonSouth, "<Gamepad>/buttonSouth");
+        _buttonPathDic.Add(Buttons.ButtonWest, "<Gamepad>/buttonWest");
+        _buttonPathDic.Add(Buttons.LeftShoulder, "<Gamepad>/leftShoulder");
+        _buttonPathDic.Add(Buttons.RightShoulder, "<Gamepad>/rightShoulder");
+        _buttonPathDic.Add(Buttons.LeftTrigger, "<Gamepad>/leftTrigger");
+        _buttonPathDic.Add(Buttons.RightTrigger, "<Gamepad>/rightTrigger");
+        _buttonPathDic.Add(Buttons.Select, "<Gamepad>/select");
+        _buttonPathDic.Add(Buttons.Start, "<Gamepad>/start");
+        Dictionary<string, string> dualSence = new();
+        dualSence.Add(_buttonPathDic[Buttons.ButtonNorth], "△");
+        dualSence.Add(_buttonPathDic[Buttons.ButtonEast], "○");
+        dualSence.Add(_buttonPathDic[Buttons.ButtonSouth], "×");
+        dualSence.Add(_buttonPathDic[Buttons.ButtonWest], "□");
+        dualSence.Add(_buttonPathDic[Buttons.LeftShoulder], "L1");
+        dualSence.Add(_buttonPathDic[Buttons.RightShoulder], "R1");
+        dualSence.Add(_buttonPathDic[Buttons.LeftTrigger], "L2");
+        dualSence.Add(_buttonPathDic[Buttons.RightTrigger], "R2");
+        dualSence.Add(_buttonPathDic[Buttons.Select], "Select");
+        dualSence.Add(_buttonPathDic[Buttons.Start], "Start");
+        _deviceLayoutDic.Add(ControllerType.DualSence, dualSence);
+        Dictionary<string, string> dualShock = new();
+        dualShock.Add(_buttonPathDic[Buttons.ButtonNorth], "△");
+        dualShock.Add(_buttonPathDic[Buttons.ButtonEast], "○");
+        dualShock.Add(_buttonPathDic[Buttons.ButtonSouth], "×");
+        dualShock.Add(_buttonPathDic[Buttons.ButtonWest], "□");
+        dualShock.Add(_buttonPathDic[Buttons.LeftShoulder], "L1");
+        dualShock.Add(_buttonPathDic[Buttons.RightShoulder], "R1");
+        dualShock.Add(_buttonPathDic[Buttons.LeftTrigger], "L2");
+        dualShock.Add(_buttonPathDic[Buttons.RightTrigger], "R2");
+        dualShock.Add(_buttonPathDic[Buttons.Select], "Create");
+        dualShock.Add(_buttonPathDic[Buttons.Start], "Options");
+        _deviceLayoutDic.Add(ControllerType.DualShock, dualShock);
+        Dictionary<string, string> xbox = new();
+        xbox.Add(_buttonPathDic[Buttons.ButtonNorth], "Y");
+        xbox.Add(_buttonPathDic[Buttons.ButtonEast], "B");
+        xbox.Add(_buttonPathDic[Buttons.ButtonSouth], "A");
+        xbox.Add(_buttonPathDic[Buttons.ButtonWest], "X");
+        xbox.Add(_buttonPathDic[Buttons.LeftShoulder], "LB");
+        xbox.Add(_buttonPathDic[Buttons.RightShoulder], "RB");
+        xbox.Add(_buttonPathDic[Buttons.LeftTrigger], "LT");
+        xbox.Add(_buttonPathDic[Buttons.RightTrigger], "RT");
+        xbox.Add(_buttonPathDic[Buttons.Select], "Back");
+        xbox.Add(_buttonPathDic[Buttons.Start], "Start");
+        _deviceLayoutDic.Add(ControllerType.Xbox, xbox);
+        Dictionary<string, string> ns = new();
+        ns.Add(_buttonPathDic[Buttons.ButtonNorth], "X");
+        ns.Add(_buttonPathDic[Buttons.ButtonEast], "A");
+        ns.Add(_buttonPathDic[Buttons.ButtonSouth], "B");
+        ns.Add(_buttonPathDic[Buttons.ButtonWest], "Y");
+        ns.Add(_buttonPathDic[Buttons.LeftShoulder], "L");
+        ns.Add(_buttonPathDic[Buttons.RightShoulder], "R");
+        ns.Add(_buttonPathDic[Buttons.LeftTrigger], "ZL");
+        ns.Add(_buttonPathDic[Buttons.RightTrigger], "ZR");
+        ns.Add(_buttonPathDic[Buttons.Select], "-");
+        ns.Add(_buttonPathDic[Buttons.Start], "+");
+        _deviceLayoutDic.Add(ControllerType.Switch, ns);
+    }
+    void Awake()
+    {
+        _myInput = MyInputManager.GetMyInput();
+        CreateDictionary();
+        _inputActions = new[]
+        {
+            null,null,null,null,
+            _myInput.InputActions[KeyType.Map],
+            _myInput.InputActions[KeyType.Jump],
+            _myInput.InputActions[KeyType.Slash],
+            _myInput.InputActions[KeyType.Shoot],
+            _myInput.InputActions[KeyType.Teleport],
+            _myInput.InputActions[KeyType.Submit],
+            _myInput.InputActions[KeyType.Cancel],
+            _myInput.InputActions[KeyType.Pause],
+            _myInput.InputActions[KeyType.Status],
+            _myInput.InputActions[KeyType.Warp],
+            _myInput.InputActions[KeyType.Shield]
+        };
     }
     void OnEnable()
     {
-        for (int i = 0; i < _KeyText.Length; i++)
+        DetectControllerType();
+        //InputSystem.onAnyButtonPress.Call(DetectDevice);
+        _UpdateKeys(1);
+    }
+
+    private void DetectControllerType()
+    {
+        InputDevice gamepadType = Gamepad.current;
+        switch (gamepadType)
         {
-            _UpdateKey(i);
+            case DualSenseGamepadHID :
+                _currentDevice = ControllerType.DualSence;
+                break;
+            case DualShockGamepad:
+                _currentDevice = ControllerType.DualShock;
+                break;
+            case SwitchProControllerHID:
+                _currentDevice = ControllerType.Switch;
+                break;
+            case XInputController :
+                _currentDevice = ControllerType.Xbox;
+                break;
+            default:
+                _currentDevice = ControllerType.Xbox;
+                break;
         }
     }
-    void _UpdateKey(int _ID)
+    private void DetectDeviceTest(InputControl control)
     {
-        _KeyText[_ID].text = SysSaveSC._Keys[_ID].ToString();
+        
+        if (control.device is Keyboard)
+        {
+            Debug.Log("This is Keyboard");
+        }
+        if (control.device is Gamepad)
+        {
+            Debug.Log("This is Gamepad");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void _UpdateKeys(int deviceIndex)
     {
-
+        for (int i = 0; i < 4; i++)
+        {
+            _KeyText[i].transform.parent.gameObject.SetActive(deviceIndex == 1);
+        }
+        if (deviceIndex == 0)
+        {
+            //GamePad
+            DetectControllerType();
+            for (int i = 4; i < _KeyText.Length; i++)
+            {
+                string text = _inputActions[i].bindings[deviceIndex].effectivePath;
+                Dictionary<string, string> dic = _deviceLayoutDic[_currentDevice];
+                if (dic.ContainsKey(text))
+                {
+                    _KeyText[i].text = dic[text];
+                }
+                else
+                {
+                    _KeyText[i].text =InputControlPath.ToHumanReadableString(
+                        text, InputControlPath.HumanReadableStringOptions.OmitDevice);
+                }
+            }
+        }
+        else if(deviceIndex == 1)
+        {
+            //KeyBoard
+            for (int i = 0; i < 4; i++)
+            {
+                _KeyText[i].transform.parent.gameObject.SetActive(true);
+                _KeyText[i].text = InputControlPath.ToHumanReadableString(
+                    _myInput.InputActions[KeyType.LeftStick].bindings[deviceIndex + i + 1].effectivePath,
+                    InputControlPath.HumanReadableStringOptions.OmitDevice);
+            }
+            for (int i = 4; i < _KeyText.Length; i++)
+            {
+                _KeyText[i].text = InputControlPath.ToHumanReadableString(
+                    _inputActions[i].bindings[deviceIndex].effectivePath,
+                    InputControlPath.HumanReadableStringOptions.OmitDevice);
+            }
+        }
     }
-    public void _KeyChange(int _ID2)
+    // void _UpdateKey(int index)
+    // {
+    //     _KeyText[index].text = SysSaveSC._Keys[index].ToString();
+    // }
+    public void _KeyChange(int index)
     {
         if (_Waiting == false)
         {
             _Waiting = true;
-            _Target = _ID2;
-            _KeyText[_ID2].text = _WaitText[SysSaveSC._Language];
+            _Target = index;
+            _KeyText[index].text = _WaitText[SysSaveSC._Language];
         }
         else
         {
-            if (_Target == _ID2)
+            if (_Target == index)
             {
                 _Waiting = false;
-                _UpdateKey(_ID2);
+                //_UpdateKey(index);
             }
             else
             {
-                _UpdateKey(_Target);
-                _Target = _ID2;
-                _KeyText[_ID2].text = _WaitText[SysSaveSC._Language];
+                //_UpdateKey(_Target);
+                _Target = index;
+                _KeyText[index].text = _WaitText[SysSaveSC._Language];
             }
         }
 
@@ -91,7 +261,7 @@ public class KeySettingSC : MonoBehaviour
                 //Debug.Log("Detected key code: " + e.keyCode);
                 _Waiting = false;
                 SysSaveSC._Keys[_Target] = e.keyCode;
-                _UpdateKey(_Target);
+                //_UpdateKey(_Target);
             }
         }
     }

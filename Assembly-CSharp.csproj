@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Input\MyInputModuleSC.cs" />
     <Compile Include="Assets\Scripts\CostTableSC.cs" />
     <Compile Include="Assets\Scripts\NPC_SC.cs" />
+    <Compile Include="Assets\Scripts\PublicDatas.cs" />
     <Compile Include="Assets\Scripts\DebugEventSC.cs" />
     <Compile Include="Assets\Scripts\NewSkillGuideSC.cs" />
     <Compile Include="Assets\Scripts\Lumia\LumiaSC.SwordActions.cs" />
