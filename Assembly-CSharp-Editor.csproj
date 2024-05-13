@@ -881,11 +881,11 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:\Gits\PLS\Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="Analytics">
-      <HintPath>D:\Gits\PLS\Library\ScriptAssemblies\Analytics.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:\Gits\PLS\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="Analytics">
+      <HintPath>D:\Gits\PLS\Library\ScriptAssemblies\Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
       <HintPath>D:\Gits\PLS\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>

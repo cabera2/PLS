@@ -73,6 +73,11 @@ public class SysSaveSC : MonoBehaviour
     public static int _Loaded_SwordSizeLv;
     public static List<int> _Loaded_PermanentFlag;
     public static bool _Loading = false;
+    
+    // private nn.fs.FileHandle fileHandle = new nn.fs.FileHandle();
+    // private nn.hid.NpadState npadState;
+    // private nn.hid.NpadId[] npadIds = { nn.hid.NpadId.Handheld, nn.hid.NpadId.No1 };
+    
     public static void _SysSave()
     {
         BinaryFormatter _BF = new BinaryFormatter();
@@ -88,6 +93,10 @@ public class SysSaveSC : MonoBehaviour
         _BF.Serialize(file, data);
         file.Close();
         Debug.Log("시스템 설정이 저장되었습니다. 언어:" + _Language + "마지막 파일" + _LastFile);
+#endif
+#if UNITY_SWITCH
+        // nn.account.Account.Initialize();
+        // nn.account.UserHandle userHandle = new nn.account.UserHandle();
 #endif
     }
     public static void _SysLoad()
