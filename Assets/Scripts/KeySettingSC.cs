@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.XInput;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class KeySettingSC : MonoBehaviour
@@ -11,10 +12,11 @@ public class KeySettingSC : MonoBehaviour
     private MyInputManager _myInput;
     private InputAction[] _inputActions;
     private ControllerType _currentDevice;
-    public Text[] _KeyText;
+    [SerializeField] private Text[] _KeyText;
+    [SerializeField] private Button[] MovementKeys;
     [HideInInspector] public bool _Waiting;
     private int _Target;
-    private string[] _WaitText = new string[]{
+    private string[] _WaitText = {
         "새 키 입력",
         "新しいキー入力"
     };
@@ -101,7 +103,10 @@ public class KeySettingSC : MonoBehaviour
         CreateDictionary();
         _inputActions = new[]
         {
-            null,null,null,null,
+            _myInput.InputActions[KeyType.LeftStick],
+            _myInput.InputActions[KeyType.LeftStick],
+            _myInput.InputActions[KeyType.LeftStick],
+            _myInput.InputActions[KeyType.LeftStick],
             _myInput.InputActions[KeyType.Map],
             _myInput.InputActions[KeyType.Jump],
             _myInput.InputActions[KeyType.Slash],
@@ -162,13 +167,13 @@ public class KeySettingSC : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            _KeyText[i].transform.parent.gameObject.SetActive(deviceIndex == 1);
+            MovementKeys[i].interactable = deviceIndex == 1;
         }
         if (deviceIndex == 0)
         {
             //GamePad
             DetectControllerType();
-            for (int i = 4; i < _KeyText.Length; i++)
+            for (int i = 0; i < _KeyText.Length; i++)
             {
                 string text = _inputActions[i].bindings[deviceIndex].effectivePath;
                 Dictionary<string, string> dic = _deviceLayoutDic[_currentDevice];
@@ -233,23 +238,23 @@ public class KeySettingSC : MonoBehaviour
     public void _ResetDefault()
     {
         KeyCode[] _DefaultKeys = new KeyCode[]
-{
-        KeyCode.UpArrow,
-        KeyCode.DownArrow,
-        KeyCode.LeftArrow,
-        KeyCode.RightArrow,
-        KeyCode.Tab,
-        KeyCode.Z,
-        KeyCode.X,
-        KeyCode.C,
-        KeyCode.F,
-        KeyCode.Z,
-        KeyCode.X,
-        KeyCode.Escape,
-        KeyCode.I,
-        KeyCode.D,
-        KeyCode.S
-};
+        {
+            KeyCode.UpArrow,
+            KeyCode.DownArrow,
+            KeyCode.LeftArrow,
+            KeyCode.RightArrow,
+            KeyCode.Tab,
+            KeyCode.Z,
+            KeyCode.X,
+            KeyCode.C,
+            KeyCode.F,
+            KeyCode.Z,
+            KeyCode.X,
+            KeyCode.Escape,
+            KeyCode.I,
+            KeyCode.D,
+            KeyCode.S
+        };
         SysSaveSC._Keys = _DefaultKeys;
         OnEnable();
     }

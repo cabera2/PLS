@@ -119,7 +119,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2043003617008228927}
   m_OnClick:
@@ -744,7 +744,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5455819584491529948}
   m_OnClick:
@@ -1965,7 +1965,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3218082806594928143}
   m_OnClick:
@@ -2404,7 +2404,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5087130001559421079}
   m_OnClick:
@@ -2623,7 +2623,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6061033014923903777}
   m_OnClick:
@@ -2991,7 +2991,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 227485106578494491}
   m_OnClick:
@@ -3360,7 +3360,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6441750226999697979}
   m_OnClick:
@@ -4039,7 +4039,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7962965660089035399}
   m_OnClick:
@@ -4978,7 +4978,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5695190201758913627}
   m_OnClick:
@@ -5322,6 +5322,11 @@ MonoBehaviour:
   - {fileID: 1083691366328424369}
   - {fileID: 3776185895131514740}
   - {fileID: 6979148121444570117}
+  MovementKeys:
+  - {fileID: 480879991179695214}
+  - {fileID: 3097084680546174807}
+  - {fileID: 5514787817846063822}
+  - {fileID: 6984432794230378556}
   _Waiting: 0
 --- !u!225 &6147397435422983132
 CanvasGroup:
@@ -6223,7 +6228,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 227485106578494491}
   m_OnClick:
@@ -6545,7 +6550,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6426301131699450585}
   m_OnClick:
@@ -6764,7 +6769,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4194423066432440014}
   m_OnClick:
@@ -7062,7 +7067,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5196120921056665849}
   m_OnClick:
@@ -8274,7 +8279,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7638134978955517833}
   m_OnClick:
@@ -9299,7 +9304,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6205966318755125089}
   m_OnClick:
@@ -10892,7 +10897,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1812842463925391489}
   m_OnClick:
@@ -11111,7 +11116,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2943015819406831808}
   m_OnClick:
@@ -12801,7 +12806,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7975619657111830312}
   m_OnClick:
@@ -13178,7 +13183,7 @@ MonoBehaviour:
     m_HighlightedTrigger: _None
     m_PressedTrigger: _None
     m_SelectedTrigger: _On
-    m_DisabledTrigger: _None
+    m_DisabledTrigger: _Disable
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7779395783351773053}
   m_OnClick:
