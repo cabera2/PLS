@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.XInput;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class KeySettingSC : MonoBehaviour
@@ -12,6 +11,8 @@ public class KeySettingSC : MonoBehaviour
     private MyInputManager _myInput;
     private InputAction[] _inputActions;
     private ControllerType _currentDevice;
+    private int _SelectedControlType = 0;//0=Gamepad, 1=Keyboard
+    private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
     [SerializeField] private Text[] _KeyText;
     [SerializeField] private Button[] MovementKeys;
     [HideInInspector] public bool _Waiting;
@@ -103,21 +104,21 @@ public class KeySettingSC : MonoBehaviour
         CreateDictionary();
         _inputActions = new[]
         {
-            _myInput.InputActions[KeyType.LeftStick],
-            _myInput.InputActions[KeyType.LeftStick],
-            _myInput.InputActions[KeyType.LeftStick],
-            _myInput.InputActions[KeyType.LeftStick],
-            _myInput.InputActions[KeyType.Map],
-            _myInput.InputActions[KeyType.Jump],
-            _myInput.InputActions[KeyType.Slash],
-            _myInput.InputActions[KeyType.Shoot],
-            _myInput.InputActions[KeyType.Teleport],
-            _myInput.InputActions[KeyType.Submit],
-            _myInput.InputActions[KeyType.Cancel],
-            _myInput.InputActions[KeyType.Pause],
-            _myInput.InputActions[KeyType.Status],
-            _myInput.InputActions[KeyType.Warp],
-            _myInput.InputActions[KeyType.Shield]
+            _myInput.InputActionDic[KeyType.LeftStick],
+            _myInput.InputActionDic[KeyType.LeftStick],
+            _myInput.InputActionDic[KeyType.LeftStick],
+            _myInput.InputActionDic[KeyType.LeftStick],
+            _myInput.InputActionDic[KeyType.Map],
+            _myInput.InputActionDic[KeyType.Jump],
+            _myInput.InputActionDic[KeyType.Slash],
+            _myInput.InputActionDic[KeyType.Shoot],
+            _myInput.InputActionDic[KeyType.Teleport],
+            _myInput.InputActionDic[KeyType.Submit],
+            _myInput.InputActionDic[KeyType.Cancel],
+            _myInput.InputActionDic[KeyType.Pause],
+            _myInput.InputActionDic[KeyType.Status],
+            _myInput.InputActionDic[KeyType.Warp],
+            _myInput.InputActionDic[KeyType.Shield]
         };
     }
     void OnEnable()
@@ -169,6 +170,7 @@ public class KeySettingSC : MonoBehaviour
         {
             MovementKeys[i].interactable = deviceIndex == 1;
         }
+        _SelectedControlType = deviceIndex;
         if (deviceIndex == 0)
         {
             //GamePad
@@ -183,7 +185,7 @@ public class KeySettingSC : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"Not Containing {text}");
+                    //Debug.Log($"Not Containing {text}");
                     _KeyText[i].text =InputControlPath.ToHumanReadableString(
                         text, InputControlPath.HumanReadableStringOptions.OmitDevice);
                 }
@@ -196,7 +198,7 @@ public class KeySettingSC : MonoBehaviour
             {
                 _KeyText[i].transform.parent.gameObject.SetActive(true);
                 _KeyText[i].text = InputControlPath.ToHumanReadableString(
-                    _myInput.InputActions[KeyType.LeftStick].bindings[deviceIndex + i + 1].effectivePath,
+                    _myInput.InputActionDic[KeyType.LeftStick].bindings[deviceIndex + i + 1].effectivePath,
                     InputControlPath.HumanReadableStringOptions.OmitDevice);
             }
             for (int i = 4; i < _KeyText.Length; i++)
@@ -213,63 +215,87 @@ public class KeySettingSC : MonoBehaviour
     // }
     public void _KeyChange(int index)
     {
-        if (_Waiting == false)
-        {
-            _Waiting = true;
-            _Target = index;
-            _KeyText[index].text = _WaitText[SysSaveSC._Language];
-        }
-        else
-        {
-            if (_Target == index)
-            {
-                _Waiting = false;
-                //_UpdateKey(index);
-            }
-            else
-            {
-                //_UpdateKey(_Target);
-                _Target = index;
-                _KeyText[index].text = _WaitText[SysSaveSC._Language];
-            }
-        }
+        _myInput.PlayerActionOnOff(false);
+        _myInput.UIActionOnOff(false);
+        _KeyText[index].text = _WaitText[SysSaveSC._Language];
+        string controllerType = _SelectedControlType == 0 ? "<Gamepad>" : "<Keyboard>";
+        _rebindingOperation = _inputActions[index].PerformInteractiveRebinding()
+            .WithControlsHavingToMatchPath(controllerType)
+            .OnMatchWaitForAnother(0.1f)
+            .OnComplete(_ => _KeyChangeComplete())
+            .WithTargetBinding(_SelectedControlType)
+            .Start();
+        
+        // if (_Waiting == false)
+        // {
+        //     _Waiting = true;
+        //     _Target = index;
+        //     _KeyText[index].text = _WaitText[SysSaveSC._Language];
+        // }
+        // else
+        // {
+        //     if (_Target == index)
+        //     {
+        //         _Waiting = false;
+        //         //_UpdateKey(index);
+        //     }
+        //     else
+        //     {
+        //         //_UpdateKey(_Target);
+        //         _Target = index;
+        //         _KeyText[index].text = _WaitText[SysSaveSC._Language];
+        //     }
+        // }
 
+    }
+
+    private void _KeyChangeComplete()
+    {
+        if (_rebindingOperation != null)
+        {
+            _rebindingOperation.Dispose();
+        }
+        _UpdateKeys(_SelectedControlType);
+        _myInput.PlayerActionOnOff(true);
+        _myInput.UIActionOnOff(true);
     }
     public void _ResetDefault()
     {
-        KeyCode[] _DefaultKeys = new KeyCode[]
-        {
-            KeyCode.UpArrow,
-            KeyCode.DownArrow,
-            KeyCode.LeftArrow,
-            KeyCode.RightArrow,
-            KeyCode.Tab,
-            KeyCode.Z,
-            KeyCode.X,
-            KeyCode.C,
-            KeyCode.F,
-            KeyCode.Z,
-            KeyCode.X,
-            KeyCode.Escape,
-            KeyCode.I,
-            KeyCode.D,
-            KeyCode.S
-        };
-        SysSaveSC._Keys = _DefaultKeys;
-        OnEnable();
+        _myInput.PlsInputAction.RemoveAllBindingOverrides();
+        _KeyChangeComplete();
+        // KeyCode[] _DefaultKeys = new KeyCode[]
+        // {
+        //     KeyCode.UpArrow,
+        //     KeyCode.DownArrow,
+        //     KeyCode.LeftArrow,
+        //     KeyCode.RightArrow,
+        //     KeyCode.Tab,
+        //     KeyCode.Z,
+        //     KeyCode.X,
+        //     KeyCode.C,
+        //     KeyCode.F,
+        //     KeyCode.Z,
+        //     KeyCode.X,
+        //     KeyCode.Escape,
+        //     KeyCode.I,
+        //     KeyCode.D,
+        //     KeyCode.S
+        // };
+        // SysSaveSC._Keys = _DefaultKeys;
+        // OnEnable();
     }
-    void OnGUI()
-    {
-        if (_Waiting == true)
-        {
-            Event e = Event.current;
-            if (e.isKey && e.type == EventType.KeyDown)
-            {
-                //Debug.Log("Detected key code: " + e.keyCode);
-                _Waiting = false;
-                SysSaveSC._Keys[_Target] = e.keyCode;
-                //_UpdateKey(_Target);
-            }
-        }
-    }
+    // void OnGUI()
+    // {
+    //     if (_Waiting == true)
+    //     {
+    //         Event e = Event.current;
+    //         if (e.isKey && e.type == EventType.KeyDown)
+    //         {
+    //             //Debug.Log("Detected key code: " + e.keyCode);
+    //             _Waiting = false;
+    //             SysSaveSC._Keys[_Target] = e.keyCode;
+    //             //_UpdateKey(_Target);
+    //         }
+    //     }
+    // }
 }

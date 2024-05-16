@@ -6,9 +6,11 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Lumia;
+using UnityEngine.InputSystem;
 
-public class SysSaveSC : MonoBehaviour
+public class SysSaveSC
 {
+    private MyInputManager _myInput;
     [Serializable]
     class SysSaveCon
     {
@@ -17,7 +19,8 @@ public class SysSaveSC : MonoBehaviour
         public int _Vol_Master = 10;
         public int _Vol_BGM = 10;
         public int _Vol_SFX = 10;
-        public KeyCode[] _Keys;
+        public string KeyBindings = "";
+        //public KeyCode[] _Keys;
     }
     [Serializable]
     class CharSaveCon
@@ -40,24 +43,25 @@ public class SysSaveSC : MonoBehaviour
     public static int _Vol_Master = 10;
     public static int _Vol_BGM = 10;
     public static int _Vol_SFX = 10;
-    public static KeyCode[] _Keys = new KeyCode[]
-{
-        KeyCode.UpArrow,
-        KeyCode.DownArrow,
-        KeyCode.LeftArrow,
-        KeyCode.RightArrow,
-        KeyCode.Tab,//Map
-        KeyCode.Z,//Jump
-        KeyCode.X,//Slash
-        KeyCode.C,//Shoot
-        KeyCode.F,//Teleport
-        KeyCode.Z,//Submit
-        KeyCode.X,//Cancel
-        KeyCode.Escape,//Pause
-        KeyCode.I,//Status
-        KeyCode.D,//Warp
-        KeyCode.S//Shield
-};
+    public string KeyBindings = "";
+//     public static KeyCode[] _Keys = new KeyCode[]
+// {
+//         KeyCode.UpArrow,
+//         KeyCode.DownArrow,
+//         KeyCode.LeftArrow,
+//         KeyCode.RightArrow,
+//         KeyCode.Tab,//Map
+//         KeyCode.Z,//Jump
+//         KeyCode.X,//Slash
+//         KeyCode.C,//Shoot
+//         KeyCode.F,//Teleport
+//         KeyCode.Z,//Submit
+//         KeyCode.X,//Cancel
+//         KeyCode.Escape,//Pause
+//         KeyCode.I,//Status
+//         KeyCode.D,//Warp
+//         KeyCode.S//Shield
+// };
     public static bool _Load_Required;
     public static int _Loaded_FileNumber;
     public static string _Loaded_SavedScene;
@@ -82,7 +86,9 @@ public class SysSaveSC : MonoBehaviour
         data._Vol_Master = _Vol_Master;
         data._Vol_BGM = _Vol_BGM;
         data._Vol_SFX = _Vol_SFX;
-        data._Keys = _Keys;
+        MyInputManager _myInput = MyInputManager.GetMyInput();
+        data.KeyBindings = _myInput.PlsInputAction.SaveBindingOverridesAsJson();
+        //data._Keys = _Keys;
 #if UNITY_STANDALONE_WIN
         FileStream file = File.Create(Application.persistentDataPath + "/SysSave.dat");
         _BF.Serialize(file, data);
@@ -105,10 +111,15 @@ public class SysSaveSC : MonoBehaviour
             _Vol_Master = data._Vol_Master;
             _Vol_BGM = data._Vol_BGM;
             _Vol_SFX = data._Vol_SFX;
-            if (data._Keys != null && _Keys.Length == data._Keys.Length)
+            if (data.KeyBindings != "")
             {
-                _Keys = data._Keys;
+                MyInputManager _myInput = MyInputManager.GetMyInput();
+                _myInput.PlsInputAction.LoadBindingOverridesFromJson(data.KeyBindings);
             }
+            // if (data._Keys != null && _Keys.Length == data._Keys.Length)
+            // {
+            //     _Keys = data._Keys;
+            // }
             file.Close();
             Debug.Log("파일 발견. 언어:" + _Language + "마지막 파일" + _LastFile);
         }

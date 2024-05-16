@@ -123,7 +123,6 @@
     <Compile Include="Assets\Scripts\DeBugSC.cs" />
     <Compile Include="Assets\Scripts\LangChangeSC.cs" />
     <Compile Include="Assets\Scripts\VesselSC.cs" />
-    <Compile Include="Assets\Scripts\Input\MyInputModuleSC.cs" />
     <Compile Include="Assets\Scripts\CostTableSC.cs" />
     <Compile Include="Assets\Scripts\NPC_SC.cs" />
     <Compile Include="Assets\Scripts\PublicDatas.cs" />

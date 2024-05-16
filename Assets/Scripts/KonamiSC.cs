@@ -30,7 +30,7 @@ public class KonamiSC : MonoBehaviour
     }
     void OnEnable()
     {
-        StartCoroutine(StartC());
+        //StartCoroutine(StartC());
     }
     IEnumerator StartC()
     {

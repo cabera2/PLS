@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class MyInputManager
 {
-    private PLS_InputActions _inputAction;
-    public readonly Dictionary<KeyType, InputAction> InputActions = new() ;
+    public PLS_InputActions PlsInputAction;
+    public readonly Dictionary<KeyType, InputAction> InputActionDic = new() ;
     private static MyInputManager _staticMyInput;
     public Vector2 DeadZone = new (0.1f, 0.5f);
 
@@ -23,47 +23,59 @@ public class MyInputManager
 
     private void Initialize()
     {
-        _inputAction = new();
-        InputActions.Add(KeyType.LeftStick, _inputAction.LumiaActions.LeftStick);
-        InputActions.Add(KeyType.RightStick, _inputAction.LumiaActions.RightStick);
-        InputActions.Add(KeyType.Map, _inputAction.LumiaActions.Map);
-        InputActions.Add(KeyType.Jump, _inputAction.LumiaActions.Jump);
-        InputActions.Add(KeyType.Slash, _inputAction.LumiaActions.Slash);
-        InputActions.Add(KeyType.Shoot, _inputAction.LumiaActions.Shoot);
-        InputActions.Add(KeyType.Teleport, _inputAction.LumiaActions.Teleport);
-        InputActions.Add(KeyType.Submit, _inputAction.UIActions.Submit);
-        InputActions.Add(KeyType.Cancel, _inputAction.UIActions.Cancel);
-        InputActions.Add(KeyType.Pause, _inputAction.UIActions.Pause);
-        InputActions.Add(KeyType.Status, _inputAction.UIActions.Status);
-        InputActions.Add(KeyType.Warp, _inputAction.LumiaActions.Warp);
-        InputActions.Add(KeyType.Shield, _inputAction.LumiaActions.Shield);
-        _inputAction.LumiaActions.Enable();
-        _inputAction.UIActions.Enable();
+        PlsInputAction = new();
+        InputActionDic.Add(KeyType.LeftStick, PlsInputAction.LumiaActions.LeftStick);
+        InputActionDic.Add(KeyType.RightStick, PlsInputAction.LumiaActions.RightStick);
+        InputActionDic.Add(KeyType.Map, PlsInputAction.LumiaActions.Map);
+        InputActionDic.Add(KeyType.Jump, PlsInputAction.LumiaActions.Jump);
+        InputActionDic.Add(KeyType.Slash, PlsInputAction.LumiaActions.Slash);
+        InputActionDic.Add(KeyType.Shoot, PlsInputAction.LumiaActions.Shoot);
+        InputActionDic.Add(KeyType.Teleport, PlsInputAction.LumiaActions.Teleport);
+        InputActionDic.Add(KeyType.Submit, PlsInputAction.UIActions.Submit);
+        InputActionDic.Add(KeyType.Cancel, PlsInputAction.UIActions.Cancel);
+        InputActionDic.Add(KeyType.Pause, PlsInputAction.UIActions.Pause);
+        InputActionDic.Add(KeyType.Status, PlsInputAction.UIActions.Status);
+        InputActionDic.Add(KeyType.Warp, PlsInputAction.LumiaActions.Warp);
+        InputActionDic.Add(KeyType.Shield, PlsInputAction.LumiaActions.Shield);
+        PlsInputAction.LumiaActions.Enable();
+        PlsInputAction.UIActions.Enable();
 
     }
     public void PlayerActionOnOff(bool on)
     {
         if (on)
         {
-            _inputAction.LumiaActions.Enable();
+            PlsInputAction.LumiaActions.Enable();
         }
         else
         {
-            _inputAction.LumiaActions.Disable();
+            PlsInputAction.LumiaActions.Disable();
+        }
+    }
+
+    public void UIActionOnOff(bool on)
+    {
+        if (on)
+        {
+            PlsInputAction.UIActions.Enable();
+        }
+        else
+        {
+            PlsInputAction.UIActions.Disable();
         }
     }
     public bool GetButton(KeyType keyType)
     {
         if (keyType == KeyType.Shield)
         {
-            return InputActions[KeyType.Shield].ReadValue<float>() > 0.5f;
+            return InputActionDic[KeyType.Shield].ReadValue<float>() > 0.5f;
         }
-        return InputActions.ContainsKey(keyType) && InputActions[keyType].IsPressed();
+        return InputActionDic.ContainsKey(keyType) && InputActionDic[keyType].IsPressed();
 
     }
     public bool GetButtonDown(KeyType keyType)
     {
-        bool result = InputActions.ContainsKey(keyType) && InputActions[keyType].WasPressedThisFrame();
+        bool result = InputActionDic.ContainsKey(keyType) && InputActionDic[keyType].WasPressedThisFrame();
         // if (result)
         // {
         //     InputSystem.onAnyButtonPress.Call(DetectDevice);
@@ -84,7 +96,7 @@ public class MyInputManager
     }
     public bool GetButtonUp(KeyType keyType)
     {
-        return InputActions.ContainsKey(keyType) && InputActions[keyType].WasReleasedThisFrame();
+        return InputActionDic.ContainsKey(keyType) && InputActionDic[keyType].WasReleasedThisFrame();
     }
     public Vector2Int GetAxis(KeyType keyType)
     {
@@ -94,7 +106,7 @@ public class MyInputManager
         {
             case KeyType.LeftStick:
             {
-                input = InputActions[KeyType.LeftStick].ReadValue<Vector2>();
+                input = InputActionDic[KeyType.LeftStick].ReadValue<Vector2>();
                 if (input.x < -DeadZone.x)
                 {
                     output.x = -1;
@@ -116,7 +128,7 @@ public class MyInputManager
             case KeyType.RightStick:
             {
                 
-                input = InputActions[KeyType.RightStick].ReadValue<Vector2>();
+                input = InputActionDic[KeyType.RightStick].ReadValue<Vector2>();
                 if (input.x < -DeadZone.x)
                 {
                     output.x = -1;
