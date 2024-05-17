@@ -215,6 +215,11 @@ public class KeySettingSC : MonoBehaviour
     // }
     public void _KeyChange(int index)
     {
+        if (_rebindingOperation != null)
+        {
+            _rebindingOperation.Dispose();
+        }
+        _UpdateKeys(_SelectedControlType);
         _myInput.PlayerActionOnOff(false);
         _myInput.UIActionOnOff(false);
         _KeyText[index].text = _WaitText[SysSaveSC._Language];
