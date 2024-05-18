@@ -170,7 +170,7 @@ namespace Lumia
             {
                 _em.rateOverDistanceMultiplier -= 15 * Time.deltaTime;
             }
-            else if (_IsGrounded == true)
+            else if (_IsGrounded)
             {
                 _em.rateOverDistanceMultiplier = 3;
             }
@@ -184,7 +184,7 @@ namespace Lumia
             }
             _mainAnimator.SetFloat(AniYVelocity, _RB.velocity.y);
             _mainAnimator.SetBool(AniIsGrounded, _IsGrounded);
-            if (_CanControl == true)
+            if (_CanControl)
             {
                 if (leftStickX > 0)
                 {
@@ -373,7 +373,7 @@ namespace Lumia
                 }
 
                 //Shield
-                if (MyInput.GetButton(KeyType.Shield) && _SwordStock >= 2 && _IsGrounded == true)
+                if (MyInput.GetButton(KeyType.Shield) && _SwordStock >= 2 && _IsGrounded)
                 {
                     _mainAnimator.SetBool(AniIsShielding, true);
                 }
@@ -532,7 +532,7 @@ namespace Lumia
         {
             Collider2D ground;
             ground = Physics2D.OverlapBox(transform.position, new Vector2(0.4f, 0.1f), 0f, _GroundLayer);
-            if (ground != null && _RB.velocity.y <= 0.01 && ((ground.gameObject.GetComponent<PlatformEffector2D>() == null) || (ground.gameObject.GetComponent<PlatformEffector2D>() != null && ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
+            if (ground != null && _RB.velocity.y <= 0.01 && (ground.gameObject.GetComponent<PlatformEffector2D>() == null || (ground.gameObject.GetComponent<PlatformEffector2D>() != null && ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
             {
                 _IsGrounded = true;
                 _CoyoteTimer = 0;
@@ -555,10 +555,10 @@ namespace Lumia
             {
                 yield return null;
             }
-            PlatformEffector2D _PassGround = FindObjectOfType<PlatformEffector2D>();
-            if (_PassGround != null)
+            PlatformEffector2D passGround = FindObjectOfType<PlatformEffector2D>();
+            if (passGround != null)
             {
-                _PassGround.colliderMask = -1;
+                passGround.colliderMask = -1;
             }
 
         }
@@ -711,10 +711,12 @@ namespace Lumia
 
         void OnTriggerEnter2D(Collider2D col)
         {
+            //Set Respawn Point
             if (col.gameObject.tag == "RespawnArea")
             {
                 _RespawnPoint = col.gameObject.GetComponent<RespawnAreaSC>()._RespawnPoint;
             }
+            //Walk through Gate
             else if (col.gameObject.tag == "Gate" && _CanControl == true && _AutoJumping == false && _RB.constraints == RigidbodyConstraints2D.FreezeRotation)
             {
                 _CanControl = false;

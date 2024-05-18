@@ -22,7 +22,7 @@ namespace Lumia
                     leftStickX = 0;
                 }
                 leftStickY = leftStickInput.y;
-                if (_CanControl == true)
+                if (_CanControl)
                 {
                     //Walk
                     if (_CanControl == false)
@@ -60,7 +60,7 @@ namespace Lumia
                 if (_CanControl == false)
                 {
                     _RB.velocity = new Vector2(_AutoWalk * _CurrentWalkSpeed, _RB.velocity.y);
-                    if (_AutoJumping == true)
+                    if (_AutoJumping)
                     {
                         _RB.velocity = new Vector2(_AutoWalk * 2 * _CurrentWalkSpeed, _JumpForce);
                     }

@@ -23,7 +23,7 @@ namespace Lumia
             DontDestroyOnLoad(gameObject);
             op.allowSceneActivation = true;
             _CurrentScene = _TargetScene;
-            if (_KeepLumia == true)
+            if (_KeepLumia)
             {
                 StartCoroutine(_Reload(false));
             }
