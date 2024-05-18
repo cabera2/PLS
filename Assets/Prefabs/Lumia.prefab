@@ -5790,7 +5790,6 @@ MonoBehaviour:
   _SwordObj: {fileID: 1329668446225250, guid: 6aafb004ba71f0840af52c5a4650496b, type: 3}
   _SlashObj: {fileID: 1368387792532086, guid: 5b9378c95a3924f4e802967709ef5ae0, type: 3}
   _SwordHanger: {fileID: 2851056530678339849}
-  _TargetMark: {fileID: 0}
   _DustBurstObj: {fileID: 5850446109989738525, guid: bba8b5b6d36b06146a37562b5c9abb9c,
     type: 3}
   _Particle:
@@ -5828,6 +5827,8 @@ MonoBehaviour:
   _PermanentFlag: 
   _TemporaryFlag: 
   swordDatas: []
+  targetMarkPrefab: {fileID: 3498885308973400471, guid: a2f8ffec3dbf47d48b80dff470ae6377,
+    type: 3}
 --- !u!114 &1947907812125522032
 MonoBehaviour:
   m_ObjectHideFlags: 0

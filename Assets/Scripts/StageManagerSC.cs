@@ -36,8 +36,7 @@ public class StageManagerSC : MonoBehaviour
     [HideInInspector] public List<GameObject> _JumpDustPool = new List<GameObject>();
     [HideInInspector] public List<GameObject> _CoinPool = new List<GameObject>();
     [HideInInspector] public List<GameObject> _CoinFXPool = new List<GameObject>();
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         _MapOffsetNow = _MapOffset;
@@ -48,11 +47,9 @@ public class StageManagerSC : MonoBehaviour
             //필수 Instantiate 생성
             _LumiaInst = Instantiate(_LumiaPrefab);
             _lumiaSc = _LumiaInst.GetComponent<LumiaSC>();
-            GameObject _TargetMark = Instantiate(_TargetMarkPrefab);
             _CanvasInst = Instantiate(_CanvasPrefab);
 
             //주인공 캐싱
-            _lumiaSc._TargetMark = _TargetMark;
             _lumiaSc._Canvas = _CanvasInst;
             LumiaHitboxSC _LHBSC = _lumiaSc._Hitbox.GetComponent<LumiaHitboxSC>();
             _LHBSC._Canvas = _CanvasInst;

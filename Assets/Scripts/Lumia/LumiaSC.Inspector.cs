@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Lumia
 {
     public partial class LumiaSC
     {
+        [Header("Prefabs")][SerializeField] private SpriteRenderer targetMarkPrefab;
         [Serializable]
         public class LevelData
         {

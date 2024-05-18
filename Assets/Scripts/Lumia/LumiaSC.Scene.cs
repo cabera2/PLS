@@ -30,7 +30,7 @@ namespace Lumia
             else
             {
                 Destroy(_Canvas);
-                Destroy(_TargetMark);
+                Destroy(targetMarkInstance);
                 Destroy(gameObject);
             }
 
@@ -90,7 +90,6 @@ namespace Lumia
             _Canvas.GetComponent<Canvas>().worldCamera = _MyCamera.GetComponent<Camera>();
             _Canvas.GetComponent<Canvas>().sortingLayerName = "UI";
             _Canvas.GetComponent<PauseSC>()._FadeObj.GetComponent<UIFaderSC>()._FadeOut();
-            _TargetMark.transform.position = transform.position;
         }
     }
 }

@@ -153,7 +153,7 @@ namespace Lumia
             }
             if (_nearestSword == swordDatas[0])
             {
-                _TargetMark.transform.position = _nearestSword.transform.position;
+                targetMarkInstance.transform.position = _nearestSword.transform.position;
                 return;
             }
             // ChangeTarget
@@ -170,7 +170,7 @@ namespace Lumia
             _TargetOnOff(false);
             _InRange = false;
             Vector3 ResetOffset = new Vector3(0, 0.7f, 0f);
-            _TargetMark.transform.position = Vector3.MoveTowards(_TargetMark.transform.position, transform.position + ResetOffset, _TargetMarkSpeed * Time.deltaTime);
+            targetMarkInstance.transform.position = Vector3.MoveTowards(targetMarkInstance.transform.position, transform.position + ResetOffset, _TargetMarkSpeed * Time.deltaTime);
         }
         void _TargetOnOff(bool _On)
         {

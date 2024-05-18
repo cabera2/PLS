@@ -72,7 +72,7 @@ namespace Lumia
         public GameObject _SwordObj;
         public GameObject _SlashObj;
         public GameObject _SwordHanger;
-        public GameObject _TargetMark;
+        private GameObject targetMarkInstance;
         private Animator _TarAni;
         private SpriteRenderer _TarSR;
         public GameObject _DustBurstObj;
@@ -131,7 +131,13 @@ namespace Lumia
             MyInput = MyInputManager.GetMyInput();
             //Debug.Log(Input.GetJoystickNames()[0] + "연결");
             CacheComponents();
-            StartCoroutine(StartC());
+            
+            //TargetMark
+            _TarSR = Instantiate(targetMarkPrefab);
+            targetMarkInstance = _TarSR.gameObject;
+            DontDestroyOnLoad(targetMarkInstance);
+            _TarAni = targetMarkInstance.GetComponent<Animator>();
+            
             _CurrentWalkSpeed = _DefaultWalkSpeed;
             _DefaultGravity = _RB.gravityScale;
             material = _mainSpriteRenderer.material;
@@ -149,16 +155,6 @@ namespace Lumia
             _stageManagerSc = _MyCamera.GetComponent<StageManagerSC>();
             _reloadAudioSource = _SwordHanger.GetComponent<AudioSource>();
             _lumiaCamSc = GetComponent<LumiaCamSC>();
-        }
-        IEnumerator StartC()
-        {
-            while (_TargetMark == null)
-            {
-                yield return null;
-            }
-            DontDestroyOnLoad(_TargetMark);
-            _TarAni = _TargetMark.GetComponent<Animator>();
-            _TarSR = _TargetMark.GetComponent<SpriteRenderer>();
         }
 
         void Update()
