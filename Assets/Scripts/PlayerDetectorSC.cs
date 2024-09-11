@@ -50,7 +50,7 @@ public class PlayerDetectorSC : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.layer == 9 && _Grounded == true && _CanPick == true)
+        if (col.gameObject.layer == 9 && _Grounded && _CanPick && _lumiaSc._RB.constraints != RigidbodyConstraints2D.FreezeAll)
         {
             _lumiaSc._SwordStock += 1;
             _lumiaSc._Canvas.GetComponent<PauseSC>()._UpdateSwordCurrent();

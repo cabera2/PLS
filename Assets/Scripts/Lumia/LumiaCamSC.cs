@@ -39,35 +39,47 @@ namespace Lumia
 
         public void _CameraControl()
         {
-            if (_MyCamera != null)
-            {
-                int _Direction = GetComponent<SpriteRenderer>().flipX ? -1 : 1;
-                camTargetPos = new Vector3(transform.position.x + _CameraOffset.x * _Direction, transform.position.y + _CameraOffset.y + _LookUpDown, -10);
-                Vector2 _CamMinPos;
-                Vector2 _CamMaxPos;
-                if (_InCamArea == true)
-                {
-                    _CamMinPos = _CamArea.GetComponent<CameraAreaSC>()._CamMinPos;
-                    _CamMaxPos = _CamArea.GetComponent<CameraAreaSC>()._CamMaxPos;
-                }
-                else
-                {
-                    _CamMinPos = _MyCamera.GetComponent<StageManagerSC>()._CamMinPos;
-                    _CamMaxPos = _MyCamera.GetComponent<StageManagerSC>()._CamMaxPos;
-                }
-                if (transform.position.y < _MyCamera.transform.position.y - 5)
-                {
-                    var FastDownCamPos = _MyCamera.transform.position;
-                    FastDownCamPos.y = transform.position.y + 5;
-                    FastDownCamPos.y = Mathf.Clamp(FastDownCamPos.y, _CamMinPos.y, _CamMaxPos.y);
-                    _MyCamera.transform.position = FastDownCamPos;
-                }
-                camTargetPos.x = Mathf.Clamp(camTargetPos.x, _CamMinPos.x, _CamMaxPos.x);
-                camTargetPos.y = Mathf.Clamp(camTargetPos.y, _CamMinPos.y, _CamMaxPos.y);
-                //_MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
-                _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, camTargetPos, ref currentVelocity, _Speed);
+            if (_MyCamera == null)
+                return;
+            _MyCamera.transform.position = Vector3.SmoothDamp(_MyCamera.transform.position, GetCamTargetPos(), ref currentVelocity, _Speed);
+        }
 
+        public void MoveImmediate()
+        {
+            Debug.Log("Test1");
+            if (_MyCamera == null)
+                return;
+            _MyCamera.transform.position = GetCamTargetPos();
+            Debug.Log("Test2");
+        }
+
+        private Vector3 GetCamTargetPos()
+        {
+            int _Direction = GetComponent<SpriteRenderer>().flipX ? -1 : 1;
+            camTargetPos = new Vector3(transform.position.x + _CameraOffset.x * _Direction, transform.position.y + _CameraOffset.y + _LookUpDown, -10);
+            Vector2 _CamMinPos;
+            Vector2 _CamMaxPos;
+            if (_InCamArea == true)
+            {
+                _CamMinPos = _CamArea.GetComponent<CameraAreaSC>()._CamMinPos;
+                _CamMaxPos = _CamArea.GetComponent<CameraAreaSC>()._CamMaxPos;
             }
+            else
+            {
+                _CamMinPos = _MyCamera.GetComponent<StageManagerSC>()._CamMinPos;
+                _CamMaxPos = _MyCamera.GetComponent<StageManagerSC>()._CamMaxPos;
+            }
+            if (transform.position.y < _MyCamera.transform.position.y - 5)
+            {
+                var FastDownCamPos = _MyCamera.transform.position;
+                FastDownCamPos.y = transform.position.y + 5;
+                FastDownCamPos.y = Mathf.Clamp(FastDownCamPos.y, _CamMinPos.y, _CamMaxPos.y);
+                _MyCamera.transform.position = FastDownCamPos;
+            }
+            camTargetPos.x = Mathf.Clamp(camTargetPos.x, _CamMinPos.x, _CamMaxPos.x);
+            camTargetPos.y = Mathf.Clamp(camTargetPos.y, _CamMinPos.y, _CamMaxPos.y);
+            //_MyCamera.transform.position = Vector3.MoveTowards(_MyCamera.transform.position, _CamPos1, (Vector2.Distance(_CamPos1, _MyCamera.transform.position) * _Speed));
+            return camTargetPos;
         }
         void OnTriggerEnter2D(Collider2D col)
         {

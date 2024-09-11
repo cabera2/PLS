@@ -35,11 +35,6 @@ namespace Lumia
         {
             _Grounded = false;
         }
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         void OnCollisionEnter2D(Collision2D col)
         {
             if (_RB.velocity == Vector2.zero && col.gameObject.layer == 8)
