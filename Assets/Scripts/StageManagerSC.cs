@@ -102,8 +102,7 @@ public class StageManagerSC : MonoBehaviour
             _CamSC = _LumiaInst.GetComponent<LumiaCamSC>();
             _CamSC._MyCamera = gameObject;
             _lumiaSc._WhenSceneLoad();
-            _CamSC._CameraControl();
-            transform.position = _LumiaInst.GetComponent<LumiaCamSC>().camTargetPos;
+            _CamSC.MoveImmediate();
         }
     }
     public void _ChairStart()

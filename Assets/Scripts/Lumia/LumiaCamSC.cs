@@ -46,11 +46,9 @@ namespace Lumia
 
         public void MoveImmediate()
         {
-            Debug.Log("Test1");
             if (_MyCamera == null)
                 return;
             _MyCamera.transform.position = GetCamTargetPos();
-            Debug.Log("Test2");
         }
 
         private Vector3 GetCamTargetPos()

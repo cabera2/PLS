@@ -90,7 +90,6 @@ namespace Lumia
             _Canvas.GetComponent<Canvas>().worldCamera = _MyCamera.GetComponent<Camera>();
             _Canvas.GetComponent<Canvas>().sortingLayerName = "UI";
             _Canvas.GetComponent<PauseSC>()._FadeObj.GetComponent<UIFaderSC>()._FadeOut();
-            _lumiaCamSc.MoveImmediate();
         }
     }
 }

@@ -84,6 +84,10 @@ public class PauseSC : MonoBehaviour
     }
     void Update()
     {
+        if (_SwordText.GetComponent<CanvasGroup>().alpha > 0)
+        {
+            _SwordText.transform.position = StageManagerSC._LumiaInst.transform.position + Vector3.up * 1.8f;
+        }
         if (_MapOpen == false && (_myInput.GetButtonDown(KeyType.Map) && _IsPaused == false && _StatusOpen == false && _LSC._IsGrounded == true && _LSC._CanControl == true))
         {
             _MapOpen = true;
@@ -208,13 +212,6 @@ public class PauseSC : MonoBehaviour
     void _FirstMenu()
     {
         _MenuPages[0].transform.GetChild(1).GetComponent<Button>().Select();
-    }
-    void FixedUpdate()
-    {
-        if (_SwordText.GetComponent<CanvasGroup>().alpha > 0)
-        {
-            _SwordText.transform.position = StageManagerSC._LumiaInst.transform.position + Vector3.up * 1.8f;
-        }
     }
 
     public void _UpdateMaxHp()
