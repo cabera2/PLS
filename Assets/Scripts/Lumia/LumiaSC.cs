@@ -382,7 +382,7 @@ namespace Lumia
                     _mainAnimator.SetBool(AniIsShielding, false);
                 }
                 //SwordShot
-                if ((MyInput.GetButtonUp(KeyType.Shoot)) && Time.timeScale > 0 && _AtkTimer <= 0)
+                if (MyInput.GetButtonUp(KeyType.Shoot) && Time.timeScale > 0 && _AtkTimer <= 0)
                 {
                     Shoot();
                 }
@@ -406,10 +406,11 @@ namespace Lumia
                         }
                     }
 
-                    //GroundPass
+                    //Jump Pressed
                     if (MyInput.GetButtonDown(KeyType.Jump))
                     {
                         _CoyoteTimer = _CoyoteTime;
+                        //GroundPass
                         if (_IsGrounded == true && leftStickY <= -0.5f)
                         {
                             PlatformEffector2D _PassGround = FindObjectOfType<PlatformEffector2D>();
@@ -420,6 +421,7 @@ namespace Lumia
                                 StartCoroutine(_ResetPass());
                             }
                         }
+                        //Jump jump
                         if (_IsGrounded == true || _RB.constraints == RigidbodyConstraints2D.FreezeAll)
                         {
                             if (_RB.constraints == RigidbodyConstraints2D.FreezeAll)
@@ -442,6 +444,7 @@ namespace Lumia
                                 }
                                 _DustInst.transform.position = transform.position;
                             }
+                            _IsGrounded = false;
                             _IsJumping = true;
                             _JumpCountCounter = _JumpMaxCount;
                             _JumpTimeCounter = _JumpMaxTime;
@@ -530,9 +533,12 @@ namespace Lumia
         }
         void CheckGrounded()
         {
-            Collider2D ground;
-            ground = Physics2D.OverlapBox(transform.position, new Vector2(0.4f, 0.1f), 0f, _GroundLayer);
-            if (ground != null && _RB.velocity.y <= 0.01 && (ground.gameObject.GetComponent<PlatformEffector2D>() == null || (ground.gameObject.GetComponent<PlatformEffector2D>() != null && ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
+            // Debug.Log(_CoyoteTimer);
+            // Debug.Log("IsGrouned:" + _IsGrounded);
+            var ground = Physics2D.OverlapBox(transform.position, new Vector2(0.4f, 0.1f), 0f, _GroundLayer);
+            if (ground != null 
+                && _RB.velocity.y <= 0.01 
+                && (ground.gameObject.GetComponent<PlatformEffector2D>() == null || (ground.gameObject.GetComponent<PlatformEffector2D>() != null && ground.gameObject.GetComponent<PlatformEffector2D>().colliderMask == -1)))
             {
                 _IsGrounded = true;
                 _CoyoteTimer = 0;

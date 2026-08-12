@@ -52,7 +52,7 @@ namespace Lumia
                         }
                     }
                     //StopJump
-                    if (MyInput.GetButtonDown(KeyType.Jump) && _JumpCountCounter > 0)
+                    if (MyInput.GetButtonUp(KeyType.Jump) && _JumpCountCounter > 0)
                     {
                         _JumpCountCounter -= 1;
                     }
